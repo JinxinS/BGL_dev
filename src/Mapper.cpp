@@ -23,8 +23,8 @@ void Mapper::map_func(GraphTypes::Graph& g1, GraphTypes::Graph& g2){
 	edge_comp_t edge_comp =
 			make_property_map_equivalent(get(edge_connection, g1), get(edge_connection, g2));
 
-	VertexTypeMap vtype_map_g1 = get(vertex_futype, g1);
-	VertexTypeMap vtype_map_g2 = get(vertex_futype, g2);
+	GraphTypes::VertexTypeMap vtype_map_g1 = get(vertex_futype, g1);
+	GraphTypes::VertexTypeMap vtype_map_g2 = get(vertex_futype, g2);
 
 	// Maximum, unique subgraphs
 	std::cout << "mcgregor_common_subgraphs_maximum_unique:" << std::endl;
@@ -32,6 +32,6 @@ void Mapper::map_func(GraphTypes::Graph& g1, GraphTypes::Graph& g2){
 	(g1, g2, true, user_callback,
 			edges_equivalent(edge_comp).vertices_equivalent(make_property_map_equivalent(vtype_map_g1, vtype_map_g2))
 	);
-
-
 }
+
+

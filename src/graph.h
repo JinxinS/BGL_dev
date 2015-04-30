@@ -36,6 +36,7 @@ struct GraphTypes{
 	typedef property<edge_connection_t, std::string> edge_property;
 	typedef property<vertex_funame_t, std::string, property<vertex_futype_t,std::string> > vertex_property;
 	typedef adjacency_list<listS, vecS, directedS,vertex_property,edge_property > Graph;
+	typedef property_map<GraphTypes::Graph, vertex_futype_t>::type VertexTypeMap;
 };
 
 #endif /* GRAPH_H_ */
