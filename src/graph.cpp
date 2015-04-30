@@ -7,7 +7,7 @@
 int main (int argc, char *argv[]) {
 	// Test maximum and unique variants on known graphs
 	GraphTypes::Graph graph_simple1, graph_simple2;
-#if 0
+#if 1
 	build_g1::buildgraph1(graph_simple1);
 	build_g2::buildgraph2(graph_simple2);
 #else

@@ -22,12 +22,13 @@ private:
 		typedef typename graph_traits<Graph>::vertices_size_type VertexSizeFirst;
 		map_callback(const Graph& graph1,const Graph& graph2) :
 			m_graph1(graph1),
-			m_graph2(graph2){ }
+			m_graph2(graph2){			std::cout<<__LINE__<<std::endl;  }
 
 		template <typename CorrespondenceMapFirstToSecond, typename CorrespondenceMapSecondToFirst>
 		bool operator()(CorrespondenceMapFirstToSecond correspondence_map_1_to_2,
 				CorrespondenceMapSecondToFirst correspondence_map_2_to_1,
 				VertexSizeFirst subgraph_size) {
+			std::cout<<__LINE__<<std::endl;
 
 			typedef typename property_map<Graph, vertex_index_t>::type VertexIndexMap;
 			typedef shared_array_property_map<bool, VertexIndexMap> MembershipMap;
