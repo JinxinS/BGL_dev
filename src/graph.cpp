@@ -16,6 +16,7 @@ int main (int argc, char *argv[]) {
 #endif
 	//
 #define PRINT_IDX
+
 	std::cout << "First graph:" << std::endl;
 #ifdef PRINT_IDX
 	print_graph(graph_simple1);
@@ -23,8 +24,6 @@ int main (int argc, char *argv[]) {
 	print_graph(graph_simple1,get(vertex_funame,graph_simple1));
 #endif
 	std::cout << std::endl;
-
-
 
 	std::cout << "Second graph:" << std::endl;
 #ifdef PRINT_IDX

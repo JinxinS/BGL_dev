@@ -8,6 +8,8 @@
 #ifndef MAPPER_H_
 #define MAPPER_H_
 #include "graph.h"
+#include <assert.h>     /* assert */
+
 class Mapper {
 
 public:
@@ -17,18 +19,68 @@ public:
 
 
 private:
+	template <typename Graph,typename EdgeEquivalencePredicate,typename VertexEquivalencePredicate>
+	struct vf2_subgraph_mono_callback {
+		vf2_subgraph_mono_callback(bool& gothit,
+				bool stop_,const
+				Graph& graph1,
+				const Graph& graph2,
+				const EdgeEquivalencePredicate& e,
+				const VertexEquivalencePredicate& v):
+					got_hit(gothit),
+					stop(!stop_),
+					m_graph1(graph1),
+					m_graph2(graph2),
+					edge_comp(e),
+					vertex_comp(v){	 }
+
+		template<typename Map1To2, typename Map2To1>
+		bool operator()(Map1To2 map1to2, Map2To1 map2to1) {
+			got_hit = true;
+
+			std::cout<<"find mapping:"<<std::endl;
+			BGL_FORALL_VERTICES_T(v, m_graph1, Graph)
+			std::cout << '(' << get(vertex_funame_t(), m_graph1, v) << ", "
+			<< get(vertex_funame_t(), m_graph2, get(map1to2, v)) << ") ";
+			std::cout<<std::endl;
+
+			//validate mapping
+			bool verify = verify_vf2_subgraph_iso(m_graph1, m_graph2,  map1to2 ,edge_comp ,vertex_comp);
+			assert(verify);
+
+			return stop;
+		}
+	private:
+		bool &got_hit;
+		bool stop;
+		const Graph& m_graph1;
+		const Graph& m_graph2;
+		const EdgeEquivalencePredicate& edge_comp;
+		const VertexEquivalencePredicate& vertex_comp;
+
+	};
+
 	template <typename Graph>
 	struct map_callback {
 		typedef typename graph_traits<Graph>::vertices_size_type VertexSizeFirst;
 		map_callback(const Graph& graph1,const Graph& graph2) :
 			m_graph1(graph1),
-			m_graph2(graph2){			std::cout<<__LINE__<<std::endl;  }
+			m_graph2(graph2){ }
 
 		template <typename CorrespondenceMapFirstToSecond, typename CorrespondenceMapSecondToFirst>
 		bool operator()(CorrespondenceMapFirstToSecond correspondence_map_1_to_2,
 				CorrespondenceMapSecondToFirst correspondence_map_2_to_1,
 				VertexSizeFirst subgraph_size) {
-			std::cout<<__LINE__<<std::endl;
+
+			// Print out correspondences between vertices
+			BGL_FORALL_VERTICES_T(vertex1, m_graph1, Graph) {
+
+				// Skip unmapped vertices
+				if (get(correspondence_map_1_to_2, vertex1) != graph_traits<Graph>::null_vertex()) {
+					std::cout << vertex1 << " <-> " << get(correspondence_map_1_to_2, vertex1) << std::endl;
+				}
+
+			}
 
 			typedef typename property_map<Graph, vertex_index_t>::type VertexIndexMap;
 			typedef shared_array_property_map<bool, VertexIndexMap> MembershipMap;

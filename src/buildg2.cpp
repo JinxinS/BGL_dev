@@ -3716,7 +3716,9 @@ void build_g2::buildgraphsimple2(GraphTypes::Graph& g){
 	add_edge(1, 2,  GraphTypes::edge_property("out_i0"),g);
 	add_edge(1, 3,  GraphTypes::edge_property("out_i1"), g);
 	add_edge(2, 3,  GraphTypes::edge_property("out_i0"), g);
+	add_edge(3, 2,  GraphTypes::edge_property("out_i1"),g);
 	add_edge(2, 4,  GraphTypes::edge_property("out_i0"),g);
+
 	add_edge(2, 5,  GraphTypes::edge_property("out_i1"),g);
 
 	clear_vertex(5, g);
