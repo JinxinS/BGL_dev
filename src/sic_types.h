@@ -5,13 +5,9 @@
  *      Author: songjinxin
  */
 
-#ifndef GRAPH_H_
-#define GRAPH_H_
+#ifndef SIC_TYPES_H_
+#define SIC_TYPES_H_
 
-#include <fstream>
-#include <iostream>
-#include <string>
-#include <stdio.h>
 #include <boost/lexical_cast.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/filtered_graph.hpp>
@@ -21,7 +17,7 @@
 #include <boost/property_map/shared_array_property_map.hpp>
 #include <boost/graph/properties.hpp>
 #include <boost/graph/vf2_sub_graph_iso.hpp>
-//#define PRINT_IDX
+
 using namespace boost;
 
 namespace boost {
@@ -40,4 +36,4 @@ struct GraphTypes{
 	typedef property_map<GraphTypes::Graph, vertex_futype_t>::type VertexTypeMap;
 };
 
-#endif /* GRAPH_H_ */
+#endif /* SIC_TYPES_H_ */

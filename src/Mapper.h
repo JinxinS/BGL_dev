@@ -7,13 +7,13 @@
 
 #ifndef MAPPER_H_
 #define MAPPER_H_
-#include "graph.h"
 #include <assert.h>     /* assert */
+#include <sic_types.h>
 
 class Mapper {
 
 public:
-	void map_func(GraphTypes::Graph& g1,GraphTypes:: Graph& g2);
+	bool map_func(GraphTypes::Graph& g1,GraphTypes:: Graph& g2);
 	Mapper();
 	virtual ~Mapper();
 

@@ -17,7 +17,7 @@ Mapper::~Mapper() {
 }
 
 
-void Mapper::map_func(GraphTypes::Graph& g1, GraphTypes::Graph& g2){
+bool Mapper::map_func(GraphTypes::Graph& g1, GraphTypes::Graph& g2){
 	typedef property_map<GraphTypes::Graph, edge_connection_t>::type edge_connection_map_t;
 	typedef property_map<GraphTypes::Graph, vertex_futype_t>::type vertex_futype_map_t;
 
@@ -54,6 +54,9 @@ void Mapper::map_func(GraphTypes::Graph& g1, GraphTypes::Graph& g2){
 
 	if(!got_hit){
 		std::cout<<"mapping not found! "<<std::endl;
+		return false;
+	}else{
+		return true;
 	}
 
 
