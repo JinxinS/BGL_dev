@@ -25,7 +25,7 @@ INCLUDES :=  $(addprefix -I,$(release.dir) $(src.dir))
 
 all: $(test.bin)
 
-$(test.bin): $(test.unit.bin.dir)/Test% : Test%.o $(helper.objs) $(GMOCK_DIR)/libgmock.a -lboost_unit_test_framework -lsideconf | $(test.unit.bin.dir)
+$(test.bin): $(test.unit.bin.dir)/Test% : Test%.o $(helper.objs) $(GMOCK_DIR)/libgmock.a -lboost_unit_test_framework -lboost_log -lboost_system -lboost_thread  -lsideconf | $(test.unit.bin.dir)
 	$(CXX) -pthread -o $@ $^
 
 $(obj.files): $(test.unit.obj.dir)/%.o : %.cpp | $(test.unit.obj.dir)

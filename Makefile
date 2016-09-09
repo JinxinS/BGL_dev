@@ -33,8 +33,8 @@ $(libsideconf): $(obj.files) | $(bin.dir)
 $(release.bin):$(sideconf.bin) | $(release.dir)
 	cp $< $@
 
-$(sideconf.bin):$(obj.files) | $(bin.dir)
-	$(CXX) $(CXXFLAGS) $(CXXDEFINES) $(INCLUDES)   -o $@  $(main.file) $^ 
+$(sideconf.bin):$(obj.files)  -lboost_log -lboost_system -lboost_thread| $(bin.dir)
+	$(CXX) -pthread  $(CXXFLAGS) $(CXXDEFINES) $(INCLUDES)   -o $@  $(main.file) $^ 
 
 $(obj.files): $(obj.dir)/%.o : %.cpp | $(obj.dir)
 	$(CXX) $(CXXFLAGS) $(CXXDEFINES)  $(INCLUDES) -c $< -o $@

@@ -46,20 +46,11 @@ struct argp_option CmdLineParser::options[] = {
 
 struct argp CmdLineParser::argp = { options, parse_opt, args_doc, doc,0,0,0 };
 
-CmdLineParser::CmdLineParser():
-//		argp_program_version("sideconf"),
-//		argp_program_bug_address("<bugs@coreworks-sa.com>"),
-arguments()
+struct arguments CmdLineParser::arguments={0,0,0,0,0,0,0,0,0,"",".",""};
+
+CmdLineParser::CmdLineParser()
 {
-	arguments.silent = 0;
-	arguments.verbose = 0;
-	arguments.output = ".";
-	arguments.fufolder = "";
-	arguments.report = 0;
-	arguments.abort = 0;
-	arguments.exclude = 0;
-	arguments.keep = 1;
-	arguments.arch = "";
+
 }
 
 CmdLineParser::~CmdLineParser() {
@@ -99,7 +90,7 @@ error_t CmdLineParser::parse_opt (int key, char *arg, struct argp_state *state){
 		arguments->exclude = 1;
 		break;
 	case 'k':
-		arguments->keep = 0;
+		arguments->keep = 1;
 		break;
 	case OPT_ABORT:
 		arguments->abort = 1;
@@ -149,7 +140,7 @@ void CmdLineParser::pritnArg(){
 		error (10, 0, "ABORTED");
 
 	printf ("FUNCTIONAL_UNIT_FOLDER = %s \n",arguments.fufolder);
-	printf ("INPUTS of %d = ",arguments.numofinputs);
+	printf ("INPUTS of %lu = ",arguments.numofinputs);
 	for (int j = 0; arguments.inputs[j]; j++)
 		printf (j == 0 ? "%s" : ", %s", arguments.inputs[j]);
 	printf ("\n");
