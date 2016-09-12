@@ -5,29 +5,34 @@
  *      Author: songjinxin
  */
 
-#include <SideParser.h>
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/xml_parser.hpp>
-#include <boost/log/trivial.hpp>
-#include <boost/foreach.hpp>
-#include <string>
-#include <set>
-#include <exception>
-#include <iostream>
-namespace pt = boost::property_tree;
+#include "SideParser.h"
+
+const char* SideParser::tag_comment		="<xmlcomment>";
+const char* SideParser::tag_attr			="<xmlattr>";
+
+const char* SideParser::fu_tag_func		="FunctionalUnit";
+const char* SideParser::fu_tag_output		="OutputPort";
+const char* SideParser::fu_tag_input		="InputPort";
+const char* SideParser::fu_tag_param		="Parameter";
+const char* SideParser::fu_tag_function	="Function";
+const char* SideParser::fu_tag_funcarg		="FunctionArg";
+const char* SideParser::fu_attr_type		="<xmlattr>.type";
+const char* SideParser::fu_attr_name		="<xmlattr>.name";
+const char* SideParser::fu_attr_width		="<xmlattr>.width";
+const char* SideParser::fu_attr_sel		="<xmlattr>.select";
 
 const char* SideParser::tag  			= "LogicalSideWorks";
+const char* SideParser::tag_fuplace	= "FUPlace";
+const char* SideParser::tag_function	= "FUFunction";
+const char* SideParser::tag_funcarg	= "FunctionArg";
+const char* SideParser::tag_fumem		= "FUMem";
 const char* SideParser::attr_siwname 	= "<xmlattr>.siw_name";
 const char* SideParser::attr_name		= "<xmlattr>.name";
-const char* SideParser::tag_fuplace	= "FUPlace";
 const char* SideParser::attr_label		= "<xmlattr>.place_label";
-const char* SideParser::tag_function	= "FUFunction";
 const char* SideParser::attr_tname		= "<xmlattr>.type_name";
 const char* SideParser::attr_funame	= "<xmlattr>.fu_name";
 const char* SideParser::attr_funcname	= "<xmlattr>.func_name";
-const char* SideParser::tag_funcarg	= "FunctionArg";
 const char* SideParser::attr_value		= "<xmlattr>.value";
-const char* SideParser::tag_fumem		= "FUMem";
 const char* SideParser::attr_nwords	= "<xmlattr>.nwords";
 const char* SideParser::attr_a_width	= "<xmlattr>.a_width";
 const char* SideParser::attr_d_width	= "<xmlattr>.d_width";
@@ -42,7 +47,44 @@ SideParser::~SideParser() {
 	// TODO Auto-generated destructor stub
 }
 
-void SideParser::parseLogicalSideWorks(LogicalSideworks* lsiw,  const char* filename){
+void SideParser::parseFunctionalUnitLibrary(FunctionalUnitLibrary* fulib,const std::string& filename){
+	BOOST_LOG_TRIVIAL(debug)<<"parsing"<<filename;
+	pt::ptree tree;
+	pt::read_xml(filename, tree);
+	BOOST_LOG_TRIVIAL(debug)<<tree.get_child(fu_tag_func).get_child(fu_attr_type).data();
+
+	BOOST_FOREACH(pt::ptree::value_type &v, tree.get_child(fu_tag_func)) {
+		if(v.first == fu_tag_output){
+			std::string name(v.second.get_child(fu_attr_name).data());
+			int width = boost::lexical_cast<int>(v.second.get_child(fu_attr_width).data());
+			BOOST_LOG_TRIVIAL(debug)<<"output:"<<name<<" "<<width;
+		}else if(v.first == fu_tag_input){
+			std::string name(v.second.get_child(fu_attr_name).data());
+			int width = boost::lexical_cast<int>(v.second.get_child(fu_attr_width).data());
+			BOOST_LOG_TRIVIAL(debug)<<"input:"<<name<<" "<<width;
+		}else if(v.first == fu_tag_param){
+			std::string name(v.second.get_child(fu_attr_name).data());
+			int width = boost::lexical_cast<int>(v.second.get_child(fu_attr_width).data());
+			BOOST_LOG_TRIVIAL(debug)<<"param:"<<name<<" "<<width;
+		}else if(v.first == fu_tag_function){
+			std::string name(v.second.get_child(fu_attr_name).data());
+			int select = boost::lexical_cast<int>(v.second.get_child(fu_attr_sel).data());
+			BOOST_LOG_TRIVIAL(debug)<<"function:"<<name<<" "<<select;
+			BOOST_FOREACH(pt::ptree::value_type &t, v.second){
+				if(t.first == fu_tag_funcarg ){
+					std::string arg(t.second.get_child(fu_attr_name).data());
+					BOOST_LOG_TRIVIAL(debug)<<"argument:"<<arg;
+				}
+			}
+		}else if((v.first == tag_attr)||(v.first == tag_comment)){
+			//do nothing
+		}else{
+			BOOST_LOG_TRIVIAL(warning)<<"unknown tag : "<<v.first;
+		}
+	}
+}
+
+void SideParser::parseLogicalSideWorks(LogicalSideworks* logical_sideworks,  const char* filename){
 	// Create empty property tree object
 	BOOST_LOG_TRIVIAL(debug)<<"parsing"<<filename;
 	pt::ptree tree;
@@ -57,20 +99,32 @@ void SideParser::parseLogicalSideWorks(LogicalSideworks* lsiw,  const char* file
 		if(v.first == tag_fuplace)//FU_PLACE
 			BOOST_LOG_TRIVIAL(debug)<<"PLACE["<<v.second.get_child(attr_funame).data()<<"]@["<<v.second.get_child(attr_label).data()<<"]";
 		else if(v.first == tag_fumem){//FU_MEM
-			BOOST_LOG_TRIVIAL(debug)<<v.second.get_child(attr_funame).data()<<v.second.get_child(attr_a_width).data()<<" "
-					<<v.second.get_child(attr_d_width).data()<<" "<<v.second.get_child(attr_nwords).data();
+			std::string f_fu_name(v.second.get_child(attr_funame).data());
+			int f_nwords  = boost::lexical_cast<int>(v.second.get_child(attr_nwords).data());
+			int f_a_width = boost::lexical_cast<int>(v.second.get_child(attr_a_width).data());
+			int f_d_width = boost::lexical_cast<int>(v.second.get_child(attr_d_width).data());
+
+			BOOST_LOG_TRIVIAL(debug)<<f_fu_name<<" "<<f_a_width<<" "<<f_d_width<<" "<<f_nwords;
 			BOOST_FOREACH(pt::ptree::value_type &m, v.second){
 				if(m.first == tag_funcarg ){
 					BOOST_LOG_TRIVIAL(debug)<<m.second.get_child(attr_name).data()<<"="<<m.second.get_child(attr_value).data();
 				}
 			}
 		}else if(v.first == tag_function){//FU_FUNCTION
-			BOOST_LOG_TRIVIAL(debug)<<v.second.get_child(attr_funame).data()<<" "<<v.second.get_child(attr_tname).data()<<" "<<v.second.get_child(attr_funcname).data();
+			std::string f_type_name(v.second.get_child(attr_tname).data());
+			std::string f_fu_name(v.second.get_child(attr_funame).data());
+			std::string f_func_name(v.second.get_child(attr_funcname).data());
+
+			BOOST_LOG_TRIVIAL(debug)<<f_fu_name<<" "<<f_type_name<<" "<<f_func_name;
 			BOOST_FOREACH(pt::ptree::value_type &m, v.second){
 				if(m.first == tag_funcarg ){
 					BOOST_LOG_TRIVIAL(debug)<<m.second.get_child(attr_name).data()<<"="<<m.second.get_child(attr_value).data();
 				}
 			}
+		}else if((v.first == tag_attr)||(v.first == tag_comment)){
+			//do nothing
+		}else{
+			BOOST_LOG_TRIVIAL(warning)<<"unknown tag : "<<v.first;
 		}
 	}
 }

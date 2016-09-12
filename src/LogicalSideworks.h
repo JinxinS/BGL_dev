@@ -7,7 +7,7 @@
 
 #ifndef LOGICALSIDEWORKS_H_
 #define LOGICALSIDEWORKS_H_
-#include <sic_types.h>
+#include "sic_types.h"
 class LogicalSideworks {
 protected:
 	GraphTypes::Graph siw_graph;

@@ -8,7 +8,7 @@
 #ifndef MAPPER_H_
 #define MAPPER_H_
 #include <assert.h>     /* assert */
-#include <sic_types.h>
+#include "sic_types.h"
 
 class Mapper {
 

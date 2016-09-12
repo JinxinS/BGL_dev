@@ -5,7 +5,7 @@
  *      Author: songjinxin
  */
 
-#include <LogicalSideworks.h>
+#include "LogicalSideworks.h"
 
 LogicalSideworks::LogicalSideworks()
 :siw_graph()

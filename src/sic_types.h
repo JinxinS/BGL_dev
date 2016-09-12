@@ -8,17 +8,27 @@
 #ifndef SIC_TYPES_H_
 #define SIC_TYPES_H_
 
-#include <boost/lexical_cast.hpp>
+#include <string>
+#include <list>
+#include <unordered_map>
+#include <boost/foreach.hpp>
+#include <boost/filesystem.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/filtered_graph.hpp>
 #include <boost/graph/graph_utility.hpp>
 #include <boost/graph/iteration_macros.hpp>
 #include <boost/graph/mcgregor_common_subgraphs.hpp>
-#include <boost/property_map/shared_array_property_map.hpp>
 #include <boost/graph/properties.hpp>
 #include <boost/graph/vf2_sub_graph_iso.hpp>
+#include <boost/log/trivial.hpp>
+#include <boost/lexical_cast.hpp>
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/xml_parser.hpp>
+#include <boost/property_map/shared_array_property_map.hpp>
 
+namespace pt = boost::property_tree;
 using namespace boost;
+using namespace boost::filesystem;
 
 namespace boost {
 enum edge_connection_t { edge_connection };

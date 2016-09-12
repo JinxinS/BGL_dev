@@ -1,0 +1,298 @@
+<?xml version='1.0'?>
+<!DOCTYPE LogicalSideWorks SYSTEM "http://applicationserver.coreworks.local/logical_sideworks.dtd">
+<LogicalSideWorks siw_name='cwdv264_siw' kernel_name='' name='func_get_chroma_0x' simid='0' file='designs/get_chroma/func_get_chroma_0x.dsn' line='0'>
+  <FUPlace fu_name='m1' place_label='1' file='designs/get_chroma/func_get_chroma_0x.dsn' line='0'/>
+  <FUFunction fu_name='tu_rd' datapath='func_get_chroma_0x' type_name='TU_4_4_12' func_name='F_TIME'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='limit_k' value='siw_ctrl.out0' />
+    <FunctionArg name='limit_j' value='siw_ctrl.out1' />
+    <FunctionArg name='limit_i' value='ONE' />
+    <FunctionArg name='limit_h' value='ZERO' />
+    <FunctionArg name='dly' value='0' />
+    <FunctionArg name='en' value='siw_ctrl.en' />
+  </FUFunction>
+  <FUFunction fu_name='tu_wr' datapath='func_get_chroma_0x' type_name='TU_4_4_12' func_name='F_TIME'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='limit_k' value='siw_ctrl.out0' />
+    <FunctionArg name='limit_j' value='siw_ctrl.out1' />
+    <FunctionArg name='limit_i' value='ONE' />
+    <FunctionArg name='limit_h' value='ZERO' />
+    <FunctionArg name='dly' value='8' />
+    <FunctionArg name='en' value='siw_ctrl.en' />
+  </FUFunction>
+  <FUFunction fu_name='bau_j_rdA' datapath='func_get_chroma_0x' type_name='BAU_12' func_name='F_BAU_12'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='ld_val' value='bau_i_rdA.out' />
+    <FunctionArg name='cmp' value='undefined' />
+    <FunctionArg name='inc' value='siw_ctrl.out2' />
+    <FunctionArg name='dly' value='1' />
+    <FunctionArg name='ld' value='tu_rd.start_J_' />
+    <FunctionArg name='en' value='tu_rd.enable_J_' />
+  </FUFunction>
+  <FUMem fu_name='m1' datapath='func_get_chroma_0x' a_width='12' d_width='32' nwords='4096'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='address_a' value='bau_k_wrA.out' />
+    <FunctionArg name='address_b' value='undefined' />
+    <FunctionArg name='write_a' value='tu_wr.enable_K_' />
+    <FunctionArg name='write_b' value='undefined' />
+    <FunctionArg name='data_in_a' value='byte_mux.out' />
+    <FunctionArg name='data_in_b' value='undefined' />
+    <FunctionArg name='dly_b' value='0' />
+    <FunctionArg name='dly_a' value='3' />
+  </FUMem>
+  <FUFunction fu_name='mult0_0' datapath='func_get_chroma_0x' type_name='MUL_D4_32_64' func_name='F_MUL_DIV2_D4_32_64'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='i0' value='siw_ctrl.m0A_out0' />
+    <FunctionArg name='i1' value='siw_ctrl.out6' />
+    <FunctionArg name='lohi' value='ONE' />
+  </FUFunction>
+  <FUFunction fu_name='mult0_1' datapath='func_get_chroma_0x' type_name='MUL_D4_32_64' func_name='F_MUL_DIV2_D4_32_64'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='i0' value='siw_ctrl.m0B_out0' />
+    <FunctionArg name='i1' value='siw_ctrl.out7' />
+    <FunctionArg name='lohi' value='ONE' />
+  </FUFunction>
+  <FUFunction fu_name='bau_j_rdB' datapath='func_get_chroma_0x' type_name='BAU_12' func_name='F_BAU_12'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='ld_val' value='bau_i_rdB.out' />
+    <FunctionArg name='cmp' value='undefined' />
+    <FunctionArg name='inc' value='siw_ctrl.out2' />
+    <FunctionArg name='dly' value='1' />
+    <FunctionArg name='ld' value='tu_rd.start_J_' />
+    <FunctionArg name='en' value='tu_rd.enable_J_' />
+  </FUFunction>
+  <FUFunction fu_name='bau_k_rdA' datapath='func_get_chroma_0x' type_name='BAU_12' func_name='F_BAU_12'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='ld_val' value='bau_j_rdA.out' />
+    <FunctionArg name='cmp' value='undefined' />
+    <FunctionArg name='inc' value='ONE' />
+    <FunctionArg name='dly' value='2' />
+    <FunctionArg name='ld' value='tu_rd.start_K_' />
+    <FunctionArg name='en' value='tu_rd.enable_K_' />
+  </FUFunction>
+  <FUFunction fu_name='bau_k_rdB' datapath='func_get_chroma_0x' type_name='BAU_12' func_name='F_BAU_12'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='ld_val' value='bau_j_rdB.out' />
+    <FunctionArg name='cmp' value='undefined' />
+    <FunctionArg name='inc' value='ONE' />
+    <FunctionArg name='dly' value='2' />
+    <FunctionArg name='ld' value='tu_rd.start_K_' />
+    <FunctionArg name='en' value='tu_rd.enable_K_' />
+  </FUFunction>
+  <FUFunction fu_name='mult1_0' datapath='func_get_chroma_0x' type_name='MUL_D4_32_64' func_name='F_MUL_DIV2_D4_32_64'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='i0' value='siw_ctrl.m0A_out1' />
+    <FunctionArg name='i1' value='siw_ctrl.out6' />
+    <FunctionArg name='lohi' value='ONE' />
+  </FUFunction>
+  <FUFunction fu_name='mult1_1' datapath='func_get_chroma_0x' type_name='MUL_D4_32_64' func_name='F_MUL_DIV2_D4_32_64'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='i0' value='siw_ctrl.m0B_out1' />
+    <FunctionArg name='i1' value='siw_ctrl.out7' />
+    <FunctionArg name='lohi' value='ONE' />
+  </FUFunction>
+  <FUFunction fu_name='mult2_0' datapath='func_get_chroma_0x' type_name='MUL_D4_32_64' func_name='F_MUL_DIV2_D4_32_64'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='i0' value='siw_ctrl.m0A_out2' />
+    <FunctionArg name='i1' value='siw_ctrl.out6' />
+    <FunctionArg name='lohi' value='ONE' />
+  </FUFunction>
+  <FUFunction fu_name='mult2_1' datapath='func_get_chroma_0x' type_name='MUL_D4_32_64' func_name='F_MUL_DIV2_D4_32_64'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='i0' value='siw_ctrl.m0B_out2' />
+    <FunctionArg name='i1' value='siw_ctrl.out7' />
+    <FunctionArg name='lohi' value='ONE' />
+  </FUFunction>
+  <FUFunction fu_name='mult3_0' datapath='func_get_chroma_0x' type_name='MUL_D4_32_64' func_name='F_MUL_DIV2_D4_32_64'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='i0' value='siw_ctrl.m0A_out3' />
+    <FunctionArg name='i1' value='siw_ctrl.out6' />
+    <FunctionArg name='lohi' value='ONE' />
+  </FUFunction>
+  <FUFunction fu_name='mult3_1' datapath='func_get_chroma_0x' type_name='MUL_D4_32_64' func_name='F_MUL_DIV2_D4_32_64'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='i0' value='siw_ctrl.m0B_out3' />
+    <FunctionArg name='i1' value='siw_ctrl.out7' />
+    <FunctionArg name='lohi' value='ONE' />
+  </FUFunction>
+  <FUFunction fu_name='siw_ctrl' datapath='func_get_chroma_0x' type_name='SIW_CTRL' func_name='SIW_CTRL'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='done' value='tu_wr.done' />
+    <FunctionArg name='dly' value='2' />
+    <FunctionArg name='next' value='undefined' />
+    <FunctionArg name='is_last' value='undefined' />
+    <FunctionArg name='rd_next' value='undefined' />
+    <FunctionArg name='in_addr_a' value='undefined' />
+    <FunctionArg name='in_addr_b' value='undefined' />
+    <FunctionArg name='m0_addr_a' value='bau_k_rdA.out' />
+    <FunctionArg name='m0_addr_b' value='bau_k_rdB.out' />
+  </FUFunction>
+  <FUFunction fu_name='t0' datapath='func_get_chroma_0x' type_name='BADD3_32' func_name='F_BADD3_SR_32'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='i0' value='shift0.out' />
+    <FunctionArg name='i1' value='ONE' />
+    <FunctionArg name='i2' value='ZERO' />
+  </FUFunction>
+  <FUFunction fu_name='t1' datapath='func_get_chroma_0x' type_name='BADD3_32' func_name='F_BADD3_SR_32'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='i0' value='shift1.out' />
+    <FunctionArg name='i1' value='ONE' />
+    <FunctionArg name='i2' value='ZERO' />
+  </FUFunction>
+  <FUFunction fu_name='t2' datapath='func_get_chroma_0x' type_name='BADD3_32' func_name='F_BADD3_SR_32'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='i0' value='shift2.out' />
+    <FunctionArg name='i1' value='ONE' />
+    <FunctionArg name='i2' value='ZERO' />
+  </FUFunction>
+  <FUFunction fu_name='t3' datapath='func_get_chroma_0x' type_name='BADD3_32' func_name='F_BADD3_SR_32'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='i0' value='shift3.out' />
+    <FunctionArg name='i1' value='ONE' />
+    <FunctionArg name='i2' value='ZERO' />
+  </FUFunction>
+  <FUFunction fu_name='byte_mux' datapath='func_get_chroma_0x' type_name='BM' func_name='F_BMUX_32'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='i0' value='t0.out' />
+    <FunctionArg name='i1' value='t1.out' />
+    <FunctionArg name='i2' value='t2.out' />
+    <FunctionArg name='i3' value='t3.out' />
+  </FUFunction>
+  <FUFunction fu_name='badd0' datapath='func_get_chroma_0x' type_name='BADD_32' func_name='F_BADD_32'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='i0' value='mult0_0.out' />
+    <FunctionArg name='i1' value='mult0_1.out' />
+  </FUFunction>
+  <FUFunction fu_name='badd1' datapath='func_get_chroma_0x' type_name='BADD_32' func_name='F_BADD_32'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='i0' value='mult1_0.out' />
+    <FunctionArg name='i1' value='mult1_1.out' />
+  </FUFunction>
+  <FUFunction fu_name='badd2' datapath='func_get_chroma_0x' type_name='BADD_32' func_name='F_BADD_32'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='i0' value='mult2_0.out' />
+    <FunctionArg name='i1' value='mult2_1.out' />
+  </FUFunction>
+  <FUFunction fu_name='badd3' datapath='func_get_chroma_0x' type_name='BADD_32' func_name='F_BADD_32'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='i0' value='mult3_0.out' />
+    <FunctionArg name='i1' value='mult3_1.out' />
+  </FUFunction>
+  <FUFunction fu_name='bau_i_rdA' datapath='func_get_chroma_0x' type_name='BAU_12' func_name='F_BAU_12'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='ld_val' value='concA.out' />
+    <FunctionArg name='cmp' value='undefined' />
+    <FunctionArg name='inc' value='const_64.out' />
+    <FunctionArg name='dly' value='0' />
+    <FunctionArg name='ld' value='tu_rd.start_I_' />
+    <FunctionArg name='en' value='tu_rd.enable_I_' />
+  </FUFunction>
+  <FUFunction fu_name='bau_i_rdB' datapath='func_get_chroma_0x' type_name='BAU_12' func_name='F_BAU_12'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='ld_val' value='concB.out' />
+    <FunctionArg name='cmp' value='undefined' />
+    <FunctionArg name='inc' value='const_64.out' />
+    <FunctionArg name='dly' value='0' />
+    <FunctionArg name='ld' value='tu_rd.start_I_' />
+    <FunctionArg name='en' value='tu_rd.enable_I_' />
+  </FUFunction>
+  <FUFunction fu_name='const_64' datapath='func_get_chroma_0x' type_name='GENERIC_VALUE' func_name='F_GENERIC_VALUE'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='value' value='64' />
+    <FunctionArg name='width' value='32' />
+  </FUFunction>
+  <FUFunction fu_name='bau_j_wrA' datapath='func_get_chroma_0x' type_name='BAU_12' func_name='F_BAU_12'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='ld_val' value='bau_i_wrA.out' />
+    <FunctionArg name='cmp' value='undefined' />
+    <FunctionArg name='inc' value='siw_ctrl.out2' />
+    <FunctionArg name='dly' value='1' />
+    <FunctionArg name='ld' value='tu_wr.start_J_' />
+    <FunctionArg name='en' value='tu_wr.enable_J_' />
+  </FUFunction>
+  <FUFunction fu_name='bau_k_wrA' datapath='func_get_chroma_0x' type_name='BAU_12' func_name='F_BAU_12'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='ld_val' value='bau_j_wrA.out' />
+    <FunctionArg name='cmp' value='undefined' />
+    <FunctionArg name='inc' value='ONE' />
+    <FunctionArg name='dly' value='2' />
+    <FunctionArg name='ld' value='tu_wr.start_K_' />
+    <FunctionArg name='en' value='tu_wr.enable_K_' />
+  </FUFunction>
+  <FUFunction fu_name='bau_i_wrA' datapath='func_get_chroma_0x' type_name='BAU_12' func_name='F_BAU_12'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='ld_val' value='siw_ctrl.out3' />
+    <FunctionArg name='cmp' value='undefined' />
+    <FunctionArg name='inc' value='const_32.out' />
+    <FunctionArg name='dly' value='0' />
+    <FunctionArg name='ld' value='tu_wr.start_I_' />
+    <FunctionArg name='en' value='tu_wr.enable_I_' />
+  </FUFunction>
+  <FUFunction fu_name='const_32' datapath='func_get_chroma_0x' type_name='GENERIC_VALUE' func_name='F_GENERIC_VALUE'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='value' value='32' />
+    <FunctionArg name='width' value='32' />
+  </FUFunction>
+  <FUFunction fu_name='sepA' datapath='func_get_chroma_0x' type_name='SEP_32' func_name='F_SEP_32'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='in' value='siw_ctrl.out4' />
+  </FUFunction>
+  <FUFunction fu_name='concA' datapath='func_get_chroma_0x' type_name='CONC_32' func_name='F_CONC_32'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='b0' value='sepA.b0' />
+    <FunctionArg name='b1' value='sepA.b1' />
+    <FunctionArg name='b2' value='sepA.b2' />
+    <FunctionArg name='b3' value='sepA.b3' />
+    <FunctionArg name='b4' value='sepA.b4' />
+    <FunctionArg name='b5' value='sepA.b5' />
+    <FunctionArg name='b6' value='sepA.b6' />
+    <FunctionArg name='b7' value='sepA.b7' />
+    <FunctionArg name='b8' value='ONE' />
+    <FunctionArg name='b9' value='ONE' />
+    <FunctionArg name='b10' value='ZERO' />
+    <FunctionArg name='b11' value='ZERO' />
+    <FunctionArg name='b12' value='ZERO' />
+    <FunctionArg name='b13' value='ZERO' />
+    <FunctionArg name='b14' value='ZERO' />
+    <FunctionArg name='b15' value='ZERO' />
+  </FUFunction>
+  <FUFunction fu_name='sepB' datapath='func_get_chroma_0x' type_name='SEP_32' func_name='F_SEP_32'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='in' value='siw_ctrl.out5' />
+  </FUFunction>
+  <FUFunction fu_name='concB' datapath='func_get_chroma_0x' type_name='CONC_32' func_name='F_CONC_32'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='b0' value='sepB.b0' />
+    <FunctionArg name='b1' value='sepB.b1' />
+    <FunctionArg name='b2' value='sepB.b2' />
+    <FunctionArg name='b3' value='sepB.b3' />
+    <FunctionArg name='b4' value='sepB.b4' />
+    <FunctionArg name='b5' value='sepB.b5' />
+    <FunctionArg name='b6' value='sepB.b6' />
+    <FunctionArg name='b7' value='sepB.b7' />
+    <FunctionArg name='b8' value='ONE' />
+    <FunctionArg name='b9' value='ONE' />
+    <FunctionArg name='b10' value='ZERO' />
+    <FunctionArg name='b11' value='ZERO' />
+    <FunctionArg name='b12' value='ZERO' />
+    <FunctionArg name='b13' value='ZERO' />
+    <FunctionArg name='b14' value='ZERO' />
+    <FunctionArg name='b15' value='ZERO' />
+  </FUFunction>
+  <FUFunction fu_name='shift0' datapath='func_get_chroma_0x' type_name='SHIFT_R5_32' func_name='F_SHIFT_R5_32'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='in' value='badd0.add' />
+  </FUFunction>
+  <FUFunction fu_name='shift1' datapath='func_get_chroma_0x' type_name='SHIFT_R5_32' func_name='F_SHIFT_R5_32'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='in' value='badd1.add' />
+  </FUFunction>
+  <FUFunction fu_name='shift2' datapath='func_get_chroma_0x' type_name='SHIFT_R5_32' func_name='F_SHIFT_R5_32'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='in' value='badd2.add' />
+  </FUFunction>
+  <FUFunction fu_name='shift3' datapath='func_get_chroma_0x' type_name='SHIFT_R5_32' func_name='F_SHIFT_R5_32'>
+    <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
+    <FunctionArg name='in' value='badd3.add' />
+  </FUFunction>
+</LogicalSideWorks>

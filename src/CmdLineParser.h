@@ -36,8 +36,6 @@ class CmdLineParser {
 	/* Our argp parser. */
 	static struct argp argp;
 	static error_t parse_opt (int key, char *arg, struct argp_state *state);
-	CmdLineParser(const CmdLineParser&);
-	CmdLineParser& operator=(const CmdLineParser&);
 public:
 	static struct arguments arguments;
 	CmdLineParser();

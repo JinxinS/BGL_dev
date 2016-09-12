@@ -5,22 +5,24 @@
  *      Author: songjinxin
  */
 
-#include <SideConf.h>
+#include "SideConf.h"
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
-#include <string>
+#include "sic_types.h"
 #include "CmdLineParser.h"
 #include "SideParser.h"
 #include "LogicalSideworks.h"
-
+#include "FunctionalUnitLibrary.h"
 
 SideConf::SideConf()
-: logical_sideworks_list(){
+: fu_library(new FunctionalUnitLibrary()),
+  logical_sideworks_list(){
 
 }
 
 SideConf::~SideConf() {
+	delete fu_library;
 	for(size_t i = 0; i < logical_sideworks_list.size(); ++i){
 		delete logical_sideworks_list[i];
 	}
@@ -48,6 +50,23 @@ void SideConf::parseArgs(int argc, char** argv){
 	}
 }
 
+void SideConf::loadDataBase(){
+	path fu_folder(CmdLineParser::arguments.fufolder);
+	if(exists(fu_folder)){
+		if (is_directory(fu_folder))
+			BOOST_LOG_TRIVIAL(info)<<"Load XML Custom FU Library from \"" << fu_folder << "\" ...";
+		else
+			BOOST_LOG_TRIVIAL(error)<<fu_folder<<"is not a valid directory";
+		directory_iterator it(fu_folder), eod;
+		BOOST_FOREACH(path const &x, std::make_pair(it, eod))
+			if(x.extension() == ".xml") SideParser::parseFunctionalUnitLibrary(fu_library,x.string());
+	}else{
+		BOOST_LOG_TRIVIAL(info)<<"Load internal FU Library ...";
+		//fu_library->loadInternelFunctionalLib();
+	}
+}
+
+
 void SideConf::loadLogicalSideworks(){
 	for(size_t i = 0; i < CmdLineParser::arguments.numofinputs; ++i ){
 		logical_sideworks_list.push_back(new LogicalSideworks());
@@ -58,6 +77,7 @@ void SideConf::loadLogicalSideworks(){
 
 void SideConf::run(int argc,char** argv){
 	parseArgs(argc,argv);
+	loadDataBase();
 	loadLogicalSideworks();
 }
 
