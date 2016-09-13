@@ -1,0 +1,719 @@
+<?xml version='1.0'?>
+<!DOCTYPE LogicalSideWorks SYSTEM "http://applicationserver.coreworks.local/logical_sideworks.dtd">
+<LogicalSideWorks siw_name='cwdv264_siw' kernel_name='' name='recon8x8' simid='0' file='designs/inverse/recon8x8.dsn' line='0'>
+  <FUPlace fu_name='m6' place_label='6' file='designs/inverse/recon8x8.dsn' line='0'/>
+  <FUPlace fu_name='m7' place_label='7' file='designs/inverse/recon8x8.dsn' line='0'/>
+  <FUPlace fu_name='m9' place_label='9' file='designs/inverse/recon8x8.dsn' line='0'/>
+  <FUPlace fu_name='m8' place_label='8' file='designs/inverse/recon8x8.dsn' line='0'/>
+  <FUPlace fu_name='m1' place_label='1' file='designs/inverse/recon8x8.dsn' line='0'/>
+  <FUPlace fu_name='m0' place_label='0' file='designs/inverse/recon8x8.dsn' line='0'/>
+  <FUPlace fu_name='m5' place_label='5' file='designs/inverse/recon8x8.dsn' line='0'/>
+  <FUPlace fu_name='m3' place_label='3' file='designs/inverse/recon8x8.dsn' line='0'/>
+  <FUPlace fu_name='m4' place_label='4' file='designs/inverse/recon8x8.dsn' line='0'/>
+  <FUFunction fu_name='tu_rd' datapath='recon8x8' type_name='TU_4_4_12' func_name='F_TIME'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='limit_k' value='const_4.out' />
+    <FunctionArg name='limit_j' value='ONE' />
+    <FunctionArg name='limit_i' value='ZERO' />
+    <FunctionArg name='limit_h' value='ZERO' />
+    <FunctionArg name='dly' value='0' />
+    <FunctionArg name='en' value='siw_ctrl.en' />
+  </FUFunction>
+  <FUFunction fu_name='tu_wr' datapath='recon8x8' type_name='TU_4_4_12' func_name='F_TIME'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='limit_k' value='const_4.out' />
+    <FunctionArg name='limit_j' value='ONE' />
+    <FunctionArg name='limit_i' value='ZERO' />
+    <FunctionArg name='limit_h' value='ZERO' />
+    <FunctionArg name='dly' value='5' />
+    <FunctionArg name='en' value='siw_ctrl.en' />
+  </FUFunction>
+  <FUFunction fu_name='bau_j_rd_A' datapath='recon8x8' type_name='BAU_12' func_name='F_BAU_12'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='ld_val' value='siw_ctrl.out2' />
+    <FunctionArg name='cmp' value='undefined' />
+    <FunctionArg name='inc' value='const_16.out' />
+    <FunctionArg name='dly' value='2' />
+    <FunctionArg name='ld' value='tu_rd.start_J_' />
+    <FunctionArg name='en' value='tu_rd.enable_J_' />
+  </FUFunction>
+  <FUFunction fu_name='bau_j_rd_B' datapath='recon8x8' type_name='BAU_12' func_name='F_BAU_12'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='ld_val' value='siw_ctrl.out3' />
+    <FunctionArg name='cmp' value='undefined' />
+    <FunctionArg name='inc' value='const_16.out' />
+    <FunctionArg name='dly' value='2' />
+    <FunctionArg name='ld' value='tu_rd.start_J_' />
+    <FunctionArg name='en' value='tu_rd.enable_J_' />
+  </FUFunction>
+  <FUFunction fu_name='bau_j_rd_0A' datapath='recon8x8' type_name='BAU_12' func_name='F_BAU_12'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='ld_val' value='siw_ctrl.out4' />
+    <FunctionArg name='cmp' value='undefined' />
+    <FunctionArg name='inc' value='const_16.out' />
+    <FunctionArg name='dly' value='0' />
+    <FunctionArg name='ld' value='tu_rd.start_J_' />
+    <FunctionArg name='en' value='tu_rd.enable_J_' />
+  </FUFunction>
+  <FUFunction fu_name='bau_j_rd_0B' datapath='recon8x8' type_name='BAU_12' func_name='F_BAU_12'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='ld_val' value='siw_ctrl.out5' />
+    <FunctionArg name='cmp' value='undefined' />
+    <FunctionArg name='inc' value='const_16.out' />
+    <FunctionArg name='dly' value='0' />
+    <FunctionArg name='ld' value='tu_rd.start_J_' />
+    <FunctionArg name='en' value='tu_rd.enable_J_' />
+  </FUFunction>
+  <FUFunction fu_name='res0' datapath='recon8x8' type_name='MUX4TO1_32' func_name='F_MUX4TO1_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i2' value='reg_res1A.out' />
+    <FunctionArg name='i1' value='reg_res0A.out' />
+    <FunctionArg name='s0' value='sel.out' />
+    <FunctionArg name='i3' value='reg_res0A.out' />
+    <FunctionArg name='i0' value='reg_res1A.out' />
+  </FUFunction>
+  <FUFunction fu_name='reg_k_rd_1A' datapath='recon8x8' type_name='SREG_12' func_name='F_SREG_12'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='in' value='bau_k_rd_0A.out' />
+    <FunctionArg name='en' value='ONE' />
+  </FUFunction>
+  <FUFunction fu_name='reg_k_rd_1B' datapath='recon8x8' type_name='SREG_12' func_name='F_SREG_12'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='in' value='bau_k_rd_0B.out' />
+    <FunctionArg name='en' value='ONE' />
+  </FUFunction>
+  <FUFunction fu_name='reg_res3A' datapath='recon8x8' type_name='SREG_32' func_name='F_SREG_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='in' value='m9.data_a' />
+    <FunctionArg name='en' value='ONE' />
+  </FUFunction>
+  <FUFunction fu_name='reg_res3B' datapath='recon8x8' type_name='SREG_32' func_name='F_SREG_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='in' value='m9.data_b' />
+    <FunctionArg name='en' value='ONE' />
+  </FUFunction>
+  <FUFunction fu_name='reg_res0A' datapath='recon8x8' type_name='SREG_32' func_name='F_SREG_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='in' value='m0.data_a' />
+    <FunctionArg name='en' value='ONE' />
+  </FUFunction>
+  <FUFunction fu_name='reg_res0B' datapath='recon8x8' type_name='SREG_32' func_name='F_SREG_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='in' value='m0.data_b' />
+    <FunctionArg name='en' value='ONE' />
+  </FUFunction>
+  <FUFunction fu_name='reg_res1A' datapath='recon8x8' type_name='SREG_32' func_name='F_SREG_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='in' value='m1.data_a' />
+    <FunctionArg name='en' value='ONE' />
+  </FUFunction>
+  <FUFunction fu_name='reg_res1B' datapath='recon8x8' type_name='SREG_32' func_name='F_SREG_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='in' value='m1.data_b' />
+    <FunctionArg name='en' value='ONE' />
+  </FUFunction>
+  <FUFunction fu_name='reg_res2A' datapath='recon8x8' type_name='SREG_32' func_name='F_SREG_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='in' value='m8.data_a' />
+    <FunctionArg name='en' value='ONE' />
+  </FUFunction>
+  <FUFunction fu_name='reg_res2B' datapath='recon8x8' type_name='SREG_32' func_name='F_SREG_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='in' value='m8.data_b' />
+    <FunctionArg name='en' value='ONE' />
+  </FUFunction>
+  <FUFunction fu_name='res1' datapath='recon8x8' type_name='MUX4TO1_32' func_name='F_MUX4TO1_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i2' value='reg_res1B.out' />
+    <FunctionArg name='i1' value='reg_res0B.out' />
+    <FunctionArg name='s0' value='sel.out' />
+    <FunctionArg name='i3' value='reg_res0B.out' />
+    <FunctionArg name='i0' value='reg_res1B.out' />
+  </FUFunction>
+  <FUFunction fu_name='res2' datapath='recon8x8' type_name='MUX4TO1_32' func_name='F_MUX4TO1_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i2' value='m1.data_a' />
+    <FunctionArg name='i1' value='m0.data_a' />
+    <FunctionArg name='s0' value='sel.out' />
+    <FunctionArg name='i3' value='m0.data_a' />
+    <FunctionArg name='i0' value='m1.data_a' />
+  </FUFunction>
+  <FUFunction fu_name='res3' datapath='recon8x8' type_name='MUX4TO1_32' func_name='F_MUX4TO1_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i2' value='m1.data_b' />
+    <FunctionArg name='i1' value='m0.data_b' />
+    <FunctionArg name='s0' value='sel.out' />
+    <FunctionArg name='i3' value='m0.data_b' />
+    <FunctionArg name='i0' value='m1.data_b' />
+  </FUFunction>
+  <FUFunction fu_name='res4' datapath='recon8x8' type_name='MUX4TO1_32' func_name='F_MUX4TO1_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i2' value='reg_res3A.out' />
+    <FunctionArg name='i1' value='reg_res2A.out' />
+    <FunctionArg name='s0' value='sel.out' />
+    <FunctionArg name='i3' value='reg_res2A.out' />
+    <FunctionArg name='i0' value='reg_res3A.out' />
+  </FUFunction>
+  <FUFunction fu_name='res5' datapath='recon8x8' type_name='MUX4TO1_32' func_name='F_MUX4TO1_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i2' value='reg_res3B.out' />
+    <FunctionArg name='i1' value='reg_res2B.out' />
+    <FunctionArg name='s0' value='sel.out' />
+    <FunctionArg name='i3' value='reg_res2B.out' />
+    <FunctionArg name='i0' value='reg_res3B.out' />
+  </FUFunction>
+  <FUFunction fu_name='res6' datapath='recon8x8' type_name='MUX4TO1_32' func_name='F_MUX4TO1_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i2' value='m9.data_a' />
+    <FunctionArg name='i1' value='m8.data_a' />
+    <FunctionArg name='s0' value='sel.out' />
+    <FunctionArg name='i3' value='m8.data_a' />
+    <FunctionArg name='i0' value='m9.data_a' />
+  </FUFunction>
+  <FUMem fu_name='m6' datapath='recon8x8' a_width='12' d_width='32' nwords='4096'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='address_a' value='bau_k_rd_A.out' />
+    <FunctionArg name='address_b' value='bau_k_rd_B.out' />
+    <FunctionArg name='write_a' value='undefined' />
+    <FunctionArg name='write_b' value='undefined' />
+    <FunctionArg name='data_in_a' value='undefined' />
+    <FunctionArg name='data_in_b' value='undefined' />
+    <FunctionArg name='dly_b' value='0' />
+    <FunctionArg name='dly_a' value='0' />
+  </FUMem>
+  <FUMem fu_name='m7' datapath='recon8x8' a_width='13' d_width='32' nwords='5248'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='address_a' value='bau_k_wr_A.out' />
+    <FunctionArg name='address_b' value='bau_k_wr_B.out' />
+    <FunctionArg name='write_a' value='wr_en.out' />
+    <FunctionArg name='write_b' value='wr_en.out' />
+    <FunctionArg name='data_in_a' value='byte_mux_A.out' />
+    <FunctionArg name='data_in_b' value='byte_mux_B.out' />
+    <FunctionArg name='dly_b' value='2' />
+    <FunctionArg name='dly_a' value='2' />
+  </FUMem>
+  <FUFunction fu_name='bau_k_rd_0A' datapath='recon8x8' type_name='BAU_12' func_name='F_BAU_12'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='ld_val' value='bau_j_rd_0A.out' />
+    <FunctionArg name='cmp' value='undefined' />
+    <FunctionArg name='inc' value='TWO' />
+    <FunctionArg name='dly' value='1' />
+    <FunctionArg name='ld' value='tu_rd.start_K_' />
+    <FunctionArg name='en' value='tu_rd.enable_K_' />
+  </FUFunction>
+  <FUFunction fu_name='bau_k_rd_0B' datapath='recon8x8' type_name='BAU_12' func_name='F_BAU_12'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='ld_val' value='bau_j_rd_0B.out' />
+    <FunctionArg name='cmp' value='undefined' />
+    <FunctionArg name='inc' value='TWO' />
+    <FunctionArg name='dly' value='1' />
+    <FunctionArg name='ld' value='tu_rd.start_K_' />
+    <FunctionArg name='en' value='tu_rd.enable_K_' />
+  </FUFunction>
+  <FUFunction fu_name='bau_k_rd_A' datapath='recon8x8' type_name='BAU_12' func_name='F_BAU_12'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='ld_val' value='bau_j_rd_A.out' />
+    <FunctionArg name='cmp' value='undefined' />
+    <FunctionArg name='inc' value='bau_rd_inc_dly.out' />
+    <FunctionArg name='dly' value='3' />
+    <FunctionArg name='ld' value='tu_rd.start_K_' />
+    <FunctionArg name='en' value='tu_rd.enable_K_' />
+  </FUFunction>
+  <FUFunction fu_name='bau_k_rd_B' datapath='recon8x8' type_name='BAU_12' func_name='F_BAU_12'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='ld_val' value='bau_j_rd_B.out' />
+    <FunctionArg name='cmp' value='undefined' />
+    <FunctionArg name='inc' value='bau_rd_inc_dly.out' />
+    <FunctionArg name='dly' value='3' />
+    <FunctionArg name='ld' value='tu_rd.start_K_' />
+    <FunctionArg name='en' value='tu_rd.enable_K_' />
+  </FUFunction>
+  <FUFunction fu_name='bau_k_wr_up_A' datapath='recon8x8' type_name='BAU_12' func_name='F_BAU_12'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='ld_val' value='nd.upMO_' />
+    <FunctionArg name='cmp' value='undefined' />
+    <FunctionArg name='inc' value='ONE' />
+    <FunctionArg name='dly' value='0' />
+    <FunctionArg name='ld' value='bau_k_wr_up_inc.lt' />
+    <FunctionArg name='en' value='bau_k_wr_up_inc.eq' />
+  </FUFunction>
+  <FUFunction fu_name='bau_k_wr_left_A' datapath='recon8x8' type_name='BAU_12' func_name='F_BAU_12'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='ld_val' value='aau_wr_le.add' />
+    <FunctionArg name='cmp' value='undefined' />
+    <FunctionArg name='inc' value='const_16.out' />
+    <FunctionArg name='dly' value='3' />
+    <FunctionArg name='ld' value='tu_wr.start_J_' />
+    <FunctionArg name='en' value='tu_wr.enable_J_' />
+  </FUFunction>
+  <FUFunction fu_name='t6' datapath='recon8x8' type_name='BADD3_32' func_name='F_BADD3_SR_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i0' value='shift6.out' />
+    <FunctionArg name='i1' value='ONE' />
+    <FunctionArg name='i2' value='ZERO' />
+  </FUFunction>
+  <FUFunction fu_name='t5' datapath='recon8x8' type_name='BADD3_32' func_name='F_BADD3_SR_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i0' value='shift5.out' />
+    <FunctionArg name='i1' value='ONE' />
+    <FunctionArg name='i2' value='ZERO' />
+  </FUFunction>
+  <FUFunction fu_name='t4' datapath='recon8x8' type_name='BADD3_32' func_name='F_BADD3_SR_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i0' value='shift4.out' />
+    <FunctionArg name='i1' value='ONE' />
+    <FunctionArg name='i2' value='ZERO' />
+  </FUFunction>
+  <FUFunction fu_name='t3' datapath='recon8x8' type_name='BADD3_32' func_name='F_BADD3_SR_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i0' value='shift3.out' />
+    <FunctionArg name='i1' value='ONE' />
+    <FunctionArg name='i2' value='ZERO' />
+  </FUFunction>
+  <FUFunction fu_name='t2' datapath='recon8x8' type_name='BADD3_32' func_name='F_BADD3_SR_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i0' value='shift2.out' />
+    <FunctionArg name='i1' value='ONE' />
+    <FunctionArg name='i2' value='ZERO' />
+  </FUFunction>
+  <FUFunction fu_name='t1' datapath='recon8x8' type_name='BADD3_32' func_name='F_BADD3_SR_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i0' value='shift1.out' />
+    <FunctionArg name='i1' value='ONE' />
+    <FunctionArg name='i2' value='ZERO' />
+  </FUFunction>
+  <FUFunction fu_name='t0' datapath='recon8x8' type_name='BADD3_32' func_name='F_BADD3_SR_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i0' value='shift0.out' />
+    <FunctionArg name='i1' value='ONE' />
+    <FunctionArg name='i2' value='ZERO' />
+  </FUFunction>
+  <FUFunction fu_name='reg_v0' datapath='recon8x8' type_name='SREG_32' func_name='F_SREG_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='in' value='clip3.out' />
+    <FunctionArg name='en' value='ONE' />
+  </FUFunction>
+  <FUFunction fu_name='byte_mux_A' datapath='recon8x8' type_name='BM' func_name='F_BMUX_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i0' value='clip0.out' />
+    <FunctionArg name='i1' value='clip1.out' />
+    <FunctionArg name='i2' value='clip2.out' />
+    <FunctionArg name='i3' value='clip3.out' />
+  </FUFunction>
+  <FUFunction fu_name='byte_mux_B' datapath='recon8x8' type_name='BM' func_name='F_BMUX_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i0' value='clip4.out' />
+    <FunctionArg name='i1' value='clip5.out' />
+    <FunctionArg name='i2' value='clip6.out' />
+    <FunctionArg name='i3' value='clip7.out' />
+  </FUFunction>
+  <FUFunction fu_name='byte_mux_left' datapath='recon8x8' type_name='BM' func_name='F_BMUX_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i0' value='reg_v0.out' />
+    <FunctionArg name='i1' value='clip3.out' />
+    <FunctionArg name='i2' value='reg_v2.out' />
+    <FunctionArg name='i3' value='clip7.out' />
+  </FUFunction>
+  <FUFunction fu_name='badd3' datapath='recon8x8' type_name='BADD_32' func_name='F_BADD_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i0' value='t3.out' />
+    <FunctionArg name='i1' value='byte_demux_A.out3' />
+  </FUFunction>
+  <FUFunction fu_name='badd2' datapath='recon8x8' type_name='BADD_32' func_name='F_BADD_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i0' value='t2.out' />
+    <FunctionArg name='i1' value='byte_demux_A.out2' />
+  </FUFunction>
+  <FUFunction fu_name='badd1' datapath='recon8x8' type_name='BADD_32' func_name='F_BADD_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i0' value='t1.out' />
+    <FunctionArg name='i1' value='byte_demux_A.out1' />
+  </FUFunction>
+  <FUFunction fu_name='badd0' datapath='recon8x8' type_name='BADD_32' func_name='F_BADD_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i0' value='t0.out' />
+    <FunctionArg name='i1' value='byte_demux_A.out0' />
+  </FUFunction>
+  <FUFunction fu_name='badd6' datapath='recon8x8' type_name='BADD_32' func_name='F_BADD_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i0' value='t6.out' />
+    <FunctionArg name='i1' value='byte_demux_B.out2' />
+  </FUFunction>
+  <FUFunction fu_name='badd5' datapath='recon8x8' type_name='BADD_32' func_name='F_BADD_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i0' value='t5.out' />
+    <FunctionArg name='i1' value='byte_demux_B.out1' />
+  </FUFunction>
+  <FUFunction fu_name='badd4' datapath='recon8x8' type_name='BADD_32' func_name='F_BADD_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i0' value='t4.out' />
+    <FunctionArg name='i1' value='byte_demux_B.out0' />
+  </FUFunction>
+  <FUFunction fu_name='reg_v2' datapath='recon8x8' type_name='SREG_32' func_name='F_SREG_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='in' value='clip7.out' />
+    <FunctionArg name='en' value='ONE' />
+  </FUFunction>
+  <FUFunction fu_name='badd7' datapath='recon8x8' type_name='BADD_32' func_name='F_BADD_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i0' value='t7.out' />
+    <FunctionArg name='i1' value='byte_demux_B.out3' />
+  </FUFunction>
+  <FUFunction fu_name='res7' datapath='recon8x8' type_name='MUX4TO1_32' func_name='F_MUX4TO1_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i2' value='m9.data_b' />
+    <FunctionArg name='i1' value='m8.data_b' />
+    <FunctionArg name='s0' value='sel.out' />
+    <FunctionArg name='i3' value='m8.data_b' />
+    <FunctionArg name='i0' value='m9.data_b' />
+  </FUFunction>
+  <FUFunction fu_name='t7' datapath='recon8x8' type_name='BADD3_32' func_name='F_BADD3_SR_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i0' value='shift7.out' />
+    <FunctionArg name='i1' value='ONE' />
+    <FunctionArg name='i2' value='ZERO' />
+  </FUFunction>
+  <FUFunction fu_name='byte_demux_A' datapath='recon8x8' type_name='BD' func_name='F_BDEMUX_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='in' value='m6.data_a' />
+  </FUFunction>
+  <FUFunction fu_name='byte_demux_B' datapath='recon8x8' type_name='BD' func_name='F_BDEMUX_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='in' value='m6.data_b' />
+  </FUFunction>
+  <FUFunction fu_name='bau_j_wr_uplr_B' datapath='recon8x8' type_name='BAU_12' func_name='F_BAU_12'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='ld_val' value='aau_uprl_ld.add' />
+    <FunctionArg name='cmp' value='undefined' />
+    <FunctionArg name='inc' value='const_16.out' />
+    <FunctionArg name='dly' value='0' />
+    <FunctionArg name='ld' value='tu_wr.start_J_' />
+    <FunctionArg name='en' value='tu_wr.enable_J_' />
+  </FUFunction>
+  <FUFunction fu_name='bau_k_wr_uplr_B' datapath='recon8x8' type_name='BAU_12' func_name='F_BAU_12'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='ld_val' value='bau_j_wr_uplr_B.out' />
+    <FunctionArg name='cmp' value='undefined' />
+    <FunctionArg name='inc' value='bau_wr_inc_dly.out' />
+    <FunctionArg name='dly' value='2' />
+    <FunctionArg name='ld' value='tu_wr.start_K_' />
+    <FunctionArg name='en' value='tu_wr.enable_K_' />
+  </FUFunction>
+  <FUMem fu_name='m9' datapath='recon8x8' a_width='12' d_width='32' nwords='4096'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='address_a' value='reg_k_rd_1A.out' />
+    <FunctionArg name='address_b' value='reg_k_rd_1B.out' />
+    <FunctionArg name='write_a' value='undefined' />
+    <FunctionArg name='write_b' value='undefined' />
+    <FunctionArg name='data_in_a' value='undefined' />
+    <FunctionArg name='data_in_b' value='undefined' />
+    <FunctionArg name='dly_b' value='0' />
+    <FunctionArg name='dly_a' value='0' />
+  </FUMem>
+  <FUMem fu_name='m8' datapath='recon8x8' a_width='12' d_width='32' nwords='4096'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='address_a' value='bau_k_rd_0A.out' />
+    <FunctionArg name='address_b' value='bau_k_rd_0B.out' />
+    <FunctionArg name='write_a' value='undefined' />
+    <FunctionArg name='write_b' value='undefined' />
+    <FunctionArg name='data_in_a' value='undefined' />
+    <FunctionArg name='data_in_b' value='undefined' />
+    <FunctionArg name='dly_b' value='0' />
+    <FunctionArg name='dly_a' value='0' />
+  </FUMem>
+  <FUMem fu_name='m1' datapath='recon8x8' a_width='12' d_width='32' nwords='4096'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='address_a' value='reg_k_rd_1A.out' />
+    <FunctionArg name='address_b' value='reg_k_rd_1B.out' />
+    <FunctionArg name='write_a' value='undefined' />
+    <FunctionArg name='write_b' value='undefined' />
+    <FunctionArg name='data_in_a' value='undefined' />
+    <FunctionArg name='data_in_b' value='undefined' />
+    <FunctionArg name='dly_b' value='0' />
+    <FunctionArg name='dly_a' value='0' />
+  </FUMem>
+  <FUMem fu_name='m0' datapath='recon8x8' a_width='12' d_width='32' nwords='4096'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='address_a' value='bau_k_rd_0A.out' />
+    <FunctionArg name='address_b' value='bau_k_rd_0B.out' />
+    <FunctionArg name='write_a' value='undefined' />
+    <FunctionArg name='write_b' value='undefined' />
+    <FunctionArg name='data_in_a' value='undefined' />
+    <FunctionArg name='data_in_b' value='undefined' />
+    <FunctionArg name='dly_b' value='0' />
+    <FunctionArg name='dly_a' value='0' />
+  </FUMem>
+  <FUMem fu_name='m5' datapath='recon8x8' a_width='12' d_width='32' nwords='4096'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='address_a' value='bau_k_wr_left_A.out' />
+    <FunctionArg name='address_b' value='bau_k_wr_uplr_B.out' />
+    <FunctionArg name='write_a' value='wr_en_le.out' />
+    <FunctionArg name='write_b' value='wr_en.out' />
+    <FunctionArg name='data_in_a' value='byte_mux_left.out' />
+    <FunctionArg name='data_in_b' value='byte_mux_left.out' />
+    <FunctionArg name='dly_b' value='2' />
+    <FunctionArg name='dly_a' value='1' />
+  </FUMem>
+  <FUMem fu_name='m3' datapath='recon8x8' a_width='12' d_width='32' nwords='4096'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='address_a' value='bau_k_wr_up_A.out' />
+    <FunctionArg name='address_b' value='bau_k_wr_uplr_B.out' />
+    <FunctionArg name='write_a' value='wr_en_up.out' />
+    <FunctionArg name='write_b' value='wr_en.out' />
+    <FunctionArg name='data_in_a' value='byte_mux_B.out' />
+    <FunctionArg name='data_in_b' value='byte_mux_B.out' />
+    <FunctionArg name='dly_b' value='2' />
+    <FunctionArg name='dly_a' value='1' />
+  </FUMem>
+  <FUMem fu_name='m4' datapath='recon8x8' a_width='12' d_width='32' nwords='4096'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='address_a' value='bau_k_wr_up_A.out' />
+    <FunctionArg name='address_b' value='bau_k_wr_uplr_B.out' />
+    <FunctionArg name='write_a' value='wr_en_up.out' />
+    <FunctionArg name='write_b' value='wr_en.out' />
+    <FunctionArg name='data_in_a' value='byte_mux_B.out' />
+    <FunctionArg name='data_in_b' value='byte_mux_B.out' />
+    <FunctionArg name='dly_b' value='2' />
+    <FunctionArg name='dly_a' value='1' />
+  </FUMem>
+  <FUFunction fu_name='const_4' datapath='recon8x8' type_name='GENERIC_VALUE' func_name='F_GENERIC_VALUE'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='value' value='4' />
+    <FunctionArg name='width' value='32' />
+  </FUFunction>
+  <FUFunction fu_name='const_8' datapath='recon8x8' type_name='GENERIC_VALUE' func_name='F_GENERIC_VALUE'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='value' value='8' />
+    <FunctionArg name='width' value='32' />
+  </FUFunction>
+  <FUFunction fu_name='const_11' datapath='recon8x8' type_name='GENERIC_VALUE' func_name='F_GENERIC_VALUE'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='value' value='11' />
+    <FunctionArg name='width' value='32' />
+  </FUFunction>
+  <FUFunction fu_name='const_16' datapath='recon8x8' type_name='GENERIC_VALUE' func_name='F_GENERIC_VALUE'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='value' value='16' />
+    <FunctionArg name='width' value='32' />
+  </FUFunction>
+  <FUFunction fu_name='const_m3' datapath='recon8x8' type_name='GENERIC_VALUE' func_name='F_GENERIC_VALUE'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='value' value='-3' />
+    <FunctionArg name='width' value='32' />
+  </FUFunction>
+  <FUFunction fu_name='const_255' datapath='recon8x8' type_name='GENERIC_VALUE' func_name='F_GENERIC_VALUE'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='value' value='255' />
+    <FunctionArg name='width' value='32' />
+  </FUFunction>
+  <FUFunction fu_name='bau_j_wr_A' datapath='recon8x8' type_name='BAU_13' func_name='F_BAU_13'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='ld_val' value='nd.ulMO_' />
+    <FunctionArg name='cmp' value='undefined' />
+    <FunctionArg name='inc' value='const_16.out' />
+    <FunctionArg name='dly' value='0' />
+    <FunctionArg name='ld' value='tu_wr.start_J_' />
+    <FunctionArg name='en' value='tu_wr.enable_J_' />
+  </FUFunction>
+  <FUFunction fu_name='bau_k_wr_A' datapath='recon8x8' type_name='BAU_13' func_name='F_BAU_13'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='ld_val' value='bau_j_wr_A.out' />
+    <FunctionArg name='cmp' value='undefined' />
+    <FunctionArg name='inc' value='bau_wr_inc_dly.out' />
+    <FunctionArg name='dly' value='2' />
+    <FunctionArg name='ld' value='tu_wr.start_K_' />
+    <FunctionArg name='en' value='wr_en.out' />
+  </FUFunction>
+  <FUFunction fu_name='bau_j_wr_B' datapath='recon8x8' type_name='BAU_13' func_name='F_BAU_13'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='ld_val' value='bau_wr_ldB.add' />
+    <FunctionArg name='cmp' value='undefined' />
+    <FunctionArg name='inc' value='const_16.out' />
+    <FunctionArg name='dly' value='0' />
+    <FunctionArg name='ld' value='tu_wr.start_J_' />
+    <FunctionArg name='en' value='tu_wr.enable_J_' />
+  </FUFunction>
+  <FUFunction fu_name='bau_k_wr_B' datapath='recon8x8' type_name='BAU_13' func_name='F_BAU_13'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='ld_val' value='bau_j_wr_B.out' />
+    <FunctionArg name='cmp' value='undefined' />
+    <FunctionArg name='inc' value='bau_wr_inc_dly.out' />
+    <FunctionArg name='dly' value='2' />
+    <FunctionArg name='ld' value='tu_wr.start_K_' />
+    <FunctionArg name='en' value='wr_en.out' />
+  </FUFunction>
+  <FUFunction fu_name='siw_ctrl' datapath='recon8x8' type_name='SIW_CTRL' func_name='SIW_CTRL'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='done' value='tu_wr.done' />
+    <FunctionArg name='dly' value='2' />
+    <FunctionArg name='next' value='undefined' />
+    <FunctionArg name='is_last' value='undefined' />
+    <FunctionArg name='rd_next' value='undefined' />
+  </FUFunction>
+  <FUFunction fu_name='const_12' datapath='recon8x8' type_name='GENERIC_VALUE' func_name='F_GENERIC_VALUE'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='value' value='12' />
+    <FunctionArg name='width' value='32' />
+  </FUFunction>
+  <FUFunction fu_name='sel_rd_aux' datapath='recon8x8' type_name='BAU_12' func_name='F_BAU_12'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='ld_val' value='ZERO' />
+    <FunctionArg name='cmp' value='ZERO' />
+    <FunctionArg name='inc' value='ONE' />
+    <FunctionArg name='dly' value='2' />
+    <FunctionArg name='ld' value='tu_rd.start_K_' />
+    <FunctionArg name='en' value='tu_rd.enable_K_' />
+  </FUFunction>
+  <FUFunction fu_name='wr_en' datapath='recon8x8' type_name='DLINE_1_16' func_name='F_DLINE_1_16'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='in' value='sel_rd_aux.gt' />
+    <FunctionArg name='dly' value='2' />
+  </FUFunction>
+  <FUFunction fu_name='sel' datapath='recon8x8' type_name='DLINE_32_16' func_name='F_DLINE_32_16'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='in' value='sel_rd_aux.out' />
+    <FunctionArg name='dly' value='0' />
+  </FUFunction>
+  <FUFunction fu_name='bau_rd_inc_dly' datapath='recon8x8' type_name='MUX2TO1_32' func_name='F_MUX2TO1_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i1' value='const_4.out' />
+    <FunctionArg name='i0' value='const_m3.out' />
+    <FunctionArg name='s0' value='sel_rd_aux.out' />
+  </FUFunction>
+  <FUFunction fu_name='bau_wr_inc_dly' datapath='recon8x8' type_name='DLINE_32_16' func_name='F_DLINE_32_16'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='in' value='bau_rd_inc_dly.out' />
+    <FunctionArg name='dly' value='3' />
+  </FUFunction>
+  <FUFunction fu_name='bau_wr_ldB' datapath='recon8x8' type_name='BADD_32' func_name='F_BADD_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i0' value='nd.ulMO_' />
+    <FunctionArg name='i1' value='const_8.out' />
+  </FUFunction>
+  <FUFunction fu_name='bau_k_wr_up_inc' datapath='recon8x8' type_name='BAU_12' func_name='F_BAU_12'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='ld_val' value='ZERO' />
+    <FunctionArg name='cmp' value='THREE' />
+    <FunctionArg name='inc' value='ONE' />
+    <FunctionArg name='dly' value='1' />
+    <FunctionArg name='ld' value='tu_wr.start_K_' />
+    <FunctionArg name='en' value='tu_wr.enable_K_' />
+  </FUFunction>
+  <FUFunction fu_name='nd' datapath='recon8x8' type_name='ND' func_name='F_ND'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='posX' value='siw_ctrl.out0' />
+    <FunctionArg name='posY' value='siw_ctrl.out1' />
+    <FunctionArg name='bSize' value='undefined' />
+    <FunctionArg name='en' value='ONE' />
+    <FunctionArg name='mode' value='ONE' />
+    <FunctionArg name='chroma' value='ZERO' />
+  </FUFunction>
+  <FUFunction fu_name='aau_uprl_ld' datapath='recon8x8' type_name='BADD_32' func_name='F_BADD_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i0' value='nd.urMO_' />
+    <FunctionArg name='i1' value='mONE' />
+  </FUFunction>
+  <FUFunction fu_name='aau_wr_le' datapath='recon8x8' type_name='BADD_32' func_name='F_BADD_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i0' value='nd.leMO_' />
+    <FunctionArg name='i1' value='const_12.out' />
+  </FUFunction>
+  <FUFunction fu_name='shift7' datapath='recon8x8' type_name='SHIFT_R5_32' func_name='F_SHIFT_R5_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='in' value='res7.out' />
+  </FUFunction>
+  <FUFunction fu_name='shift6' datapath='recon8x8' type_name='SHIFT_R5_32' func_name='F_SHIFT_R5_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='in' value='res6.out' />
+  </FUFunction>
+  <FUFunction fu_name='shift5' datapath='recon8x8' type_name='SHIFT_R5_32' func_name='F_SHIFT_R5_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='in' value='res5.out' />
+  </FUFunction>
+  <FUFunction fu_name='shift4' datapath='recon8x8' type_name='SHIFT_R5_32' func_name='F_SHIFT_R5_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='in' value='res4.out' />
+  </FUFunction>
+  <FUFunction fu_name='shift3' datapath='recon8x8' type_name='SHIFT_R5_32' func_name='F_SHIFT_R5_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='in' value='res3.out' />
+  </FUFunction>
+  <FUFunction fu_name='shift2' datapath='recon8x8' type_name='SHIFT_R5_32' func_name='F_SHIFT_R5_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='in' value='res2.out' />
+  </FUFunction>
+  <FUFunction fu_name='shift1' datapath='recon8x8' type_name='SHIFT_R5_32' func_name='F_SHIFT_R5_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='in' value='res1.out' />
+  </FUFunction>
+  <FUFunction fu_name='shift0' datapath='recon8x8' type_name='SHIFT_R5_32' func_name='F_SHIFT_R5_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='in' value='res0.out' />
+  </FUFunction>
+  <FUFunction fu_name='clip7' datapath='recon8x8' type_name='CLIP_32' func_name='F_CLIP_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='down' value='ZERO' />
+    <FunctionArg name='up' value='const_255.out' />
+    <FunctionArg name='in' value='badd7.add' />
+  </FUFunction>
+  <FUFunction fu_name='clip6' datapath='recon8x8' type_name='CLIP_32' func_name='F_CLIP_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='down' value='ZERO' />
+    <FunctionArg name='up' value='const_255.out' />
+    <FunctionArg name='in' value='badd6.add' />
+  </FUFunction>
+  <FUFunction fu_name='clip5' datapath='recon8x8' type_name='CLIP_32' func_name='F_CLIP_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='down' value='ZERO' />
+    <FunctionArg name='up' value='const_255.out' />
+    <FunctionArg name='in' value='badd5.add' />
+  </FUFunction>
+  <FUFunction fu_name='clip4' datapath='recon8x8' type_name='CLIP_32' func_name='F_CLIP_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='down' value='ZERO' />
+    <FunctionArg name='up' value='const_255.out' />
+    <FunctionArg name='in' value='badd4.add' />
+  </FUFunction>
+  <FUFunction fu_name='clip3' datapath='recon8x8' type_name='CLIP_32' func_name='F_CLIP_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='down' value='ZERO' />
+    <FunctionArg name='up' value='const_255.out' />
+    <FunctionArg name='in' value='badd3.add' />
+  </FUFunction>
+  <FUFunction fu_name='clip2' datapath='recon8x8' type_name='CLIP_32' func_name='F_CLIP_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='down' value='ZERO' />
+    <FunctionArg name='up' value='const_255.out' />
+    <FunctionArg name='in' value='badd2.add' />
+  </FUFunction>
+  <FUFunction fu_name='clip1' datapath='recon8x8' type_name='CLIP_32' func_name='F_CLIP_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='down' value='ZERO' />
+    <FunctionArg name='up' value='const_255.out' />
+    <FunctionArg name='in' value='badd1.add' />
+  </FUFunction>
+  <FUFunction fu_name='clip0' datapath='recon8x8' type_name='CLIP_32' func_name='F_CLIP_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='down' value='ZERO' />
+    <FunctionArg name='up' value='const_255.out' />
+    <FunctionArg name='in' value='badd0.add' />
+  </FUFunction>
+  <FUFunction fu_name='wr_en_up' datapath='recon8x8' type_name='BLU_1' func_name='F_AND_1'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i0' value='wr_en.out' />
+    <FunctionArg name='i1' value='joff_en.b1' />
+  </FUFunction>
+  <FUFunction fu_name='wr_en_le' datapath='recon8x8' type_name='BLU_1' func_name='F_AND_1'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='i0' value='wr_en.out' />
+    <FunctionArg name='i1' value='ioff_en.b1' />
+  </FUFunction>
+  <FUFunction fu_name='joff_en' datapath='recon8x8' type_name='SEP_32' func_name='F_SEP_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='in' value='siw_ctrl.out1' />
+  </FUFunction>
+  <FUFunction fu_name='ioff_en' datapath='recon8x8' type_name='SEP_32' func_name='F_SEP_32'>
+    <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
+    <FunctionArg name='in' value='siw_ctrl.out0' />
+  </FUFunction>
+</LogicalSideWorks>
