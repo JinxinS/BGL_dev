@@ -15,6 +15,10 @@ class Function {
 public:
 	Function(const std::string& name,uint sel);
 	virtual ~Function();
+    inline void addFunctionArg(std::string name) { args.push_back(name); }
+    inline const std::string& getFunctionName(){return function_name;}
+    inline const std::list<std::string>& getArgs(){return args;}
+
 };
 
 #endif /* FUNCTION_H_ */

@@ -39,10 +39,13 @@ private:
 			got_hit = true;
 
 			std::cout<<"find mapping:"<<std::endl;
-			BGL_FORALL_VERTICES_T(v, m_graph1, Graph)
-			std::cout << '(' << get(vertex_funame_t(), m_graph1, v) << ", "
-			<< get(vertex_funame_t(), m_graph2, get(map1to2, v)) << ") ";
-			std::cout<<std::endl;
+			BGL_FORALL_VERTICES_T(v, m_graph1, Graph){
+				std::cout << '(' << get(vertex_funame_t(), m_graph1, v) << ", "
+				<< get(vertex_funame_t(), m_graph2, get(map1to2, v)) << ") ";
+				std::cout<<std::endl;
+				get(map2to1, v);
+			}
+
 
 			//validate mapping
 			bool verify = verify_vf2_subgraph_iso(m_graph1, m_graph2,  map1to2 ,edge_comp ,vertex_comp);

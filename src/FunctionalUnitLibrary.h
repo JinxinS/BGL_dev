@@ -9,10 +9,15 @@
 #define FUNCTIONALUNITLIBRARY_H_
 #include "sic_types.h"
 class FUDescription;
+class LogicalFUInstance;
 class FunctionalUnitLibrary {
-    std::unordered_map<std::string, FUDescription*> custom_fu_list;
+    std::unordered_map<std::string, FUDescription*> fu_desc_list;
+	void loadInternelFunctionalLib();
 public:
-	FunctionalUnitLibrary();
+    void addFUDescription(const std::string &type,FUDescription* fu_desc);
+    LogicalFUInstance* getLogicalFUInstance(const std::string &type,const std::string &name,const std::string &func);
+    LogicalFUInstance* getLogicalMEMInstance(const std::string &name,int a_width,int d_width,int nwords);
+    FunctionalUnitLibrary();
 	virtual ~FunctionalUnitLibrary();
 };
 

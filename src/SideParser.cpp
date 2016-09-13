@@ -6,7 +6,10 @@
  */
 
 #include "SideParser.h"
-
+#include "Function.h"
+#include "FUDescription.h"
+#include "FunctionalUnitLibrary.h"
+#include "LogicalSideworks.h"
 const char* SideParser::tag_comment		="<xmlcomment>";
 const char* SideParser::tag_attr			="<xmlattr>";
 
@@ -51,29 +54,44 @@ void SideParser::parseFunctionalUnitLibrary(FunctionalUnitLibrary* fulib,const s
 	BOOST_LOG_TRIVIAL(debug)<<"parsing"<<filename;
 	pt::ptree tree;
 	pt::read_xml(filename, tree);
-	BOOST_LOG_TRIVIAL(debug)<<tree.get_child(fu_tag_func).get_child(fu_attr_type).data();
+
+	std::string type(tree.get_child(fu_tag_func).get_child(fu_attr_type).data());
+	BOOST_LOG_TRIVIAL(trace)<<type;
+	FUDescription *fu_desc = new FUDescription(type);
 
 	BOOST_FOREACH(pt::ptree::value_type &v, tree.get_child(fu_tag_func)) {
 		if(v.first == fu_tag_output){
 			std::string name(v.second.get_child(fu_attr_name).data());
 			int width = boost::lexical_cast<int>(v.second.get_child(fu_attr_width).data());
-			BOOST_LOG_TRIVIAL(debug)<<"output:"<<name<<" "<<width;
+			fu_desc->addOutputPort(name,width);
+			BOOST_LOG_TRIVIAL(trace)<<"output:"<<name<<" "<<width;
 		}else if(v.first == fu_tag_input){
 			std::string name(v.second.get_child(fu_attr_name).data());
 			int width = boost::lexical_cast<int>(v.second.get_child(fu_attr_width).data());
-			BOOST_LOG_TRIVIAL(debug)<<"input:"<<name<<" "<<width;
+			fu_desc->addInputPort(name,width);
+			BOOST_LOG_TRIVIAL(trace)<<"input:"<<name<<" "<<width;
 		}else if(v.first == fu_tag_param){
 			std::string name(v.second.get_child(fu_attr_name).data());
 			int width = boost::lexical_cast<int>(v.second.get_child(fu_attr_width).data());
-			BOOST_LOG_TRIVIAL(debug)<<"param:"<<name<<" "<<width;
+			fu_desc->addParameter(name,width);
+			BOOST_LOG_TRIVIAL(trace)<<"param:"<<name<<" "<<width;
 		}else if(v.first == fu_tag_function){
 			std::string name(v.second.get_child(fu_attr_name).data());
 			int select = boost::lexical_cast<int>(v.second.get_child(fu_attr_sel).data());
-			BOOST_LOG_TRIVIAL(debug)<<"function:"<<name<<" "<<select;
+			Function *function = new Function(name,select);
+			fu_desc->addFUFunction(function);
+			BOOST_LOG_TRIVIAL(trace)<<"function:"<<name<<" "<<select;
 			BOOST_FOREACH(pt::ptree::value_type &t, v.second){
 				if(t.first == fu_tag_funcarg ){
 					std::string arg(t.second.get_child(fu_attr_name).data());
-					BOOST_LOG_TRIVIAL(debug)<<"argument:"<<arg;
+					BOOST_LOG_TRIVIAL(trace)<<"argument:"<<arg;
+					if(fu_desc->isInputPort(arg)){
+						function->addFunctionArg(arg);
+					}else if(fu_desc->isParameter(arg)){
+						function->addFunctionArg(arg);
+					}else{
+
+					}
 				}
 			}
 		}else if((v.first == tag_attr)||(v.first == tag_comment)){
@@ -82,9 +100,10 @@ void SideParser::parseFunctionalUnitLibrary(FunctionalUnitLibrary* fulib,const s
 			BOOST_LOG_TRIVIAL(warning)<<"unknown tag : "<<v.first;
 		}
 	}
+	fulib->addFUDescription(type,fu_desc);
 }
 
-void SideParser::parseLogicalSideWorks(LogicalSideworks* logical_sideworks,  const char* filename){
+void SideParser::parseLogicalSideWorks(FunctionalUnitLibrary* fulib,LogicalSideworks* logical_sideworks,  const char* filename){
 	// Create empty property tree object
 	BOOST_LOG_TRIVIAL(debug)<<"parsing"<<filename;
 	pt::ptree tree;
@@ -103,28 +122,38 @@ void SideParser::parseLogicalSideWorks(LogicalSideworks* logical_sideworks,  con
 			int f_nwords  = boost::lexical_cast<int>(v.second.get_child(attr_nwords).data());
 			int f_a_width = boost::lexical_cast<int>(v.second.get_child(attr_a_width).data());
 			int f_d_width = boost::lexical_cast<int>(v.second.get_child(attr_d_width).data());
-
 			BOOST_LOG_TRIVIAL(debug)<<f_fu_name<<" "<<f_a_width<<" "<<f_d_width<<" "<<f_nwords;
-			BOOST_FOREACH(pt::ptree::value_type &m, v.second){
-				if(m.first == tag_funcarg ){
-					BOOST_LOG_TRIVIAL(debug)<<m.second.get_child(attr_name).data()<<"="<<m.second.get_child(attr_value).data();
-				}
-			}
+			logical_sideworks->addLogicalFU(fulib->getLogicalMEMInstance(f_fu_name,f_a_width,f_d_width,f_nwords));
 		}else if(v.first == tag_function){//FU_FUNCTION
 			std::string f_type_name(v.second.get_child(attr_tname).data());
 			std::string f_fu_name(v.second.get_child(attr_funame).data());
 			std::string f_func_name(v.second.get_child(attr_funcname).data());
-
 			BOOST_LOG_TRIVIAL(debug)<<f_fu_name<<" "<<f_type_name<<" "<<f_func_name;
-			BOOST_FOREACH(pt::ptree::value_type &m, v.second){
-				if(m.first == tag_funcarg ){
-					BOOST_LOG_TRIVIAL(debug)<<m.second.get_child(attr_name).data()<<"="<<m.second.get_child(attr_value).data();
-				}
-			}
+			logical_sideworks->addLogicalFU(fulib->getLogicalFUInstance(f_type_name,f_fu_name,f_func_name));
 		}else if((v.first == tag_attr)||(v.first == tag_comment)){
 			//do nothing
 		}else{
 			BOOST_LOG_TRIVIAL(warning)<<"unknown tag : "<<v.first;
+		}
+	}
+
+	BOOST_FOREACH(pt::ptree::value_type &v, tree.get_child(tag)) {
+		if(v.first == tag_fumem){//FU_MEM
+			std::string f_fu_name(v.second.get_child(attr_funame).data());
+
+			BOOST_FOREACH(pt::ptree::value_type &m, v.second){
+				if(m.first == tag_funcarg ){
+					BOOST_LOG_TRIVIAL(trace)<<m.second.get_child(attr_name).data()<<"="<<m.second.get_child(attr_value).data();
+				}
+			}
+		}else if(v.first == tag_function){//FU_FUNCTION
+			std::string f_fu_name(v.second.get_child(attr_funame).data());
+
+			BOOST_FOREACH(pt::ptree::value_type &m, v.second){
+				if(m.first == tag_funcarg ){
+					BOOST_LOG_TRIVIAL(trace)<<m.second.get_child(attr_name).data()<<"="<<m.second.get_child(attr_value).data();
+				}
+			}
 		}
 	}
 }

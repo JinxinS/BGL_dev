@@ -20,13 +20,17 @@
 #include <boost/graph/mcgregor_common_subgraphs.hpp>
 #include <boost/graph/properties.hpp>
 #include <boost/graph/vf2_sub_graph_iso.hpp>
+#include <boost/log/core/core.hpp>
 #include <boost/log/trivial.hpp>
+#include <boost/log/expressions.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/xml_parser.hpp>
 #include <boost/property_map/shared_array_property_map.hpp>
 
 namespace pt = boost::property_tree;
+namespace logging = boost::log;
+
 using namespace boost;
 using namespace boost::filesystem;
 

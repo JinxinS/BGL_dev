@@ -16,6 +16,15 @@ class FUDescription {
 	std::unordered_map<std::string, int> parameters;
     std::unordered_map<std::string, Function*> function_descriptions;
 public:
+    void addInputPort(const std::string& name,int width);
+    void addOutputPort(const std::string& name,int width);
+    void addParameter(const std::string& name,int width);
+    void addFUFunction(Function*);
+    bool isInputPort(const std::string& arg);
+    bool isParameter(const std::string& arg);
+    int  getInputWidth(const std::string& in);
+    inline const std::unordered_map<std::string, int>& getOutputPorts() const { return output_ports_width; }
+    Function* getFUFunction(const std::string& funcname);
 	FUDescription(const std::string&);
 	virtual ~FUDescription();
 };

@@ -18,7 +18,7 @@
 SideConf::SideConf()
 : fu_library(new FunctionalUnitLibrary()),
   logical_sideworks_list(){
-
+    logging::core::get()->set_filter(logging::trivial::severity >= logging::trivial::fatal);
 }
 
 SideConf::~SideConf() {
@@ -61,8 +61,7 @@ void SideConf::loadDataBase(){
 		BOOST_FOREACH(path const &x, std::make_pair(it, eod))
 			if(x.extension() == ".xml") SideParser::parseFunctionalUnitLibrary(fu_library,x.string());
 	}else{
-		BOOST_LOG_TRIVIAL(info)<<"Load internal FU Library ...";
-		//fu_library->loadInternelFunctionalLib();
+		BOOST_LOG_TRIVIAL(warning)<<"XML Custom FU Library doesn't exsit ...";
 	}
 }
 
@@ -70,7 +69,7 @@ void SideConf::loadDataBase(){
 void SideConf::loadLogicalSideworks(){
 	for(size_t i = 0; i < CmdLineParser::arguments.numofinputs; ++i ){
 		logical_sideworks_list.push_back(new LogicalSideworks());
-		SideParser::parseLogicalSideWorks(logical_sideworks_list[i],CmdLineParser::arguments.inputs[i]);
+		SideParser::parseLogicalSideWorks(fu_library,logical_sideworks_list[i],CmdLineParser::arguments.inputs[i]);
 	}
 }
 

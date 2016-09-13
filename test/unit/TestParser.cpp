@@ -14,6 +14,6 @@
 namespace logging = boost::log;
 
 BOOST_AUTO_TEST_CASE(test_parser) {
-    SideParser::parseLogicalSideWorks(0,  "./test/res/example.xml");
+    SideParser::parseLogicalSideWorks(0, 0, "./test/res/example.xml");
 
 }

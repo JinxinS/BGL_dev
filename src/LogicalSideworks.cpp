@@ -6,7 +6,7 @@
  */
 
 #include "LogicalSideworks.h"
-
+#include "LogicalFUInstance.h"
 LogicalSideworks::LogicalSideworks()
 :siw_graph()
 {
@@ -18,10 +18,14 @@ LogicalSideworks::~LogicalSideworks() {
 	// TODO Auto-generated destructor stub
 }
 
-void LogicalSideworks::addLogicalFU(const std::string& type,const std::string& name){
+void LogicalSideworks::addLogicalFU(LogicalFUInstance* logical_fu){
+	 std::string type(logical_fu->getType() );
+	 std::string name(logical_fu->getName() );
+
 	graph_traits<GraphTypes::Graph>::vertex_descriptor v = add_vertex(siw_graph);
 	put(vertex_futype, siw_graph,  v, type);
 	put(vertex_funame, siw_graph,  v, name);
+	logical_fu->setVertexDescriptor(v);
 }
 
 
