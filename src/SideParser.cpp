@@ -115,9 +115,7 @@ void SideParser::parseLogicalSideWorks(FunctionalUnitLibrary* fulib,LogicalSidew
 	BOOST_LOG_TRIVIAL(debug)<<tree.get_child(tag).get_child(attr_name).data();
 	//
 	BOOST_FOREACH(pt::ptree::value_type &v, tree.get_child(tag)) {
-		if(v.first == tag_fuplace)//FU_PLACE
-			BOOST_LOG_TRIVIAL(debug)<<"PLACE["<<v.second.get_child(attr_funame).data()<<"]@["<<v.second.get_child(attr_label).data()<<"]";
-		else if(v.first == tag_fumem){//FU_MEM
+		if(v.first == tag_fumem){//FU_MEM
 			std::string f_fu_name(v.second.get_child(attr_funame).data());
 			int f_nwords  = boost::lexical_cast<int>(v.second.get_child(attr_nwords).data());
 			int f_a_width = boost::lexical_cast<int>(v.second.get_child(attr_a_width).data());
@@ -138,7 +136,13 @@ void SideParser::parseLogicalSideWorks(FunctionalUnitLibrary* fulib,LogicalSidew
 	}
 
 	BOOST_FOREACH(pt::ptree::value_type &v, tree.get_child(tag)) {
-		if(v.first == tag_fumem){//FU_MEM
+		if(v.first == tag_fuplace){//FU_PLACE
+			std::string f_fu_name(v.second.get_child(attr_funame).data());
+			std::string f_place_label(v.second.get_child(attr_funame).data());
+			//LogicalFUInstance* fu = logical_sideworks->getLogicalFU(f_fu_name);
+			BOOST_LOG_TRIVIAL(debug)<<"PLACE["<<f_fu_name<<"]@["<<f_place_label<<"]";
+		}
+		else if(v.first == tag_fumem){//FU_MEM
 			std::string f_fu_name(v.second.get_child(attr_funame).data());
 
 			BOOST_FOREACH(pt::ptree::value_type &m, v.second){

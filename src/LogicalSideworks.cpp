@@ -19,12 +19,15 @@ LogicalSideworks::~LogicalSideworks() {
 }
 
 void LogicalSideworks::addLogicalFU(LogicalFUInstance* logical_fu){
-	 std::string type(logical_fu->getType() );
-	 std::string name(logical_fu->getName() );
+	std::string type(logical_fu->getType() );
+	std::string name(logical_fu->getName() );
 
 	graph_traits<GraphTypes::Graph>::vertex_descriptor v = add_vertex(siw_graph);
+
 	put(vertex_futype, siw_graph,  v, type);
 	put(vertex_funame, siw_graph,  v, name);
+
+
 	logical_fu->setVertexDescriptor(v);
 }
 

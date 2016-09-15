@@ -48,6 +48,8 @@ struct GraphTypes{
 	typedef property<vertex_funame_t, std::string, property<vertex_futype_t,std::string> > vertex_property;
 	typedef adjacency_list<listS, vecS, bidirectionalS,vertex_property,edge_property > Graph;
 	typedef property_map<GraphTypes::Graph, vertex_futype_t>::type VertexTypeMap;
+	typedef property_map<GraphTypes::Graph, vertex_funame_t>::type VertexNameMap;
+	typedef property_map<GraphTypes::Graph, vertex_index_t>::type VertexIndexMap;
 };
 
 #endif /* SIC_TYPES_H_ */
