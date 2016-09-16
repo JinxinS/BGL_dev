@@ -9,12 +9,6 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/iteration_macros.hpp>
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/filtered_graph.hpp>
-#include <boost/graph/graph_utility.hpp>
-#include <boost/graph/iteration_macros.hpp>
-#include <boost/graph/mcgregor_common_subgraphs.hpp>
 #include <boost/graph/properties.hpp>
 #include <string>
 #include <iostream>
@@ -27,53 +21,83 @@ BOOST_INSTALL_PROPERTY(edge, connection);
 BOOST_INSTALL_PROPERTY(vertex,   funame);
 BOOST_INSTALL_PROPERTY(vertex,   futype);
 }
-namespace bg = boost::graph;
 
+using namespace boost;
 using namespace boost::graph;
 
 
-
-
-
-namespace boost {
-namespace graph {
-
 typedef property<boost::edge_connection_t, std::string> EdgeProperties;
-typedef property<boost::vertex_funame_t, std::string, property<vertex_futype_t,std::string>> VertexPorperties;
+typedef property<vertex_index1_t, int ,property<boost::vertex_funame_t, std::string, property<vertex_futype_t,std::string,std::string>>> VertexPorperties;
 
-typedef adjacency_list<listS, vecS, bidirectionalS,VertexPorperties,EdgeProperties > Graph;
-/// Use the City name as a key for indexing cities in a graph
+namespace boost { namespace graph {
+
+template<typename Type>
+struct vertex_name_extractor
+{
+	typedef Type type;
+	typedef const Type& result_type;
+	result_type operator()(const Type& v) const
+	{
+		return 	v;
+
+	}
+};
+
 template<>
 struct internal_vertex_name<VertexPorperties>
 {
-  typedef multi_index::member<VertexPorperties, std::string, &VertexPorperties::m_value> type;
+	typedef vertex_name_extractor<std::string> type;
 };
-//
-///// Allow the graph to build cities given only their names (filling in
-///// the defaults for fields).
+
 template<>
 struct internal_vertex_constructor<VertexPorperties>
 {
-  typedef vertex_from_name<VertexPorperties> type;
+	typedef vertex_from_name<VertexPorperties> type;
 };
 
-}
-} // end namespace boost::graph
+} }
+
+typedef adjacency_list<listS, vecS, bidirectionalS,VertexPorperties,EdgeProperties > graph_;
+typedef graph_traits<graph_>::vertex_descriptor Vertex;
 
 BOOST_AUTO_TEST_CASE(test_case)
 {
-	Graph g;
-	std::vector<Graph::vertex_descriptor> svlist;
-	for (int i = 0; i < 4; i++) {
 
-//		VertexPorperties vp("funame"+std::to_string(i),"futype"+std::to_string(i));
-//		Graph::vertex_descriptor  v = boost::add_vertex(vp, g);
-//		svlist.push_back(v);
-//		std::cout<<"add vertext["<<v<<"]"<<std::endl;
-//		std::cout<<"-> "<<get(boost::vertex_funame,g,v)<<" "<<get(boost::vertex_futype,g,v)<<std::endl;
+	graph_ g;
+	std::vector<graph_::vertex_descriptor> svlist;
+	for (int i = 0; i < 5; i++) {
+		std::string bundle = "hashtag" + std::to_string(i);
+		if(i > 3) bundle = "hashtag3";
+
+		VertexPorperties vp;
+		vp.m_value = (i);
+		vp.m_base= property<boost::vertex_funame_t, std::string, property<vertex_futype_t,std::string,std::string>>
+				("funame"+std::to_string(i),property<vertex_futype_t,std::string,std::string> ("futype"+std::to_string(i),bundle));
+
+		Vertex v = boost::add_vertex(vp,g);
+//		put(vertex_funame, g,  v, "futype"+std::to_string(i));
+//		put(vertex_futype, g,  v, "futname"+std::to_string(i));
+//		put(vertex_bundle, g,  v, "hashtag0"+std::to_string(i));
+		svlist.push_back(v);
+		std::cout<<"add vertext["<<v<<"]"<<std::endl;
+		std::cout<<"-> "<<get(boost::vertex_funame,g,v)<<" "<<get(boost::vertex_futype,g,v)<<" "<<get(boost::vertex_bundle,g,v)<<" "<<get(boost::vertex_index1,g,v)<<std::endl;
 	}
+	std::cout<<num_vertices(g)<<std::endl;
+	std::cout<<svlist.size()<<std::endl;
 
-	//find_vertex(std::string(""),g);
+	graph_::vertex_name_type s_temp("hashtag3");
+
+	optional<graph_::vertex_descriptor> V(find_vertex(s_temp,g));
+
+	if( V ) {
+		std::cout << "Found vertex:" << *V << std::endl;
+		//remove_vertex(*V,g);           // (1)
+		//remove_vertex(vertex(*V,g),g); // (2)
+		//remove_vertex(g[*V],g);        // (3)
+		//remove_vertex(s_temp,g);       // (4)
+	} else {
+		std::cout << "Vertex not found\n"<<std::endl;
+	}
 }
 
 BOOST_AUTO_TEST_CASE(test_case2){
