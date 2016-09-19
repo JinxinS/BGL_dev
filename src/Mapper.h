@@ -5,15 +5,15 @@
  *      Author: songjinxin
  */
 
-#ifndef MAPPER_H_
-#define MAPPER_H_
+#ifndef MAPPER_H__
+#define MAPPER_H__
 #include <assert.h>     /* assert */
 #include "sic_types.h"
 
 class Mapper {
 
 public:
-	bool map_func(GraphTypes::Graph& g1,GraphTypes:: Graph& g2);
+	bool map_func(graph_t& g1,graph_t& g2);
 	Mapper();
 	virtual ~Mapper();
 
@@ -152,4 +152,4 @@ private:
 };
 
 
-#endif /* MAPPER_H_ */
+#endif /* MAPPER_H__ */

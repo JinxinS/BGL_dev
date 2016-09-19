@@ -27,12 +27,13 @@
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/xml_parser.hpp>
 #include <boost/property_map/shared_array_property_map.hpp>
-
+#include <boost/tokenizer.hpp>
 namespace pt = boost::property_tree;
 namespace logging = boost::log;
 
 using namespace boost;
 using namespace boost::filesystem;
+using namespace boost::graph;
 
 namespace boost {
 enum edge_connection_t { edge_connection };
@@ -41,15 +42,47 @@ enum vertex_futype_t { vertex_futype };
 BOOST_INSTALL_PROPERTY(edge, connection);
 BOOST_INSTALL_PROPERTY(vertex,   funame);
 BOOST_INSTALL_PROPERTY(vertex,   futype);
-}
 
-struct GraphTypes{
-	typedef property<edge_connection_t, std::string> edge_property;
-	typedef property<vertex_funame_t, std::string, property<vertex_futype_t,std::string> > vertex_property;
-	typedef adjacency_list<listS, vecS, bidirectionalS,vertex_property,edge_property > Graph;
-	typedef property_map<GraphTypes::Graph, vertex_futype_t>::type VertexTypeMap;
-	typedef property_map<GraphTypes::Graph, vertex_funame_t>::type VertexNameMap;
-	typedef property_map<GraphTypes::Graph, vertex_index_t>::type VertexIndexMap;
+namespace graph {
+
+typedef property<edge_connection_t, std::string> edge_properties;
+
+typedef property<vertex_funame_t,std::string,std::string> vp_name;
+typedef property<vertex_futype_t, std::string,vp_name>    vp_type;
+typedef property<vertex_futype_t, std::string,vp_name> vertex_properties;
+
+template<typename Type>
+struct vertex_name_extractor
+{
+	typedef Type type;
+	typedef const Type& result_type;
+	result_type operator()(const Type& v) const
+	{
+		return 	v;
+	}
 };
+
+template<>
+struct internal_vertex_name<vertex_properties>
+{
+	typedef vertex_name_extractor<std::string> type;
+};
+
+template<>
+struct internal_vertex_constructor<vertex_properties>
+{
+	typedef vertex_from_name<vertex_properties> type;
+};
+
+typedef adjacency_list<listS, vecS, bidirectionalS,vertex_properties,edge_properties > graph_t;
+typedef property_map<graph_t, vertex_futype_t>::type vertexTypeMap;
+typedef property_map<graph_t, vertex_funame_t>::type vertexNameMap;
+typedef property_map<graph_t, vertex_bundle_t>::type vertexKeyNameMap;
+
+} }
+
+
+
+
 
 #endif /* SIC_TYPES_H_ */

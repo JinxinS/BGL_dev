@@ -14,9 +14,7 @@ protected:
 	std::string type;
 	std::string name;
     FUDescription* description;
-	graph_traits<GraphTypes::Graph>::vertex_descriptor vit;
 public:
-	inline void setVertexDescriptor(const graph_traits<GraphTypes::Graph>::vertex_descriptor& v)  {  vit = v; }
 	inline const std::string& getType(){return type;}
 	inline const std::string& getName(){return name;}
 	FUInstance(const FUInstance&);

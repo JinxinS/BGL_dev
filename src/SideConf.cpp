@@ -18,7 +18,7 @@
 SideConf::SideConf()
 : fu_library(new FunctionalUnitLibrary()),
   logical_sideworks_list(){
-    logging::core::get()->set_filter(logging::trivial::severity >= logging::trivial::fatal);
+    logging::core::get()->set_filter(logging::trivial::severity >= logging::trivial::trace);
 }
 
 SideConf::~SideConf() {
@@ -70,9 +70,9 @@ void SideConf::loadLogicalSideworks(){
 	for(size_t i = 0; i < CmdLineParser::arguments.numofinputs; ++i ){
 		logical_sideworks_list.push_back(new LogicalSideworks());
 		SideParser::parseLogicalSideWorks(fu_library,logical_sideworks_list[i],CmdLineParser::arguments.inputs[i]);
+		print_graph(logical_sideworks_list[i]->getGraph(),get(boost::vertex_funame,logical_sideworks_list[i]->getGraph()));
 	}
 }
-
 
 void SideConf::run(int argc,char** argv){
 	parseArgs(argc,argv);

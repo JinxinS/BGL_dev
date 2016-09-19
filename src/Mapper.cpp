@@ -17,9 +17,9 @@ Mapper::~Mapper() {
 }
 
 
-bool Mapper::map_func(GraphTypes::Graph& g1, GraphTypes::Graph& g2){
-	typedef property_map<GraphTypes::Graph, edge_connection_t>::type edge_connection_map_t;
-	typedef property_map<GraphTypes::Graph, vertex_futype_t>::type vertex_futype_map_t;
+bool Mapper::map_func(graph_t& g1, graph_t& g2){
+	typedef property_map<graph_t, edge_connection_t>::type edge_connection_map_t;
+	typedef property_map<graph_t, vertex_futype_t>::type vertex_futype_map_t;
 
 	typedef property_map_equivalent<edge_connection_map_t, edge_connection_map_t> edge_comp_t;
 	typedef property_map_equivalent<vertex_futype_map_t, vertex_futype_map_t> vertex_comp_t;
@@ -46,7 +46,7 @@ bool Mapper::map_func(GraphTypes::Graph& g1, GraphTypes::Graph& g2){
 	bool got_hit = false;
 	bool stop = true; 	//stop at first occurance
 
-	vf2_subgraph_mono_callback<GraphTypes::Graph,edge_comp_t,vertex_comp_t>   callback( got_hit,stop, g1, g2,edge_comp,vertex_comp);
+	vf2_subgraph_mono_callback<graph_t,edge_comp_t,vertex_comp_t>   callback( got_hit,stop, g1, g2,edge_comp,vertex_comp);
 
 	vf2_subgraph_mono
 	(g1, g2, callback,vertex_order_by_mult(g1),

@@ -11,12 +11,12 @@
 class LogicalFUInstance;
 class LogicalSideworks {
 protected:
-	GraphTypes::Graph siw_graph;
+	graph_t siw_graph;
 public:
-	inline GraphTypes::Graph& getGraph(){return siw_graph;}
+	inline graph_t& getGraph(){return siw_graph;}
 	void addLogicalFU(LogicalFUInstance* logical_fu);
-	void addConection(const graph_traits<GraphTypes::Graph>::vertex_descriptor& v1,const graph_traits<GraphTypes::Graph>::vertex_descriptor& v2,const std::string& c);
-
+	void addConection(const graph_t::vertex_descriptor& v1,const graph_t::vertex_descriptor& v2,const std::string& c);
+	graph_t::vertex_descriptor getLogicalFU(const std::string& kname);
 	LogicalSideworks();
 	virtual ~LogicalSideworks();
 };

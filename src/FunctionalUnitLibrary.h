@@ -15,6 +15,8 @@ class FunctionalUnitLibrary {
 	void loadInternelFunctionalLib();
 public:
     void addFUDescription(const std::string &type,FUDescription* fu_desc);
+    inline FUDescription* getFUDescription(const std::string& type){return fu_desc_list.at(type);}
+
     LogicalFUInstance* getLogicalFUInstance(const std::string &type,const std::string &name,const std::string &func);
     LogicalFUInstance* getLogicalMEMInstance(const std::string &name,int a_width,int d_width,int nwords);
     FunctionalUnitLibrary();

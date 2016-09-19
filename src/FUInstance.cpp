@@ -10,8 +10,7 @@
 FUInstance::FUInstance(const std::string& type, const std::string& name, FUDescription* desc)
 :type(type),
  name(name),
- description(desc),
- vit()
+ description(desc)
 {
 	// TODO Auto-generated constructor stub
 }

@@ -144,18 +144,49 @@ void SideParser::parseLogicalSideWorks(FunctionalUnitLibrary* fulib,LogicalSidew
 		}
 		else if(v.first == tag_fumem){//FU_MEM
 			std::string f_fu_name(v.second.get_child(attr_funame).data());
-
 			BOOST_FOREACH(pt::ptree::value_type &m, v.second){
 				if(m.first == tag_funcarg ){
 					BOOST_LOG_TRIVIAL(trace)<<m.second.get_child(attr_name).data()<<"="<<m.second.get_child(attr_value).data();
 				}
 			}
 		}else if(v.first == tag_function){//FU_FUNCTION
+			std::string f_type_name(v.second.get_child(attr_tname).data());
 			std::string f_fu_name(v.second.get_child(attr_funame).data());
+			graph_t::vertex_descriptor dest_logicFu = logical_sideworks->getLogicalFU(f_fu_name);
+			FUDescription* desc = fulib->getFUDescription(f_type_name);
 
 			BOOST_FOREACH(pt::ptree::value_type &m, v.second){
 				if(m.first == tag_funcarg ){
-					BOOST_LOG_TRIVIAL(trace)<<m.second.get_child(attr_name).data()<<"="<<m.second.get_child(attr_value).data();
+					std::string dst_in_pname(m.second.get_child(attr_name).data());
+					std::string value(m.second.get_child(attr_value).data());
+					BOOST_LOG_TRIVIAL(trace)<<dst_in_pname<<"="<<value;
+					if(desc->isParameter(dst_in_pname)){
+
+					}else if(desc->isInputPort(dst_in_pname)){
+						if(value == "undefined"){
+
+
+						}else{
+							std::string src_funame;
+							std::string src_out_pname;
+							char_separator<char> sep(".");
+							std::cout<<value<<std::endl;
+							tokenizer<char_separator<char>> tokens(value, sep);
+							int tokensize = std::distance(tokens.begin(),tokens.end());
+							src_funame = tokens.begin().current_token();
+
+							if(tokensize == 1){
+
+							}else if(tokensize == 2){
+								src_out_pname = (++(tokens.begin())).current_token();
+								graph_t::vertex_descriptor src_logicFu = logical_sideworks->getLogicalFU(src_funame);
+								std::string connection = "from_"+src_out_pname+"_to_"+dst_in_pname;
+								logical_sideworks->addConection(src_logicFu,dest_logicFu,connection);
+							}else{
+								throw SideConfException("bad input port format:["+value+"]");
+							}
+						}
+					}
 				}
 			}
 		}
