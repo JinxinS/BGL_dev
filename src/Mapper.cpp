@@ -19,16 +19,16 @@ Mapper::~Mapper() {
 
 bool Mapper::map_func(graph_t& g1, graph_t& g2){
 	typedef property_map<graph_t, edge_connection_t>::type edge_connection_map_t;
-	typedef property_map<graph_t, vertex_futype_t>::type vertex_futype_map_t;
+	typedef property_map<graph_t, vertex_bundle_t>::type vertex_bundle_map_t;
 
 	typedef property_map_equivalent<edge_connection_map_t, edge_connection_map_t> edge_comp_t;
-	typedef property_map_equivalent<vertex_futype_map_t, vertex_futype_map_t> vertex_comp_t;
+	typedef property_map_equivalent<vertex_bundle_map_t, vertex_bundle_map_t> vertex_comp_t;
 
 	edge_comp_t edge_comp =
 			make_property_map_equivalent(get(edge_connection, g1), get(edge_connection, g2));
 
 	vertex_comp_t vertex_comp =
-			make_property_map_equivalent(get(vertex_futype, g1), get(vertex_futype, g2));
+			make_property_map_equivalent(get(vertex_bundle, g1), get(vertex_bundle, g2));
 
 
 #if 0	// Maximum, unique subgraphs

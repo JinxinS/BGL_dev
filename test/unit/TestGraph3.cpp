@@ -82,6 +82,9 @@ BOOST_AUTO_TEST_CASE(test_case)
 		std::cout<<"add vertext["<<v<<"]"<<std::endl;
 		std::cout<<"-> "<<get(boost::vertex_funame,g,v)<<" "<<get(boost::vertex_futype,g,v)<<" "<<get(boost::vertex_bundle,g,v)<<" "<<get(boost::vertex_index1,g,v)<<std::endl;
 	}
+	add_edge(0,1,EdgeProperties("edge0_1"),g);
+	add_edge(3,5,EdgeProperties("edge0_1"),g);
+
 	std::cout<<num_vertices(g)<<std::endl;
 	std::cout<<svlist.size()<<std::endl;
 

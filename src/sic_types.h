@@ -28,6 +28,7 @@
 #include <boost/property_tree/xml_parser.hpp>
 #include <boost/property_map/shared_array_property_map.hpp>
 #include <boost/tokenizer.hpp>
+#include "FUInstance.h"
 namespace pt = boost::property_tree;
 namespace logging = boost::log;
 
@@ -37,50 +38,66 @@ using namespace boost::graph;
 
 namespace boost {
 enum edge_connection_t { edge_connection };
-enum vertex_funame_t { vertex_funame };
-enum vertex_futype_t { vertex_futype };
 BOOST_INSTALL_PROPERTY(edge, connection);
-BOOST_INSTALL_PROPERTY(vertex,   funame);
-BOOST_INSTALL_PROPERTY(vertex,   futype);
 
 namespace graph {
 
 typedef property<edge_connection_t, std::string> edge_properties;
 
-typedef property<vertex_funame_t,std::string,std::string> vp_name;
-typedef property<vertex_futype_t, std::string,vp_name>    vp_type;
-typedef property<vertex_futype_t, std::string,vp_name> vertex_properties;
+typedef property<vertex_name_t,std::string,FUInstance> vertex_properties;
+
 
 template<typename Type>
 struct vertex_name_extractor
 {
 	typedef Type type;
-	typedef const Type& result_type;
+	typedef const std::string& result_type;
 	result_type operator()(const Type& v) const
 	{
-		return 	v;
+		return 	v.name;
 	}
+};
+
+template<typename VertexProperty>
+struct vertex_from_name_constructor
+{
+private:
+  typedef typename internal_vertex_name<VertexProperty>::type extract_name_type;
+
+  typedef typename remove_cv<
+            typename remove_reference<
+              typename extract_name_type::result_type>::type>::type
+    vertex_name_type;
+
+public:
+  typedef vertex_name_type argument_type;
+  typedef VertexProperty result_type;
+
+  VertexProperty operator()(const vertex_name_type& name)
+  {
+    return VertexProperty("",FUInstance(name));
+  }
 };
 
 template<>
 struct internal_vertex_name<vertex_properties>
 {
-	typedef vertex_name_extractor<std::string> type;
+  typedef vertex_name_extractor<FUInstance> type;
 };
 
 template<>
 struct internal_vertex_constructor<vertex_properties>
 {
-	typedef vertex_from_name<vertex_properties> type;
+	typedef vertex_from_name_constructor<vertex_properties> type;
 };
 
-typedef adjacency_list<listS, vecS, bidirectionalS,vertex_properties,edge_properties > graph_t;
-typedef property_map<graph_t, vertex_futype_t>::type vertexTypeMap;
-typedef property_map<graph_t, vertex_funame_t>::type vertexNameMap;
-typedef property_map<graph_t, vertex_bundle_t>::type vertexKeyNameMap;
+/// FUInstance structure to be attached to each vertex
+typedef adjacency_list<listS, vecS, bidirectionalS,vertex_properties,edge_properties> graph_t;
+
+typedef property_map<graph_t, vertex_name_t>::type vNameMap;
+typedef property_map<graph_t, vertex_bundle_t>::type vFuMap;
 
 } }
-
 
 
 

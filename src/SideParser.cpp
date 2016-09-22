@@ -170,7 +170,6 @@ void SideParser::parseLogicalSideWorks(FunctionalUnitLibrary* fulib,LogicalSidew
 							std::string src_funame;
 							std::string src_out_pname;
 							char_separator<char> sep(".");
-							std::cout<<value<<std::endl;
 							tokenizer<char_separator<char>> tokens(value, sep);
 							int tokensize = std::distance(tokens.begin(),tokens.end());
 							src_funame = tokens.begin().current_token();

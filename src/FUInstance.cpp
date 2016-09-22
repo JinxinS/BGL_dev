@@ -7,9 +7,9 @@
 
 #include <FUInstance.h>
 
-FUInstance::FUInstance(const std::string& type, const std::string& name, FUDescription* desc)
-:type(type),
- name(name),
+FUInstance::FUInstance(const std::string& name, const std::string& type, FUDescription* desc)
+:name(name),
+ type(type),
  description(desc)
 {
 	// TODO Auto-generated constructor stub

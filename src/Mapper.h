@@ -40,8 +40,7 @@ private:
 
 			std::cout<<"find mapping:"<<std::endl;
 			BGL_FORALL_VERTICES_T(v, m_graph1, Graph){
-				std::cout << '(' << get(vertex_funame_t(), m_graph1, v) << ", "
-				<< get(vertex_funame_t(), m_graph2, get(map1to2, v)) << ") ";
+				std::cout << '(' << m_graph1[v].name << ", " << m_graph2[get(map1to2, v)].name << ") ";
 				std::cout<<std::endl;
 				get(map2to1, v);
 			}
@@ -122,11 +121,6 @@ private:
 
 		template <class IncidenceGraph>
 		void print_mapping(const IncidenceGraph& G1,const IncidenceGraph& G2){
-			typename property_map<IncidenceGraph, vertex_funame_t>::const_type
-			fu_name1 = get(vertex_funame,G1);//
-			typename property_map<IncidenceGraph, vertex_funame_t>::const_type
-			fu_name2 = get(vertex_funame,G2);
-
 #if 1
 			print_graph(G1);
 			std::cout<<"***********************"<<std::endl;
@@ -145,7 +139,7 @@ private:
 			boost::tie(vi, viend) = vertices(G2);
 			assert(std::distance(ui, uiend)== std::distance(vi, viend));
 			for (; ui != uiend, vi!= viend; ++ui,++vi) {
-				std::cout << fu_name1[*ui] <<"->"<<fu_name2[*vi]<< "\t";
+				std::cout << G1[*ui].name <<"->"<<G2[*vi].name<< "\t";
 			}
 		}
 	};

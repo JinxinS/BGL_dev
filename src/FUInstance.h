@@ -7,20 +7,35 @@
 
 #ifndef FUINSTANCE_H_
 #define FUINSTANCE_H_
-#include "sic_types.h"
+#include <string>
+#include <boost/graph/properties.hpp>
+
 class FUDescription;
 class FUInstance {
+	  typedef boost::vertex_property_tag kind;
 protected:
-	std::string type;
-	std::string name;
-    FUDescription* description;
 public:
-	inline const std::string& getType(){return type;}
-	inline const std::string& getName(){return name;}
-	FUInstance(const FUInstance&);
+	std::string name;
+	std::string type;
+    FUDescription* description;
+
+	FUInstance(const FUInstance& obj)
+	:name(obj.name),
+	 type(obj.type),
+	 description(obj.description){}
 	FUInstance& operator=(const FUInstance&);
-    FUInstance(const std::string& type, const std::string& name, FUDescription* desc);
+    FUInstance(const std::string& name="no_name", const std::string& type="no_type", FUDescription* desc=0);
 	virtual ~FUInstance();
+	friend std::ostream& operator<<(std::ostream& os, const FUInstance& o){
+		return os<<o.name;
+	}
+	friend bool operator==(const FUInstance& o1, const FUInstance& o2){
+		return (o1.type == o2.type);
+	}
+
 };
+
+
+
 
 #endif /* FUINSTANCE_H_ */

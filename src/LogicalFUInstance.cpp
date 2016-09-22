@@ -11,7 +11,7 @@
 #include "LogicInputPort.h"
 #include "LogicOutputPort.h"
 LogicalFUInstance::LogicalFUInstance(const std::string& name,const std::string& type,const std::string& func,FUDescription* desc)
-:FUInstance(type,name,desc),
+:FUInstance(name,type,desc),
  funcname(func),
  inports(),
  outports(),

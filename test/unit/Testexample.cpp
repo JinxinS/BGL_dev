@@ -17,10 +17,10 @@ class TestClass {
 public:
     TestClass(PropHolder& ph) : fPropHolder(ph) { }
     void doCalc() {
-//        if (fPropHolder.GetProperty(std::string("test")) > 100) {
+        if (fPropHolder.GetProperty(std::string("test")) > 100) {
             fPropHolder.SetProperty("test2", 555);
-//        } else
-//            fPropHolder.SetProperty("test2", 785);
+        } else
+            fPropHolder.SetProperty("test2", 785);
     }
 private:
     PropHolder& fPropHolder;
