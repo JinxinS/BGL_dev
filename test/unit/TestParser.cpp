@@ -19,7 +19,7 @@ BOOST_AUTO_TEST_CASE(test_parser) {
 	LogicalSideworks l1,l2;
 	directory_iterator it("/coreworks/sideconf-dev/sideFU/release/xml/"), eod;
 	BOOST_FOREACH(path const &x, std::make_pair(it, eod))
-	if(x.extension() == ".xml")SideParser::parseFunctionalUnitLibrary(&fulib,x.string());
-	SideParser::parseLogicalSideWorks(&fulib, &l1, "./test/res/example.xml");
+	if(x.extension() == ".xml")SideParser::parseFunctionalUnitLibrary(fulib,x.string());
+	SideParser::parseLogicalSideWorks(fulib, &l1, "./test/res/example.xml");
 
 }

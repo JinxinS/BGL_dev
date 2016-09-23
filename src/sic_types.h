@@ -96,6 +96,7 @@ typedef adjacency_list<listS, vecS, bidirectionalS,vertex_properties,edge_proper
 
 typedef property_map<graph_t, vertex_name_t>::type vNameMap;
 typedef property_map<graph_t, vertex_bundle_t>::type vFuMap;
+typedef property_map<graph_t, edge_connection_t>::type edge_connection_map_t;
 
 } }
 

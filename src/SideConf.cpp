@@ -14,15 +14,16 @@
 #include "SideParser.h"
 #include "LogicalSideworks.h"
 #include "FunctionalUnitLibrary.h"
+#include "ResourceAllocator.h"
 
 SideConf::SideConf()
-: fu_library(new FunctionalUnitLibrary()),
-  logical_sideworks_list(){
+: fu_library(),
+  logical_sideworks_list(),
+  physical_sideWorks(){
     logging::core::get()->set_filter(logging::trivial::severity >= logging::trivial::fatal);
 }
 
 SideConf::~SideConf() {
-	delete fu_library;
 	for(size_t i = 0; i < logical_sideworks_list.size(); ++i){
 		delete logical_sideworks_list[i];
 	}
@@ -75,10 +76,18 @@ void SideConf::loadLogicalSideworks(){
 	}
 }
 
+void SideConf::generatePhysicalSideworks(){
+	ResourceAllocator r;
+	r.addLSiWResources(logical_sideworks_list);
+	r.allocateResources(physical_sideWorks,fu_library);
+}
+
+
 void SideConf::run(int argc,char** argv){
 	parseArgs(argc,argv);
 	loadDataBase();
 	loadLogicalSideworks();
+	generatePhysicalSideworks();
 }
 
 

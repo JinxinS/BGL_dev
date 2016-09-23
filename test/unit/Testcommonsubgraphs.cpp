@@ -156,7 +156,6 @@ BOOST_AUTO_TEST_CASE(test_case) {
 	//     std::cout << std::endl;
 
 	// Maximum, unique subgraphs
-	typedef property_map<graph_t, edge_connection_t>::type edge_connection_map_t;
 	edge_connection_map_t emap = get(boost::edge_connection, g1.getGraph());
 	edge_connection_map_t emap2 = get(boost::edge_connection, g2.getGraph());
 

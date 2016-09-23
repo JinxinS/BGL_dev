@@ -10,7 +10,8 @@
 #include "FUInstance.h"
 #include "SideConfException.h"
 LogicalSideworks::LogicalSideworks()
-:siw_graph()
+:resource_usage(),
+ siw_graph()
 {
 	// TODO Auto-generated constructor stub
 
@@ -21,6 +22,7 @@ LogicalSideworks::~LogicalSideworks() {
 }
 
 void LogicalSideworks::addLogicalFU(LogicalFUInstance* logical_fu){
+	++resource_usage[logical_fu->type];
 	graph_t::vertex_descriptor v = boost::add_vertex(vertex_properties("",*logical_fu), siw_graph);
 }
 

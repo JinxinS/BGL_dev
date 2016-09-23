@@ -9,8 +9,8 @@
 #define SIDEPARSER_H_
 #include "sic_types.h"
 #include "SideConfException.h"
+#include "FunctionalUnitLibrary.h"
 class LogicalSideworks;
-class FunctionalUnitLibrary;
 class SideParser {
 
 	static const char* tag_comment;
@@ -46,8 +46,8 @@ class SideParser {
 public:
 	SideParser();
 	virtual ~SideParser();
-    static void parseFunctionalUnitLibrary(FunctionalUnitLibrary* fulib,const std::string& folder);
-    static void parseLogicalSideWorks(FunctionalUnitLibrary* fulib,LogicalSideworks* logical_sideworks,  const char* filename);
+    static void parseFunctionalUnitLibrary(FunctionalUnitLibrary& fulib,const std::string& folder);
+    static void parseLogicalSideWorks(const FunctionalUnitLibrary& fulib,LogicalSideworks* logical_sideworks,  const char* filename);
 };
 
 #endif /* SIDEPARSER_H_ */
