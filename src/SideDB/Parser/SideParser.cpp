@@ -121,13 +121,13 @@ void SideParser::parseLogicalSideWorks(const FunctionalUnitLibrary& fulib,Logica
 			int f_a_width = boost::lexical_cast<int>(v.second.get_child(attr_a_width).data());
 			int f_d_width = boost::lexical_cast<int>(v.second.get_child(attr_d_width).data());
 			BOOST_LOG_TRIVIAL(debug)<<f_fu_name<<" "<<f_a_width<<" "<<f_d_width<<" "<<f_nwords;
-			logical_sideworks->addLogicalFU(fulib.getLogicalMEMInstance(f_fu_name,f_a_width,f_d_width,f_nwords));
+			logical_sideworks->addFU(fulib.getLogicalMEMInstance(f_fu_name,f_a_width,f_d_width,f_nwords));
 		}else if(v.first == tag_function){//FU_FUNCTION
 			std::string f_type_name(v.second.get_child(attr_tname).data());
 			std::string f_fu_name(v.second.get_child(attr_funame).data());
 			std::string f_func_name(v.second.get_child(attr_funcname).data());
 			BOOST_LOG_TRIVIAL(debug)<<f_fu_name<<" "<<f_type_name<<" "<<f_func_name;
-			logical_sideworks->addLogicalFU(fulib.getLogicalFUInstance(f_type_name,f_fu_name,f_func_name));
+			logical_sideworks->addFU(fulib.getLogicalFUInstance(f_type_name,f_fu_name,f_func_name));
 		}else if((v.first == tag_attr)||(v.first == tag_comment)){
 			//do nothing
 		}else{
@@ -152,7 +152,7 @@ void SideParser::parseLogicalSideWorks(const FunctionalUnitLibrary& fulib,Logica
 		}else if(v.first == tag_function){//FU_FUNCTION
 			std::string f_type_name(v.second.get_child(attr_tname).data());
 			std::string f_fu_name(v.second.get_child(attr_funame).data());
-			graph_t::vertex_descriptor dest_logicFu = logical_sideworks->getLogicalFU(f_fu_name);
+			graph_t::vertex_descriptor dest_logicFu = logical_sideworks->getFU(f_fu_name);
 			FUDescription* desc = fulib.getFUDescription(f_type_name);
 
 			BOOST_FOREACH(pt::ptree::value_type &m, v.second){
@@ -178,7 +178,7 @@ void SideParser::parseLogicalSideWorks(const FunctionalUnitLibrary& fulib,Logica
 
 							}else if(tokensize == 2){
 								src_out_pname = (++(tokens.begin())).current_token();
-								graph_t::vertex_descriptor src_logicFu = logical_sideworks->getLogicalFU(src_funame);
+								graph_t::vertex_descriptor src_logicFu = logical_sideworks->getFU(src_funame);
 								std::string connection = "from_"+src_out_pname+"_to_"+dst_in_pname;
 								logical_sideworks->addConection(src_logicFu,dest_logicFu,connection);
 							}else{

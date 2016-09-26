@@ -1,26 +1,25 @@
 /*
- * LogicalSideworks.h
+ * Sideworks.h
  *
- *  Created on: Sep 8, 2016
+ *  Created on: Sep 26, 2016
  *      Author: songjinxin
  */
 
-#ifndef LOGICALSIDEWORKS_H_
-#define LOGICALSIDEWORKS_H_
+#ifndef SIDEWORKS_H_
+#define SIDEWORKS_H_
 #include "sic_types.h"
-class LogicalFUInstance;
-class LogicalSideworks {
+class Sideworks {
 protected:
     std::map<std::string, unsigned int> resource_usage;
 	graph_t siw_graph;
 public:
 	inline graph_t& getGraph(){return siw_graph;}
 	inline const std::map<std::string, unsigned int>& getResourceUsage() const{return resource_usage; }
-	void addLogicalFU(LogicalFUInstance* logical_fu);
+	Sideworks();
+	virtual ~Sideworks();
+	void addFU(FUInstance* fu);
 	void addConection(const graph_t::vertex_descriptor& v1,const graph_t::vertex_descriptor& v2,const std::string& c);
-	graph_t::vertex_descriptor getLogicalFU(const std::string& kname);
-	LogicalSideworks();
-	virtual ~LogicalSideworks();
+	graph_t::vertex_descriptor getFU(const std::string& kname);
 };
 
-#endif /* LOGICALSIDEWORKS_H_ */
+#endif /* SIDEWORKS_H_ */

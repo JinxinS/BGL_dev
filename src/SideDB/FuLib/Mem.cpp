@@ -5,7 +5,7 @@
  *      Author: songjinxin
  */
 
-#include "FunctionalUnits/Mem.h"
+#include "Mem.h"
 #include "Function.h"
 const std::string Mem::TYPE = "MEM";
 const std::string Mem::FUNC_NAME = "SIW_AUTO_FUNC";

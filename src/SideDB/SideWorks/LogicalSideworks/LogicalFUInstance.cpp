@@ -8,8 +8,8 @@
 #include "LogicalFUInstance.h"
 #include "FUDescription.h"
 #include "Function.h"
-#include "LogicInputPort.h"
-#include "LogicOutputPort.h"
+#include "LogicalInputPort.h"
+#include "LogicalOutputPort.h"
 LogicalFUInstance::LogicalFUInstance(const std::string& name,const std::string& type,const std::string& func,FUDescription* desc)
 :FUInstance(name,type,desc),
  funcname(func),
@@ -19,13 +19,13 @@ LogicalFUInstance::LogicalFUInstance(const std::string& name,const std::string& 
 	Function*  function = description->getFUFunction(funcname);
 	for(auto arg: function->getArgs()){
 		if(description->isInputPort(arg)){
-			inports.insert(std::make_pair(arg, new LogicInputPort(arg,description->getInputWidth(arg),this)));
+			addInputPort(arg,description->getInputWidth(arg));
 		}else if(description->isParameter(arg)){
 			parameters.insert(std::make_pair(arg, 0L));
 		}
 	}
 	for(auto o: description->getOutputPorts()){
-		outports.insert(std::make_pair(o.first,new LogicOutputPort(o.first,o.second,this)));
+		addOutputPort(o.first,o.second);
 	}
 }
 
@@ -34,3 +34,10 @@ LogicalFUInstance::~LogicalFUInstance() {
 }
 
 
+void LogicalFUInstance::addInputPort(const std::string& name, int width){
+	inports.insert(std::make_pair(name, new LogicalInputPort(name,width,this)));
+}
+
+void LogicalFUInstance::addOutputPort(const std::string& name, int width){
+	outports.insert(std::make_pair(name,new LogicalOutputPort(name,width,this)));
+}

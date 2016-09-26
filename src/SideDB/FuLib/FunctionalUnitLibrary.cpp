@@ -7,6 +7,7 @@
 
 #include "FunctionalUnitLibrary.h"
 #include "LogicalFUInstance.h"
+#include "PhysicalFUInstance.h"
 #include "LogicalMemFUInstance.h"
 #include "SideConfException.h"
 #include "Control.h"
@@ -29,7 +30,7 @@ void FunctionalUnitLibrary::addFUDescription(const std::string &type,FUDescripti
 	 if(!ok) BOOST_LOG_TRIVIAL(warning)<<"can't add addFUDescription:"<<type;
 }
 
-LogicalFUInstance* FunctionalUnitLibrary::getLogicalFUInstance(const std::string &type,const std::string &name,const std::string &func) const{
+FUInstance* FunctionalUnitLibrary::getLogicalFUInstance(const std::string &type,const std::string &name,const std::string &func) const{
 	FUDescription* desc;
 	try{
 		desc = fu_desc_list.at(type);
@@ -39,6 +40,16 @@ LogicalFUInstance* FunctionalUnitLibrary::getLogicalFUInstance(const std::string
 	return new LogicalFUInstance(name,type,func,desc);
 }
 
-LogicalFUInstance* FunctionalUnitLibrary::getLogicalMEMInstance(const std::string &name,int a_width,int d_width,int nwords) const{
+FUInstance* FunctionalUnitLibrary::getLogicalMEMInstance(const std::string &name,int a_width,int d_width,int nwords) const{
 	return new LogicalMemFUInstance(name,a_width,d_width,nwords);
+}
+
+FUInstance* FunctionalUnitLibrary::getPhysicalFUInstance(const std::string &type,const std::string &name) const{
+	FUDescription* desc;
+	try{
+		desc = fu_desc_list.at(type);
+	}catch(std::out_of_range& e){
+		throw SideConfException("can not find [" + type + "] in library");
+	}
+	return new PhysicalFUInstance(name,type,desc);
 }
