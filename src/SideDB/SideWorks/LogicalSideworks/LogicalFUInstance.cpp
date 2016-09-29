@@ -13,8 +13,6 @@
 LogicalFUInstance::LogicalFUInstance(const std::string& name,const std::string& type,const std::string& func,FUDescription* desc)
 :FUInstance(name,type,desc),
  funcname(func),
- inports(),
- outports(),
  parameters(){
 	Function*  function = description->getFUFunction(funcname);
 	for(auto arg: function->getArgs()){
@@ -35,9 +33,9 @@ LogicalFUInstance::~LogicalFUInstance() {
 
 
 void LogicalFUInstance::addInputPort(const std::string& name, int width){
-	inports.insert(std::make_pair(name, new LogicalInputPort(name,width,this)));
+	inports.insert(std::make_pair(name,(InputPort*) new LogicalInputPort(name,width,this)));
 }
 
 void LogicalFUInstance::addOutputPort(const std::string& name, int width){
-	outports.insert(std::make_pair(name,new LogicalOutputPort(name,width,this)));
+	outports.insert(std::make_pair(name,(OutputPort*)new LogicalOutputPort(name,width,this)));
 }

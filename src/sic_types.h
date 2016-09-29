@@ -37,12 +37,14 @@ using namespace boost::filesystem;
 using namespace boost::graph;
 
 namespace boost {
-enum edge_connection_t { edge_connection };
-BOOST_INSTALL_PROPERTY(edge, connection);
-
+enum edge_iname_t { edge_iname };
+enum edge_oname_t { edge_oname };
+BOOST_INSTALL_PROPERTY(edge, iname);
+BOOST_INSTALL_PROPERTY(edge, oname);
 namespace graph {
 
-typedef property<edge_connection_t, std::string> edge_properties;
+typedef property<edge_iname_t, std::string>  edge_i_property;
+typedef property<edge_oname_t, std::string, property<edge_iname_t, std::string> > edge_properties;
 
 typedef property<vertex_name_t,std::string,FUInstance> vertex_properties;
 
@@ -96,7 +98,8 @@ typedef adjacency_list<listS, vecS, bidirectionalS,vertex_properties,edge_proper
 
 typedef property_map<graph_t, vertex_name_t>::type vNameMap;
 typedef property_map<graph_t, vertex_bundle_t>::type vFuMap;
-typedef property_map<graph_t, edge_connection_t>::type edge_connection_map_t;
+typedef property_map<graph_t, edge_iname_t>::type edge_iname_map_t;
+typedef property_map<graph_t, edge_oname_t>::type edge_oname_map_t;
 
 } }
 

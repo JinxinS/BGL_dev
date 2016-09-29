@@ -12,6 +12,7 @@ class Sideworks {
 protected:
     std::map<std::string, unsigned int> resource_usage;
 	graph_t siw_graph;
+	std::vector<FUInstance*> fuList;
 public:
 	inline graph_t& getGraph(){return siw_graph;}
 	inline const std::map<std::string, unsigned int>& getResourceUsage() const{return resource_usage; }

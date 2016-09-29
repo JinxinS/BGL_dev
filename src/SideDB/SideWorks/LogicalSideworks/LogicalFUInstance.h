@@ -10,13 +10,8 @@
 #include "sic_types.h"
 #include "FUInstance.h"
 class FUDescription;
-class LogicalInputPort;
-class LogicalOutputPort;
-
 class LogicalFUInstance:public FUInstance {
 	std::string funcname;
-	std::unordered_map<std::string, LogicalInputPort*>  inports;
-	std::unordered_map<std::string, LogicalOutputPort*> outports;
 	std::unordered_map<std::string, long>			  parameters;
 	virtual void addInputPort(const std::string&, int width);
 	virtual void addOutputPort(const std::string&, int width);

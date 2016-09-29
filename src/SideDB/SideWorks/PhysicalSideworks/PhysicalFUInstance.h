@@ -10,11 +10,7 @@
 #include "sic_types.h"
 #include "FUInstance.h"
 class FUDescription;
-class PhysicalInputPort;
-class PhysicalOutputPort;
 class PhysicalFUInstance:public FUInstance {
-	std::map<std::string, PhysicalInputPort*>		inports;
-	std::map<std::string, PhysicalOutputPort*>		outports;
 	virtual void addInputPort(const std::string&, int width);
 	virtual void addOutputPort(const std::string&, int width);
 public:

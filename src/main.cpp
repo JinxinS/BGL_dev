@@ -11,7 +11,6 @@ int main (int argc, char *argv[]) {
 		SideConf SideConfigurator;
 		SideConfigurator.run(argc,argv);
 	}catch(const SideConfException& e){
-		std::cerr<<"custom"<<std::endl;
 		std::cerr<<e.what()<<std::endl;
 	}
     finish = clock();

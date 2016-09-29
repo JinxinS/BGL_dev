@@ -27,9 +27,9 @@ PhysicalFUInstance::~PhysicalFUInstance() {
 }
 
 void PhysicalFUInstance::addInputPort(const std::string& name, int width){
-	inports.insert(std::make_pair(name, new PhysicalInputPort(name,width,this)));
+	inports.insert(std::make_pair(name, (InputPort*)new PhysicalInputPort(name,width,this)));
 }
 
 void PhysicalFUInstance::addOutputPort(const std::string& name, int width){
-	outports.insert(std::make_pair(name,new PhysicalOutputPort(name,width,this)));
+	outports.insert(std::make_pair(name,(OutputPort*)new PhysicalOutputPort(name,width,this)));
 }

@@ -35,7 +35,7 @@ void ResourceAllocator::allocateResources(LogicalSideworks& physical_sideWorks,c
 		int n(s.second);
 		for(int i = 0; i < n; ++i){
 			std::string fu_name(fu_type+"_auto_"+std::to_string(i));
-			physical_sideWorks.addFU(fulib.getLogicalFUInstance(fu_type,fu_name));
+			physical_sideWorks.addFU(fulib.getPhysicalFUInstance(fu_type,fu_name));
 		}
 	}
 }
