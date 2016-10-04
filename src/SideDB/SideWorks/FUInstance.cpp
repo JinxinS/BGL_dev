@@ -6,6 +6,8 @@
  */
 
 #include <FUInstance.h>
+#include "OutputPort.h"
+#include "InputPort.h"
 
 FUInstance::FUInstance(const FUInstance& obj)
 :name(obj.name),
@@ -35,3 +37,25 @@ FUInstance::~FUInstance() {
 	// TODO Auto-generated destructor stub
 }
 
+InputPort* FUInstance::getInputPort(const std::string& i){
+	return inports.at(i);
+}
+
+OutputPort* FUInstance::getOutputPort(const std::string& o){
+	return outports.at(o);
+}
+
+void FUInstance::connect(const std::string& o, FUInstance* dst,const std::string& i){
+	outports.at(o)->connect(dst->getInputPort(i));
+}
+
+int FUInstance::size(){
+	int sz = 0;
+	for(auto i: inports){
+		sz += i.second->size();
+	}
+	for(auto o: outports){
+		sz += o.second->size();
+	}
+	return sz;
+}

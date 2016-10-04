@@ -11,13 +11,14 @@
 #include "FUInstance.h"
 class FUDescription;
 class PhysicalFUInstance:public FUInstance {
+	std::vector<FUInstance*> correspond_LogicalFUInstance;
 	virtual void addInputPort(const std::string&, int width);
 	virtual void addOutputPort(const std::string&, int width);
 public:
 	PhysicalFUInstance(const std::string& name,const std::string& type,FUDescription* desc);
 	virtual ~PhysicalFUInstance();
-	PhysicalFUInstance(const PhysicalFUInstance&);
-	PhysicalFUInstance& operator=(const PhysicalFUInstance&);
+	void place(FUInstance*);
+	bool isPlaced(int simid);
 };
 
 #endif /* PHYSICALFUINSTANCE_H_ */

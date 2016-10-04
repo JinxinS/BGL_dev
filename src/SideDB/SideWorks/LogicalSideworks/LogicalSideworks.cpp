@@ -8,9 +8,7 @@
 #include "LogicalSideworks.h"
 
 LogicalSideworks::LogicalSideworks()
-:Sideworks()
-
-{
+:Sideworks(){
 	// TODO Auto-generated constructor stub
 
 }

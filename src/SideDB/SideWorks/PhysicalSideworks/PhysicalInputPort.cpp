@@ -6,9 +6,10 @@
  */
 
 #include <PhysicalInputPort.h>
+#include "OutputPort.h"
 
 PhysicalInputPort::PhysicalInputPort(const std::string& name,int width,FUInstance* p)
-:Port(name, width, p)
+:InputPort(name, width, p)
 {
 	// TODO Auto-generated constructor stub
 
@@ -16,5 +17,20 @@ PhysicalInputPort::PhysicalInputPort(const std::string& name,int width,FUInstanc
 
 PhysicalInputPort::~PhysicalInputPort() {
 	// TODO Auto-generated destructor stub
+}
+
+int PhysicalInputPort::calcCost(Port* logOut){
+	if(logOut->isPlaced()){
+		for(auto o: source_outputs){
+			if(o.first->strictMatch(logOut)) return 0;
+		}
+		return 16*width;
+	}else{
+		int num_possible_ports = 0;
+		for(auto o: source_outputs){
+			if(o.first->match(logOut)) ++num_possible_ports;
+		}
+		return 16/(1<<num_possible_ports)*width;
+	}
 }
 

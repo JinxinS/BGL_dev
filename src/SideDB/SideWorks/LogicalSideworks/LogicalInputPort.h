@@ -8,11 +8,12 @@
 #ifndef LOGICALINPUTPORT_H_
 #define LOGICALINPUTPORT_H_
 
-#include "Port.h"
-class LogicalInputPort:public Port {
+#include "InputPort.h"
+class LogicalInputPort:public InputPort {
 public:
 	LogicalInputPort(const std::string& name,int width,FUInstance* p);
 	virtual ~LogicalInputPort();
+    int calcCost(Port* phyIn);
 };
 
 #endif /* LOGICALINPUTPORT_H_ */

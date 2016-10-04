@@ -10,10 +10,12 @@
 #include "Function.h"
 #include "LogicalInputPort.h"
 #include "LogicalOutputPort.h"
+#include "SideConfException.h"
 LogicalFUInstance::LogicalFUInstance(const std::string& name,const std::string& type,const std::string& func,FUDescription* desc)
 :FUInstance(name,type,desc),
  funcname(func),
- parameters(){
+ parameters(),
+ correspond_physicalFUInstance(NULL){
 	Function*  function = description->getFUFunction(funcname);
 	for(auto arg: function->getArgs()){
 		if(description->isInputPort(arg)){
@@ -33,9 +35,30 @@ LogicalFUInstance::~LogicalFUInstance() {
 
 
 void LogicalFUInstance::addInputPort(const std::string& name, int width){
-	inports.insert(std::make_pair(name,(InputPort*) new LogicalInputPort(name,width,this)));
+	inports.insert(std::make_pair(name, new LogicalInputPort(name,width,this)));
 }
 
 void LogicalFUInstance::addOutputPort(const std::string& name, int width){
-	outports.insert(std::make_pair(name,(OutputPort*)new LogicalOutputPort(name,width,this)));
+	outports.insert(std::make_pair(name,new LogicalOutputPort(name,width,this)));
 }
+
+void LogicalFUInstance::place(FUInstance* pfu){
+	if(correspond_physicalFUInstance != NULL) throw SideConfException("LogicalFUInstance" + name +"already has a placement to: "+correspond_physicalFUInstance->name);
+	correspond_physicalFUInstance = pfu;
+}
+
+double LogicalFUInstance::estimatePlacementDecisionCost(FUInstance* pfu){
+	int cost = 0 ;
+	int l_degree = 0;
+	for(auto i:inports){//logicalInput
+		cost += i.second->calcCost(pfu->getInputPort(i.first));
+		l_degree++;
+	}
+
+	for(auto o:outports){//logicalOutput
+		cost += o.second->calcCost(pfu->getOutputPort(o.first));
+		l_degree++;
+	}
+	return round(((double)cost)*pow(((double)std::max((pfu->size()+l_degree),l_degree)/(double)l_degree),0.1));
+}
+

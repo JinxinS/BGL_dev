@@ -10,6 +10,7 @@
 #include "sic_types.h"
 #include "FunctionalUnitLibrary.h"
 #include "LogicalSideworks.h"
+#include "PhysicalSideworks.h"
 
 class ResourceAllocator {
     std::map<std::string, unsigned int> fu_resources;
@@ -17,7 +18,7 @@ public:
 	ResourceAllocator();
 	virtual ~ResourceAllocator();
     void addLSiWResources(const std::vector<LogicalSideworks*>&);
-    void allocateResources(LogicalSideworks& physical_sideWorks,const FunctionalUnitLibrary& fulib);
+    void allocateResources(PhysicalSideworks& physical_sideWorks,const FunctionalUnitLibrary& fulib);
 };
 
 #endif /* RESOURCEALLOCATOR_H_ */

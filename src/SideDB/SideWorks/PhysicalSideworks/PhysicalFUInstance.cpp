@@ -11,7 +11,8 @@
 #include "PhysicalOutputPort.h"
 
 PhysicalFUInstance::PhysicalFUInstance(const std::string& name,const std::string& type,FUDescription* desc)
-:FUInstance(name,type,desc)
+:FUInstance(name,type,desc),
+ correspond_LogicalFUInstance()
 {
 	for(auto i: description->getInputPorts()){
 		addInputPort(i.first,i.second);
@@ -33,3 +34,12 @@ void PhysicalFUInstance::addInputPort(const std::string& name, int width){
 void PhysicalFUInstance::addOutputPort(const std::string& name, int width){
 	outports.insert(std::make_pair(name,(OutputPort*)new PhysicalOutputPort(name,width,this)));
 }
+
+void PhysicalFUInstance::place(FUInstance* lfu){
+	correspond_LogicalFUInstance.push_back(lfu);
+}
+
+bool PhysicalFUInstance::isPlaced(int simid){
+	return correspond_LogicalFUInstance.size() > (uint)simid;
+}
+

@@ -12,6 +12,7 @@
 #include <list>
 #include <unordered_map>
 #include <boost/foreach.hpp>
+#include <boost/format.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/filtered_graph.hpp>

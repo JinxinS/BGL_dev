@@ -29,7 +29,7 @@ void ResourceAllocator::addLSiWResources(const std::vector<LogicalSideworks*>& l
 	}
 }
 
-void ResourceAllocator::allocateResources(LogicalSideworks& physical_sideWorks,const FunctionalUnitLibrary& fulib){
+void ResourceAllocator::allocateResources(PhysicalSideworks& physical_sideWorks,const FunctionalUnitLibrary& fulib){
 	for(auto s:fu_resources){
 		std::string fu_type(s.first);
 		int n(s.second);

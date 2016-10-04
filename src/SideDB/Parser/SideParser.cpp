@@ -179,8 +179,7 @@ void SideParser::parseLogicalSideWorks(const FunctionalUnitLibrary& fulib,Logica
 							}else if(tokensize == 2){
 								src_out_pname = (++(tokens.begin())).current_token();
 								graph_t::vertex_descriptor src_logicFu = logical_sideworks->getFU(src_funame);
-								std::string connection = "from_"+src_out_pname+"_to_"+dst_in_pname;
-								logical_sideworks->addConection(src_logicFu,dest_logicFu,connection);
+								logical_sideworks->addConection(src_logicFu,dest_logicFu,src_out_pname,dst_in_pname);
 							}else{
 								throw SideConfException("bad input port format:["+value+"]");
 							}

@@ -8,8 +8,9 @@
 #ifndef PORT_H_
 #define PORT_H_
 #include <string>
-class FUInstance;
+#include "FUInstance.h"
 class Port {
+protected:
     std::string name;
     int width;
     FUInstance* parent;
@@ -18,6 +19,10 @@ public:
     Port& operator=(const Port&);
     Port(const std::string& name, int width, FUInstance* p);
 	virtual ~Port();
+	bool match(Port* p);
+	bool strictMatch(Port* p);
+	bool isPlaced(){ return parent->isPlaced(0); }
+	virtual int calcCost(Port* ){return 0;}
 };
 
 #endif /* PORT_H_ */

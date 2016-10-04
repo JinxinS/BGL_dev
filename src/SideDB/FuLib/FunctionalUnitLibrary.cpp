@@ -11,6 +11,7 @@
 #include "LogicalMemFUInstance.h"
 #include "SideConfException.h"
 #include "Control.h"
+#include "Mem.h"
 FunctionalUnitLibrary::FunctionalUnitLibrary():
 fu_desc_list(){
 	loadInternelFunctionalLib();
@@ -22,7 +23,7 @@ FunctionalUnitLibrary::~FunctionalUnitLibrary() {
 
 void FunctionalUnitLibrary::loadInternelFunctionalLib() {
 	fu_desc_list.insert(std::make_pair("SIW_CTRL",new Control()));
-
+	fu_desc_list.insert(std::make_pair("MEM",new Mem(12,12,4096)));
 }
 
 void FunctionalUnitLibrary::addFUDescription(const std::string &type,FUDescription* fu_desc){

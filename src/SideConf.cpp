@@ -15,12 +15,13 @@
 #include "LogicalSideworks.h"
 #include "FunctionalUnitLibrary.h"
 #include "ResourceAllocator.h"
+#include "Placer.h"
 
 SideConf::SideConf()
 : fu_library(),
   logical_sideworks_list(),
   physical_sideWorks(){
-    logging::core::get()->set_filter(logging::trivial::severity >= logging::trivial::fatal);
+    logging::core::get()->set_filter(logging::trivial::severity >= logging::trivial::info);
 }
 
 SideConf::~SideConf() {
@@ -80,6 +81,10 @@ void SideConf::generatePhysicalSideworks(){
 	ResourceAllocator r;
 	r.addLSiWResources(logical_sideworks_list);
 	r.allocateResources(physical_sideWorks,fu_library);
+    for(unsigned int i = 0; i < logical_sideworks_list.size(); i++){
+		BOOST_LOG_TRIVIAL(info)<<"Placing" <<i;
+    	Placer::place(logical_sideworks_list[i],physical_sideWorks,i);
+    }
 }
 
 

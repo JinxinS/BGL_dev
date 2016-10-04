@@ -13,13 +13,17 @@ class FUDescription;
 class LogicalFUInstance:public FUInstance {
 	std::string funcname;
 	std::unordered_map<std::string, long>			  parameters;
-	virtual void addInputPort(const std::string&, int width);
-	virtual void addOutputPort(const std::string&, int width);
+	FUInstance* correspond_physicalFUInstance;
+	void addInputPort(const std::string&, int width);
+	void addOutputPort(const std::string&, int width);
 public:
     LogicalFUInstance(const LogicalFUInstance&);
-    LogicalFUInstance& operator=(const LogicalFUInstance&);
+    LogicalFUInstance& operator=(const LogicalFUInstance&){}
 	LogicalFUInstance(const std::string& name,const std::string& type,const std::string& func,FUDescription* desc);
 	virtual ~LogicalFUInstance();
+
+	void place(FUInstance*);
+	double estimatePlacementDecisionCost(FUInstance*);
 };
 
 #endif /* LOGICALFUINSTANCE_H_ */

@@ -45,3 +45,45 @@ BOOST_AUTO_TEST_CASE(test_gmock1) {
     TestClass t(mholder);
     t.doCalc();
 }
+
+class outport;
+class port{
+public:
+	virtual void print(port*){std::cout <<"Base"<<std::endl;}
+};
+
+class inport:public port{
+public:
+	std::map < outport*, int > source_outputs;
+	virtual void print(port*){std::cout <<"inport"<<std::endl;}
+	void add(outport* o){
+		source_outputs.insert(std::make_pair((outport*)o,0));
+	}
+
+};
+
+class outport:public port{
+public:
+	//virtual void print(port*){std::cout <<"outport"<<std::endl;}
+};
+
+class loginport:public inport{
+public:
+	void print(port*){std::cout <<"loginport"<<std::endl;}
+};
+
+class phyinport:public inport{
+public:
+	void print(port* p){std::cout <<"phyinport"<<p<<std::endl;}
+};
+
+class logoutport:public outport{
+public:
+	//void print(port*){std::cout <<"logoutport"<<std::endl;}
+};
+
+//std::map<outport*,int> container;
+BOOST_AUTO_TEST_CASE(test3) {
+	loginport* in = new loginport();
+	in->add(new logoutport());
+}

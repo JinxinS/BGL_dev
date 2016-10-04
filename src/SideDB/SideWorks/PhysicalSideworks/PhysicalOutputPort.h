@@ -7,11 +7,12 @@
 
 #ifndef PHYSICALOUTPUTPORT_H_
 #define PHYSICALOUTPUTPORT_H_
-#include "Port.h"
-class PhysicalOutputPort :public Port {
+#include "OutputPort.h"
+class PhysicalOutputPort :public OutputPort {
 public:
 	PhysicalOutputPort(const std::string& name,int width,FUInstance* p);
 	virtual ~PhysicalOutputPort();
+	int calcCost(Port* logIn);
 };
 
 #endif /* PHYSICALOUTPUTPORT_H_ */

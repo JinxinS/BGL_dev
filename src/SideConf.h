@@ -10,11 +10,12 @@
 #include <vector>
 #include "FunctionalUnitLibrary.h"
 #include "LogicalSideworks.h"
+#include "PhysicalSideworks.h"
 class SideConf {
 private:
     FunctionalUnitLibrary 			fu_library;
     std::vector<LogicalSideworks*> 	logical_sideworks_list;
-    LogicalSideworks 				physical_sideWorks;
+    PhysicalSideworks 				physical_sideWorks;
 	SideConf(const SideConf&);
 	SideConf& operator=(const SideConf&);
     void parseArgs(int argc, char** argv);
