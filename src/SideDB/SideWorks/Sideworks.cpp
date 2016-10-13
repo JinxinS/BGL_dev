@@ -10,8 +10,8 @@
 #include "SideConfException.h"
 Sideworks::Sideworks()
 :resource_usage(),
-siw_graph(),
-fuList(){
+ siw_graph(),
+ fuList(){
 	// TODO Auto-generated constructor stub
 
 }
@@ -25,16 +25,18 @@ int Sideworks::size() const {
 }
 
 void Sideworks::addFU(FUInstance* fu){
+	vFuMap			 fuMap = get(boost::vertex_bundle, siw_graph);
 	++resource_usage[fu->type];
 	graph_t::vertex_descriptor v = boost::add_vertex(vertex_properties("",*fu), siw_graph);
 	fuList.push_back(fu);
 }
 
 
-void Sideworks::addConection(const graph_t::vertex_descriptor& v1,const graph_t::vertex_descriptor& v2,const std::string& o,const std::string& i){
-	BOOST_LOG_TRIVIAL(trace)<<"add edge "<<siw_graph[v1].name<<"."<<o<<" -> "<<siw_graph[v2].name<<"."<<i;
-	add_edge(v1,v2,edge_properties(o,edge_i_property(i)),siw_graph);
-	fuList[v1]->connect(o,fuList[v2],i);
+int Sideworks::addConection(const graph_t::vertex_descriptor& u,const graph_t::vertex_descriptor& v,const std::string& o,const std::string& i){
+	BOOST_LOG_TRIVIAL(trace)<<"add edge "<<siw_graph[u].name<<"."<<o<<" -> "<<siw_graph[v].name<<"."<<i;
+	if(!fuList[u]->isConnected(o,fuList[v],i)) add_edge(u,v,edge_properties(o,edge_i_property(i)),siw_graph);
+	int ret = fuList[u]->connect(o,fuList[v],i);
+	return ret;
 }
 
 graph_t::vertex_descriptor Sideworks::getFU(const std::string& kname){

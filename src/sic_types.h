@@ -102,6 +102,7 @@ typedef property_map<graph_t, vertex_bundle_t>::type vFuMap;
 typedef property_map<graph_t, edge_iname_t>::type edge_iname_map_t;
 typedef property_map<graph_t, edge_oname_t>::type edge_oname_map_t;
 
+typedef typename boost::graph_traits<graph_t>::edge_iterator  edge_iterator;
 } }
 
 

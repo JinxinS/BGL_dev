@@ -29,11 +29,12 @@ public:
 	FUInstance(const FUInstance& obj);
 	FUInstance(const std::string& name="no_name", const std::string& type="no_type", FUDescription* desc=0);
 	virtual ~FUInstance();
-
-	void connect(const std::string& o, FUInstance*,const std::string& i);
+	bool isConnected(const std::string& o, FUInstance* dst,const std::string& i);
+	int connect(const std::string& o, FUInstance*,const std::string& i);
 	InputPort*   getInputPort(const std::string&);
 	OutputPort* getOutputPort(const std::string&);
 	int size();
+	virtual FUInstance* correspondence(int)const{return NULL;}
 	virtual void place(FUInstance*){}
 	virtual bool isPlaced(int){ return false;}
 	virtual double estimatePlacementDecisionCost(FUInstance*){return 0;}

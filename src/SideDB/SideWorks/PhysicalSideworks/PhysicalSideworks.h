@@ -18,6 +18,7 @@ public:
 
 	void addFU(FUInstance* fu);
 	void place(FUInstance* lfu,int simid);
+	void route(FUInstance* lfu,int simid);
 };
 
 #endif /* PHYSICALSIDEWORKS_H_ */

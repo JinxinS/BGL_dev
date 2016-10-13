@@ -59,6 +59,8 @@ double LogicalFUInstance::estimatePlacementDecisionCost(FUInstance* pfu){
 		cost += o.second->calcCost(pfu->getOutputPort(o.first));
 		l_degree++;
 	}
-	return round(((double)cost)*pow(((double)std::max((pfu->size()+l_degree),l_degree)/(double)l_degree),0.1));
+	double val = round(((double)cost)*pow(((double)std::max((pfu->size()+l_degree),l_degree)/(double)l_degree),0.1));
+	//std::cout<<"cost @"<<pfu->name<<":"<<val<<" "<<pfu->size()<<" "<<l_degree<<std::endl;
+	return val;
 }
 

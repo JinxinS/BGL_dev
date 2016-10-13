@@ -21,7 +21,7 @@ public:
 	Sideworks();
 	virtual ~Sideworks();
 	virtual void addFU(FUInstance* fu);
-	void addConection(const graph_t::vertex_descriptor& v1,const graph_t::vertex_descriptor& v2,const std::string& o,const std::string& i);
+	int addConection(const graph_t::vertex_descriptor& v1,const graph_t::vertex_descriptor& v2,const std::string& o,const std::string& i);
 	graph_t::vertex_descriptor getFU(const std::string& kname);
 };
 

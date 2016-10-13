@@ -39,5 +39,10 @@ void PhysicalSideworks::place(FUInstance* lfu,int simid){
 	}
     lfu->place(best_fu);
     best_fu->place(lfu);
-    BOOST_LOG_TRIVIAL(info)<<boost::format("\nplace %-20s @ %-20s cost %-8f\n") %lfu->name %best_fu->name %best_fu_cost;
+    BOOST_LOG_TRIVIAL(info)<<boost::format("\nplace %-20s @ %-20s cost %-8f") %lfu->name %best_fu->name %best_fu_cost;
+}
+
+void PhysicalSideworks::route(FUInstance* lfu,int simid){
+
+
 }

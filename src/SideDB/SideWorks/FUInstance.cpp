@@ -45,8 +45,13 @@ OutputPort* FUInstance::getOutputPort(const std::string& o){
 	return outports.at(o);
 }
 
-void FUInstance::connect(const std::string& o, FUInstance* dst,const std::string& i){
-	outports.at(o)->connect(dst->getInputPort(i));
+bool FUInstance::isConnected(const std::string& o, FUInstance* dst,const std::string& i){
+	return outports.at(o)->isConnected(dst->getInputPort(i)) &&
+			dst->getInputPort(i)->isConnected(outports.at(o));
+}
+
+int FUInstance::connect(const std::string& o, FUInstance* dst,const std::string& i){
+	return outports.at(o)->connect(dst->getInputPort(i));
 }
 
 int FUInstance::size(){

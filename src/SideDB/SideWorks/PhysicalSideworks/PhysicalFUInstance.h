@@ -17,6 +17,7 @@ class PhysicalFUInstance:public FUInstance {
 public:
 	PhysicalFUInstance(const std::string& name,const std::string& type,FUDescription* desc);
 	virtual ~PhysicalFUInstance();
+	FUInstance* correspondence(int i)const {return correspond_LogicalFUInstance[i];}
 	void place(FUInstance*);
 	bool isPlaced(int simid);
 };

@@ -11,12 +11,14 @@
 #include <list>
 class InputPort;
 class OutputPort:public Port  {
+	friend std::ostream& operator<<(std::ostream& os, const InputPort& i);
 protected:
 	std::list<InputPort*> destination_inputs;
 public:
 	OutputPort(const std::string& name, int width, FUInstance* p);
 	virtual ~OutputPort();
-    void connect(InputPort* i);
+    int connect(InputPort* i);
+    bool isConnected(InputPort* i);
     bool isConnected(){ return !destination_inputs.empty();}
     int size(){return destination_inputs.size();}
 };

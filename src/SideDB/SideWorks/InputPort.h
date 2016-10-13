@@ -16,9 +16,12 @@ protected:
 public:
 	InputPort(const std::string& name, int width, FUInstance* p);
 	virtual ~InputPort();
-    void connect(OutputPort* out);
+    int connect(OutputPort* out);
+    void setMuxSelect(OutputPort*,int);
+    bool isConnected(OutputPort* out);
     bool isConnected(){ return !source_outputs.empty();}
     int size(){return source_outputs.size();}
+	friend std::ostream& operator<<(std::ostream& os, const InputPort& i);
 };
 
 #endif /* INPUTPORT_H_ */

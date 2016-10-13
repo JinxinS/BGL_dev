@@ -16,12 +16,13 @@
 #include "FunctionalUnitLibrary.h"
 #include "ResourceAllocator.h"
 #include "Placer.h"
+#include "Router.h"
 
 SideConf::SideConf()
 : fu_library(),
   logical_sideworks_list(),
   physical_sideWorks(){
-    logging::core::get()->set_filter(logging::trivial::severity >= logging::trivial::info);
+    logging::core::get()->set_filter(logging::trivial::severity >= logging::trivial::trace);
 }
 
 SideConf::~SideConf() {
@@ -72,8 +73,8 @@ void SideConf::loadLogicalSideworks(){
 	for(size_t i = 0; i < CmdLineParser::arguments.numofinputs; ++i ){
 		logical_sideworks_list.push_back(new LogicalSideworks());
 		SideParser::parseLogicalSideWorks(fu_library,logical_sideworks_list[i],CmdLineParser::arguments.inputs[i]);
-		std::cout<<"graph:"<<i<<std::endl;
-		print_graph(logical_sideworks_list[i]->getGraph(),get(boost::vertex_bundle,logical_sideworks_list[i]->getGraph()));
+		//std::cout<<"graph:"<<i<<std::endl;
+		//print_graph(logical_sideworks_list[i]->getGraph(),get(boost::vertex_bundle,logical_sideworks_list[i]->getGraph()));
 	}
 }
 
@@ -84,7 +85,9 @@ void SideConf::generatePhysicalSideworks(){
     for(unsigned int i = 0; i < logical_sideworks_list.size(); i++){
 		BOOST_LOG_TRIVIAL(info)<<"Placing" <<i;
     	Placer::place(logical_sideworks_list[i],physical_sideWorks,i);
+    	Router::route(logical_sideworks_list[i],physical_sideWorks,i);
     }
+	//print_graph(physical_sideWorks.getGraph(),get(boost::vertex_bundle,physical_sideWorks.getGraph()));
 }
 
 

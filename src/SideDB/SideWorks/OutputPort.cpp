@@ -19,8 +19,12 @@ OutputPort::~OutputPort() {
 	// TODO Auto-generated destructor stub
 }
 
+bool OutputPort::isConnected(InputPort* in){
+	return (std::find(destination_inputs.begin(),destination_inputs.end(),in) != destination_inputs.end());
+}
 
-void OutputPort::connect(InputPort* in){
-	destination_inputs.push_back(in);
-	in->connect(this);
+int OutputPort::connect(InputPort* in){
+	if(std::find(destination_inputs.begin(),destination_inputs.end(),in) != destination_inputs.end()){}
+	else destination_inputs.push_back(in);
+	return in->connect(this);
 }

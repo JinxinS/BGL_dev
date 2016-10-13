@@ -19,6 +19,7 @@ public:
     Port& operator=(const Port&);
     Port(const std::string& name, int width, FUInstance* p);
 	virtual ~Port();
+	const std::string& getName()const{return name;}
 	bool match(Port* p);
 	bool strictMatch(Port* p);
 	bool isPlaced(){ return parent->isPlaced(0); }

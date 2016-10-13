@@ -21,7 +21,7 @@ public:
     LogicalFUInstance& operator=(const LogicalFUInstance&){}
 	LogicalFUInstance(const std::string& name,const std::string& type,const std::string& func,FUDescription* desc);
 	virtual ~LogicalFUInstance();
-
+	FUInstance* correspondence(int)const {return correspond_physicalFUInstance;}
 	void place(FUInstance*);
 	double estimatePlacementDecisionCost(FUInstance*);
 };

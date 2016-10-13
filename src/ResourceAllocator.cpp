@@ -24,9 +24,6 @@ void ResourceAllocator::addLSiWResources(const std::vector<LogicalSideworks*>& l
     		if(fu_resources[x.first] < x.second) fu_resources[x.first] = x.second;
     	}
     }
-	for(auto s:fu_resources){
-		std::cout<<s.first<<"["<<s.second<<"]"<<std::endl;
-	}
 }
 
 void ResourceAllocator::allocateResources(PhysicalSideworks& physical_sideWorks,const FunctionalUnitLibrary& fulib){

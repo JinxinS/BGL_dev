@@ -18,6 +18,8 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/log/trivial.hpp>
 #include <boost/log/expressions.hpp>
+#include <boost/format.hpp>
+
 namespace logging = boost::log;
 
 BOOST_AUTO_TEST_CASE(test_case2) {
