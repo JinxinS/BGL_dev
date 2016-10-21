@@ -7,11 +7,9 @@
 
 #ifndef LOGICALOUTPUTPORT_H_
 #define LOGICALOUTPUTPORT_H_
-#include <list>
 #include "OutputPort.h"
 class LogicalInputPort;
 class LogicalOutputPort :public OutputPort{
-    std::list<LogicalInputPort*> destination_input;
 public:
     LogicalOutputPort(const std::string& name,int width,FUInstance* p);
 	virtual ~LogicalOutputPort();

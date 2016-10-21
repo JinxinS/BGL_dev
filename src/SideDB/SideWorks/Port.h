@@ -20,9 +20,10 @@ public:
     Port(const std::string& name, int width, FUInstance* p);
 	virtual ~Port();
 	const std::string& getName()const{return name;}
+    int getWidth() const { return width;}
 	bool match(Port* p);
 	bool strictMatch(Port* p);
-	bool isPlaced(){ return parent->isPlaced(0); }
+	bool isPlaced(){ /*std::cout<<parent->name<<"."<<this->name<<"["<<parent->isPlaced(0)<<"] \n";*/return parent->isPlaced(0); }
 	virtual int calcCost(Port* ){return 0;}
 };
 

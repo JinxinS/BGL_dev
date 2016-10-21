@@ -10,6 +10,8 @@
 #include "FUDescription.h"
 #include "FunctionalUnitLibrary.h"
 #include "LogicalSideworks.h"
+#include "Fixed.h"
+#include "Mem.h"
 const char* SideParser::tag_comment		="<xmlcomment>";
 const char* SideParser::tag_attr			="<xmlattr>";
 
@@ -103,7 +105,10 @@ void SideParser::parseFunctionalUnitLibrary(FunctionalUnitLibrary& fulib,const s
 	fulib.addFUDescription(type,fu_desc);
 }
 
-void SideParser::parseLogicalSideWorks(const FunctionalUnitLibrary& fulib,LogicalSideworks* logical_sideworks,  const char* filename){
+void SideParser::parseLogicalSideWorks(FunctionalUnitLibrary& fulib,LogicalSideworks* logical_sideworks,  const char* filename){
+	for (size_t i = 0, n = sizeof(Fixed::TYPES) / sizeof(Fixed::TYPES[0]); i < n; ++i){
+		logical_sideworks->addFU(fulib.getLogicalFUInstance(Fixed::TYPES[i],Fixed::TYPES[i],Fixed::FUNC_NAME));
+	}
 	// Create empty property tree object
 	BOOST_LOG_TRIVIAL(debug)<<"parsing"<<filename;
 	pt::ptree tree;
@@ -114,6 +119,16 @@ void SideParser::parseLogicalSideWorks(const FunctionalUnitLibrary& fulib,Logica
 	//datapath name
 	BOOST_LOG_TRIVIAL(debug)<<tree.get_child(tag).get_child(attr_name).data();
 	//
+	std::map<std::string,std::string> memory_map;
+	BOOST_FOREACH(pt::ptree::value_type &v, tree.get_child(tag)) {
+		if(v.first == tag_fuplace){//FU_PLACE
+			std::string f_fu_name(v.second.get_child(attr_funame).data());
+			std::string f_place_label(v.second.get_child(attr_label).data());
+			memory_map.insert(std::make_pair(f_fu_name,f_place_label));
+			BOOST_LOG_TRIVIAL(debug)<<"PLACE["<<f_fu_name<<"]@["<<f_place_label<<"]";
+		}
+	}
+
 	BOOST_FOREACH(pt::ptree::value_type &v, tree.get_child(tag)) {
 		if(v.first == tag_fumem){//FU_MEM
 			std::string f_fu_name(v.second.get_child(attr_funame).data());
@@ -121,13 +136,13 @@ void SideParser::parseLogicalSideWorks(const FunctionalUnitLibrary& fulib,Logica
 			int f_a_width = boost::lexical_cast<int>(v.second.get_child(attr_a_width).data());
 			int f_d_width = boost::lexical_cast<int>(v.second.get_child(attr_d_width).data());
 			BOOST_LOG_TRIVIAL(debug)<<f_fu_name<<" "<<f_a_width<<" "<<f_d_width<<" "<<f_nwords;
-			logical_sideworks->addFU(fulib.getLogicalMEMInstance(f_fu_name,f_a_width,f_d_width,f_nwords));
+			logical_sideworks->addFU(fulib.getLogicalMEMInstance(f_fu_name,f_a_width,f_d_width,f_nwords,memory_map.at(f_fu_name)));
 		}else if(v.first == tag_function){//FU_FUNCTION
 			std::string f_type_name(v.second.get_child(attr_tname).data());
 			std::string f_fu_name(v.second.get_child(attr_funame).data());
 			std::string f_func_name(v.second.get_child(attr_funcname).data());
 			BOOST_LOG_TRIVIAL(debug)<<f_fu_name<<" "<<f_type_name<<" "<<f_func_name;
-			logical_sideworks->addFU(fulib.getLogicalFUInstance(f_type_name,f_fu_name,f_func_name));
+			logical_sideworks->addFU(fulib.getLogicalFUInstance(f_fu_name,f_type_name,f_func_name));
 		}else if((v.first == tag_attr)||(v.first == tag_comment)){
 			//do nothing
 		}else{
@@ -136,22 +151,13 @@ void SideParser::parseLogicalSideWorks(const FunctionalUnitLibrary& fulib,Logica
 	}
 
 	BOOST_FOREACH(pt::ptree::value_type &v, tree.get_child(tag)) {
-		if(v.first == tag_fuplace){//FU_PLACE
+		if((v.first == tag_function)||(v.first == tag_fumem)){//FU_FUNCTION or FU_MEM
+			std::string f_type_name;
 			std::string f_fu_name(v.second.get_child(attr_funame).data());
-			std::string f_place_label(v.second.get_child(attr_funame).data());
-			//LogicalFUInstance* fu = logical_sideworks->getLogicalFU(f_fu_name);
-			BOOST_LOG_TRIVIAL(debug)<<"PLACE["<<f_fu_name<<"]@["<<f_place_label<<"]";
-		}
-		else if(v.first == tag_fumem){//FU_MEM
-			std::string f_fu_name(v.second.get_child(attr_funame).data());
-			BOOST_FOREACH(pt::ptree::value_type &m, v.second){
-				if(m.first == tag_funcarg ){
-					BOOST_LOG_TRIVIAL(trace)<<m.second.get_child(attr_name).data()<<"="<<m.second.get_child(attr_value).data();
-				}
-			}
-		}else if(v.first == tag_function){//FU_FUNCTION
-			std::string f_type_name(v.second.get_child(attr_tname).data());
-			std::string f_fu_name(v.second.get_child(attr_funame).data());
+			if(v.first == tag_function){
+				f_type_name = v.second.get_child(attr_tname).data();
+			}else f_type_name = Mem::TYPE;
+
 			graph_t::vertex_descriptor dest_logicFu = logical_sideworks->getFU(f_fu_name);
 			FUDescription* desc = fulib.getFUDescription(f_type_name);
 
@@ -161,21 +167,25 @@ void SideParser::parseLogicalSideWorks(const FunctionalUnitLibrary& fulib,Logica
 					std::string value(m.second.get_child(attr_value).data());
 					BOOST_LOG_TRIVIAL(trace)<<dst_in_pname<<"="<<value;
 					if(desc->isParameter(dst_in_pname)){
-
+						logical_sideworks->fuList[dest_logicFu]->setParameter(dst_in_pname,boost::lexical_cast<long>(value));
 					}else if(desc->isInputPort(dst_in_pname)){
+						std::string src_funame;
+						std::string src_out_pname;
 						if(value == "undefined"){
-
-
+							src_funame	  = Fixed::ZERO;
+							src_out_pname = Fixed::FIXED_OUT;
+							graph_t::vertex_descriptor src_logicFu = logical_sideworks->getFU(src_funame);
+							logical_sideworks->addFixedConection(src_logicFu,dest_logicFu,src_out_pname,dst_in_pname);
 						}else{
-							std::string src_funame;
-							std::string src_out_pname;
 							char_separator<char> sep(".");
 							tokenizer<char_separator<char>> tokens(value, sep);
 							int tokensize = std::distance(tokens.begin(),tokens.end());
 							src_funame = tokens.begin().current_token();
 
 							if(tokensize == 1){
-
+								src_out_pname = Fixed::FIXED_OUT;
+								graph_t::vertex_descriptor src_logicFu = logical_sideworks->getFU(src_funame);
+								logical_sideworks->addFixedConection(src_logicFu,dest_logicFu,src_out_pname,dst_in_pname);
 							}else if(tokensize == 2){
 								src_out_pname = (++(tokens.begin())).current_token();
 								graph_t::vertex_descriptor src_logicFu = logical_sideworks->getFU(src_funame);
@@ -189,4 +199,14 @@ void SideParser::parseLogicalSideWorks(const FunctionalUnitLibrary& fulib,Logica
 			}
 		}
 	}
+
+	//exclude unused Functional Unit in the Datapath, Note the siw_graph still contains the unused Functional Unit
+	BGL_FORALL_VERTICES(v, logical_sideworks->siw_graph, graph_t){
+		if(degree(v,logical_sideworks->siw_graph) == 0){
+			logical_sideworks->resource_usage[logical_sideworks->fuList[v]->type]--;
+			delete logical_sideworks->fuList[v];
+			logical_sideworks->fuList[v] = NULL;
+		}
+	}
+
 }

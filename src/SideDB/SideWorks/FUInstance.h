@@ -14,6 +14,9 @@ class OutputPort;
 class FUDescription;
 class FUInstance {
 	typedef boost::vertex_property_tag kind;
+	friend class PhysicalSideworks;
+	friend class LogicalSideworks;
+	friend class LogicalFUInstance;
 public:
 	std::string name;
 	std::string type;
@@ -21,23 +24,27 @@ public:
 protected:
 	std::unordered_map<std::string, InputPort*>		inports;
 	std::unordered_map<std::string, OutputPort*>	outports;
+	std::unordered_map<std::string, long>		 	parameters;
 	virtual void addInputPort(const std::string&, int)  {}
 	virtual void addOutputPort(const std::string&, int) {}
-
+	InputPort*   getInputPort(const std::string&);
+	OutputPort* getOutputPort(const std::string&);
 public:
 	FUInstance& operator=(const FUInstance&);
 	FUInstance(const FUInstance& obj);
 	FUInstance(const std::string& name="no_name", const std::string& type="no_type", FUDescription* desc=0);
 	virtual ~FUInstance();
-	bool isConnected(const std::string& o, FUInstance* dst,const std::string& i);
-	int connect(const std::string& o, FUInstance*,const std::string& i);
-	InputPort*   getInputPort(const std::string&);
-	OutputPort* getOutputPort(const std::string&);
 	int size();
+
+
+	void setParameter(const std::string&, long);
+	int connect(const std::string&, FUInstance*,const std::string&);
+	bool isConnected(const std::string&, FUInstance* ,const std::string&);
 	virtual FUInstance* correspondence(int)const{return NULL;}
 	virtual void place(FUInstance*){}
 	virtual bool isPlaced(int){ return false;}
 	virtual double estimatePlacementDecisionCost(FUInstance*){return 0;}
+	virtual void getReadXbarMuxCount(int*,int){}
 
 	friend std::ostream& operator<<(std::ostream& os, const FUInstance& o){
 		return os<<o.name;

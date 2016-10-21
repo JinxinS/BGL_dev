@@ -18,7 +18,7 @@ Placer::~Placer() {
 }
 
 void Placer::place(LogicalSideworks* logical_sideworks,PhysicalSideworks& physical_sideWorks,int simid){
-	for(auto lfu: logical_sideworks->getAllFU()){
-		physical_sideWorks.place(lfu,simid);
-	}
+	for(auto lfu:logical_sideworks->fuList)
+		if(lfu != NULL) physical_sideWorks.place(lfu,simid);
+
 }

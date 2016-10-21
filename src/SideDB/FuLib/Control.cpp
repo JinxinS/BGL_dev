@@ -1,10 +1,8 @@
 #include "Control.h"
 #include "Function.h"
 
-using std::string;
-
-const string Control::TYPE = "SIW_CTRL";
-const string Control::FUNC_NAME = "SIW_CTRL";
+const std::string Control::TYPE = "SIW_CTRL";
+const std::string Control::FUNC_NAME = "SIW_CTRL";
 
 Control::Control()
 :FUDescription(TYPE)

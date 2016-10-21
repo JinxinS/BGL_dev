@@ -1,0 +1,898 @@
+SideConf Version 3.1 (compiled on "Sep  9 2016")
+SideConf - SideWorks Architecture and Physical Configurations Generator
+
+Load XML Custom FU Library from "/coreworks/sideconf-dev/sideFU/release/xml/" ...Done!
+
+   Functional Units List:
+     SREG_16
+     REG_48
+     MUL_D4_32_64
+     CABAC
+     SIGN_EXT_8_32
+     SBSHIFT_48
+     REG_13
+     SHIFT_R10_32
+     LUT_4
+     BLU_32_1
+     ALU_32
+     MUX2TO1_24
+     OFFSET_12
+     BADD4_32
+     MUX2TO1_32
+     CLZ_D2_48
+     DFORMAT_32
+     BM
+     AAU_12
+     BLU_11
+     CNST_14
+     REG_01
+     DFORMAT_48
+     ALU_64
+     MUX4TO1_1
+     AAU_11
+     DLINE_1_16
+     ALU_48
+     SHIFT_24
+     LUT_32
+     SAT_LS_48
+     DLINE_48_16
+     DLINE_24_16
+     AAU_14
+     ALU_24
+     BADD_32
+     DLINE_11_16
+     BLU_4_1
+     MUL_D1_32_32
+     BD
+     REG_12
+     BADD3_32
+     MUL_D2_24_48
+     SSHIFT_32
+     CONC_32
+     BAU_11
+     REG_11
+     CNST_7
+     BSHIFT_32
+     CONC_2
+     CNST_48
+     ND
+     SAT_RS_32
+     BADD_12
+     BSHIFT_48
+     BLU_8_1
+     MUX4TO1_8
+     CLIP_16
+     BLU_32
+     CNST_12
+     DLINE_32_16
+     MUL_D4_24_48
+     REG_32
+     SSHIFT_64
+     SREG_12
+     MUX4TO4_32
+     MUX4TO4_16
+     MUX4TO1_32
+     DFORMAT_24
+     MUX2TO1_8
+     SEP_32
+     SIW_CTRL
+     BLU_1
+     CLIP_32
+     BLU_24
+     SREG_32
+     CNST_24
+     TU_4_4_11
+     SHIFT_32
+     TU_4_4_14
+     BAU_12
+     CLZ_D2_32
+     GENERIC_VALUE
+     BAU_13
+     REG_14
+     REG_64
+     RND_64_32
+     DLINE_1_8
+     BAU_14
+     SHIFT_64
+     SHIFT_48
+     SBSHIFT_32
+     MUX2TO1_1
+     REG_24
+     MUX2TO1_64
+     SREG_8
+     SHIFTER_32
+     RND_48_24
+     TU_4_4_12
+     CAU_11
+     ALU_8
+     CNST_11
+     REG_8
+     SHIFT_R5_32
+     RND_64_32_20b
+     CNST_32
+
+Load Contraints ...Done!
+
+Parsing Logical Configuration files:
+test/res/example2.xml
+test/res/example.xml
+time cost :0.011720second
+
+Combining Logical Configurations:
+
+MUX_0: 6556 	[0]
+
+MUX_1: 18 	[0]
+  Combining designs/get_chroma/func_get_chroma_0x.dsn:func_get_chroma_0x ...	
+-------------------func_get_chroma_0x-------------------
+designs/get_chroma/func_get_chroma_0x.dsn:0: Logical FU: const_32 placed at GENERIC_VALUE_g00
+designs/get_chroma/func_get_chroma_0x.dsn:0: Logical FU: const_64 placed at GENERIC_VALUE_g01
+designs/get_chroma/func_get_chroma_0x.dsn:0: Logical FU: m1 placed at MEM_g01
+designs/get_chroma/func_get_chroma_0x.dsn:0: Logical FU: ONE placed at ONE_g00
+designs/get_chroma/func_get_chroma_0x.dsn:0: Logical FU: THREE placed at THREE_g00
+designs/get_chroma/func_get_chroma_0x.dsn:0: Logical FU: TWO placed at TWO_g00
+designs/get_chroma/func_get_chroma_0x.dsn:0: Logical FU: ZERO placed at ZERO_g00
+designs/get_chroma/func_get_chroma_0x.dsn:0: Logical FU: fIXED128 placed at fIXED128_g00
+designs/get_chroma/func_get_chroma_0x.dsn:0: Logical FU: fIXED31 placed at fIXED31_g00
+designs/get_chroma/func_get_chroma_0x.dsn:0: Logical FU: mONE placed at mONE_g00
+designs/get_chroma/func_get_chroma_0x.dsn:0: Logical FU: mTWO placed at mTWO_g00
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: siw_ctrl placed at SIW_CTRL_SIW_CTRL_auto_0
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: concA placed at CONC_32_CONC_32_g0_auto_0
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: concB placed at CONC_32_CONC_32_g0_auto_1
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: tu_wr placed at TU_4_4_12_TU_4_4_12_g0_auto_0
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: tu_rd placed at TU_4_4_12_TU_4_4_12_g0_auto_1
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: sepA placed at SEP_32_SEP_32_g0_auto_0
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: sepB placed at SEP_32_SEP_32_g0_auto_1
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: bau_i_rdA placed at BAU_12_BAU_12_g0_auto_0
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: bau_i_rdB placed at BAU_12_BAU_12_g0_auto_1
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: bau_i_wrA placed at BAU_12_BAU_12_g0_auto_10
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: bau_j_rdA placed at BAU_12_BAU_12_g0_auto_11
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: bau_j_rdB placed at BAU_12_BAU_12_g0_auto_12
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: bau_j_wrA placed at BAU_12_BAU_12_g0_auto_13
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: bau_k_rdA placed at BAU_12_BAU_12_g0_auto_2
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: bau_k_rdB placed at BAU_12_BAU_12_g0_auto_3
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: bau_k_wrA placed at BAU_12_BAU_12_g0_auto_4
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: byte_mux placed at BM_BM_g0_auto_0
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: t0 placed at BADD3_32_BADD3_32_g0_auto_0
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: t1 placed at BADD3_32_BADD3_32_g0_auto_1
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: t2 placed at BADD3_32_BADD3_32_g0_auto_2
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: t3 placed at BADD3_32_BADD3_32_g0_auto_3
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: mult0_0 placed at MUL_D4_32_64_MUL_D4_32_64_g0_auto_0
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: mult0_1 placed at MUL_D4_32_64_MUL_D4_32_64_g0_auto_1
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: mult1_0 placed at MUL_D4_32_64_MUL_D4_32_64_g0_auto_2
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: mult1_1 placed at MUL_D4_32_64_MUL_D4_32_64_g0_auto_3
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: mult2_0 placed at MUL_D4_32_64_MUL_D4_32_64_g0_auto_4
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: mult2_1 placed at MUL_D4_32_64_MUL_D4_32_64_g0_auto_5
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: mult3_0 placed at MUL_D4_32_64_MUL_D4_32_64_g0_auto_6
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: mult3_1 placed at MUL_D4_32_64_MUL_D4_32_64_g0_auto_7
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: badd0 placed at BADD_32_BADD_32_g0_auto_0
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: badd1 placed at BADD_32_BADD_32_g0_auto_1
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: badd2 placed at BADD_32_BADD_32_g0_auto_10
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: badd3 placed at BADD_32_BADD_32_g0_auto_2
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: shift0 placed at SHIFT_R5_32_SHIFT_R5_32_g0_auto_0
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: shift1 placed at SHIFT_R5_32_SHIFT_R5_32_g0_auto_1
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: shift2 placed at SHIFT_R5_32_SHIFT_R5_32_g0_auto_2
+designs/get_chroma/func_get_chroma_0x.dsn:0: WARNING: Automatic place for Logical FU: shift3 placed at SHIFT_R5_32_SHIFT_R5_32_g0_auto_3
+	 PLACE(&siw_ctrl, "SIW_CTRL_auto_0");
+	 PLACE(&concA, "CONC_32_g0_auto_0");
+	 PLACE(&concB, "CONC_32_g0_auto_1");
+	 PLACE(&tu_wr, "TU_4_4_12_g0_auto_0");
+	 PLACE(&tu_rd, "TU_4_4_12_g0_auto_1");
+	 PLACE(&sepA, "SEP_32_g0_auto_0");
+	 PLACE(&sepB, "SEP_32_g0_auto_1");
+	 PLACE(&bau_i_rdA, "BAU_12_g0_auto_0");
+	 PLACE(&bau_i_rdB, "BAU_12_g0_auto_1");
+	 PLACE(&bau_i_wrA, "BAU_12_g0_auto_10");
+	 PLACE(&bau_j_rdA, "BAU_12_g0_auto_11");
+	 PLACE(&bau_j_rdB, "BAU_12_g0_auto_12");
+	 PLACE(&bau_j_wrA, "BAU_12_g0_auto_13");
+	 PLACE(&bau_k_rdA, "BAU_12_g0_auto_2");
+	 PLACE(&bau_k_rdB, "BAU_12_g0_auto_3");
+	 PLACE(&bau_k_wrA, "BAU_12_g0_auto_4");
+	 PLACE(&byte_mux, "BM_g0_auto_0");
+	 PLACE(&t0, "BADD3_32_g0_auto_0");
+	 PLACE(&t1, "BADD3_32_g0_auto_1");
+	 PLACE(&t2, "BADD3_32_g0_auto_2");
+	 PLACE(&t3, "BADD3_32_g0_auto_3");
+	 PLACE(&mult0_0, "MUL_D4_32_64_g0_auto_0");
+	 PLACE(&mult0_1, "MUL_D4_32_64_g0_auto_1");
+	 PLACE(&mult1_0, "MUL_D4_32_64_g0_auto_2");
+	 PLACE(&mult1_1, "MUL_D4_32_64_g0_auto_3");
+	 PLACE(&mult2_0, "MUL_D4_32_64_g0_auto_4");
+	 PLACE(&mult2_1, "MUL_D4_32_64_g0_auto_5");
+	 PLACE(&mult3_0, "MUL_D4_32_64_g0_auto_6");
+	 PLACE(&mult3_1, "MUL_D4_32_64_g0_auto_7");
+	 PLACE(&badd0, "BADD_32_g0_auto_0");
+	 PLACE(&badd1, "BADD_32_g0_auto_1");
+	 PLACE(&badd2, "BADD_32_g0_auto_10");
+	 PLACE(&badd3, "BADD_32_g0_auto_2");
+	 PLACE(&shift0, "SHIFT_R5_32_g0_auto_0");
+	 PLACE(&shift1, "SHIFT_R5_32_g0_auto_1");
+	 PLACE(&shift2, "SHIFT_R5_32_g0_auto_2");
+	 PLACE(&shift3, "SHIFT_R5_32_g0_auto_3");
+
+-------------------
+New connection :t0{@BADD3_32_BADD3_32_g0_auto_0}.i0 from shift0{@SHIFT_R5_32_SHIFT_R5_32_g0_auto_0}.out[ 32*mux_1]
+New connection :t0{@BADD3_32_BADD3_32_g0_auto_0}.i1 from ONE{@ONE_g00}.fixed_out_32[ 32*mux_1]
+New connection :t0{@BADD3_32_BADD3_32_g0_auto_0}.i2 from ZERO{@ZERO_g00}.fixed_out_32[ 32*mux_1]
+New connection :t1{@BADD3_32_BADD3_32_g0_auto_1}.i0 from shift1{@SHIFT_R5_32_SHIFT_R5_32_g0_auto_1}.out[ 32*mux_1]
+New connection :t1{@BADD3_32_BADD3_32_g0_auto_1}.i1 from ONE{@ONE_g00}.fixed_out_32[ 32*mux_1]
+New connection :t1{@BADD3_32_BADD3_32_g0_auto_1}.i2 from ZERO{@ZERO_g00}.fixed_out_32[ 32*mux_1]
+New connection :t2{@BADD3_32_BADD3_32_g0_auto_2}.i0 from shift2{@SHIFT_R5_32_SHIFT_R5_32_g0_auto_2}.out[ 32*mux_1]
+New connection :t2{@BADD3_32_BADD3_32_g0_auto_2}.i1 from ONE{@ONE_g00}.fixed_out_32[ 32*mux_1]
+New connection :t2{@BADD3_32_BADD3_32_g0_auto_2}.i2 from ZERO{@ZERO_g00}.fixed_out_32[ 32*mux_1]
+New connection :t3{@BADD3_32_BADD3_32_g0_auto_3}.i0 from shift3{@SHIFT_R5_32_SHIFT_R5_32_g0_auto_3}.out[ 32*mux_1]
+New connection :t3{@BADD3_32_BADD3_32_g0_auto_3}.i1 from ONE{@ONE_g00}.fixed_out_32[ 32*mux_1]
+New connection :t3{@BADD3_32_BADD3_32_g0_auto_3}.i2 from ZERO{@ZERO_g00}.fixed_out_32[ 32*mux_1]
+New connection :badd0{@BADD_32_BADD_32_g0_auto_0}.i0 from mult0_0{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_0}.out[ 32*mux_1]
+New connection :badd0{@BADD_32_BADD_32_g0_auto_0}.i1 from mult0_1{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_1}.out[ 32*mux_1]
+New connection :badd1{@BADD_32_BADD_32_g0_auto_1}.i0 from mult1_0{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_2}.out[ 32*mux_1]
+New connection :badd1{@BADD_32_BADD_32_g0_auto_1}.i1 from mult1_1{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_3}.out[ 32*mux_1]
+New connection :badd2{@BADD_32_BADD_32_g0_auto_10}.i0 from mult2_0{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_4}.out[ 32*mux_1]
+New connection :badd2{@BADD_32_BADD_32_g0_auto_10}.i1 from mult2_1{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_5}.out[ 32*mux_1]
+New connection :badd3{@BADD_32_BADD_32_g0_auto_2}.i0 from mult3_0{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_6}.out[ 32*mux_1]
+New connection :badd3{@BADD_32_BADD_32_g0_auto_2}.i1 from mult3_1{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_7}.out[ 32*mux_1]
+New connection :bau_i_rdA{@BAU_12_BAU_12_g0_auto_0}.cmp from ZERO{@ZERO_g00}.fixed_out_12[ 12*mux_1]
+New connection :bau_i_rdA{@BAU_12_BAU_12_g0_auto_0}.en from tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_1}.enable_I_[ 1*mux_1]
+New connection :bau_i_rdA{@BAU_12_BAU_12_g0_auto_0}.inc from const_64{@GENERIC_VALUE_g01}.out[ 12*mux_1]
+New connection :bau_i_rdA{@BAU_12_BAU_12_g0_auto_0}.ld from tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_1}.start_I_[ 1*mux_1]
+New connection :bau_i_rdA{@BAU_12_BAU_12_g0_auto_0}.ld_val from concA{@CONC_32_CONC_32_g0_auto_0}.out[ 12*mux_1]
+New connection :bau_i_rdB{@BAU_12_BAU_12_g0_auto_1}.cmp from ZERO{@ZERO_g00}.fixed_out_12[ 12*mux_1]
+New connection :bau_i_rdB{@BAU_12_BAU_12_g0_auto_1}.en from tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_1}.enable_I_[ 1*mux_1]
+New connection :bau_i_rdB{@BAU_12_BAU_12_g0_auto_1}.inc from const_64{@GENERIC_VALUE_g01}.out[ 12*mux_1]
+New connection :bau_i_rdB{@BAU_12_BAU_12_g0_auto_1}.ld from tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_1}.start_I_[ 1*mux_1]
+New connection :bau_i_rdB{@BAU_12_BAU_12_g0_auto_1}.ld_val from concB{@CONC_32_CONC_32_g0_auto_1}.out[ 12*mux_1]
+New connection :bau_i_wrA{@BAU_12_BAU_12_g0_auto_10}.cmp from ZERO{@ZERO_g00}.fixed_out_12[ 12*mux_1]
+New connection :bau_i_wrA{@BAU_12_BAU_12_g0_auto_10}.en from tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_0}.enable_I_[ 1*mux_1]
+New connection :bau_i_wrA{@BAU_12_BAU_12_g0_auto_10}.inc from const_32{@GENERIC_VALUE_g00}.out[ 12*mux_1]
+New connection :bau_i_wrA{@BAU_12_BAU_12_g0_auto_10}.ld from tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_0}.start_I_[ 1*mux_1]
+New connection :bau_i_wrA{@BAU_12_BAU_12_g0_auto_10}.ld_val from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.out3[ 12*mux_1]
+New connection :bau_j_rdA{@BAU_12_BAU_12_g0_auto_11}.cmp from ZERO{@ZERO_g00}.fixed_out_12[ 12*mux_1]
+New connection :bau_j_rdA{@BAU_12_BAU_12_g0_auto_11}.en from tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_1}.enable_J_[ 1*mux_1]
+New connection :bau_j_rdA{@BAU_12_BAU_12_g0_auto_11}.inc from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.out2[ 12*mux_1]
+New connection :bau_j_rdA{@BAU_12_BAU_12_g0_auto_11}.ld from tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_1}.start_J_[ 1*mux_1]
+New connection :bau_j_rdA{@BAU_12_BAU_12_g0_auto_11}.ld_val from bau_i_rdA{@BAU_12_BAU_12_g0_auto_0}.out[ 12*mux_1]
+New connection :bau_j_rdB{@BAU_12_BAU_12_g0_auto_12}.cmp from ZERO{@ZERO_g00}.fixed_out_12[ 12*mux_1]
+New connection :bau_j_rdB{@BAU_12_BAU_12_g0_auto_12}.en from tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_1}.enable_J_[ 1*mux_1]
+New connection :bau_j_rdB{@BAU_12_BAU_12_g0_auto_12}.inc from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.out2[ 12*mux_1]
+New connection :bau_j_rdB{@BAU_12_BAU_12_g0_auto_12}.ld from tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_1}.start_J_[ 1*mux_1]
+New connection :bau_j_rdB{@BAU_12_BAU_12_g0_auto_12}.ld_val from bau_i_rdB{@BAU_12_BAU_12_g0_auto_1}.out[ 12*mux_1]
+New connection :bau_j_wrA{@BAU_12_BAU_12_g0_auto_13}.cmp from ZERO{@ZERO_g00}.fixed_out_12[ 12*mux_1]
+New connection :bau_j_wrA{@BAU_12_BAU_12_g0_auto_13}.en from tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_0}.enable_J_[ 1*mux_1]
+New connection :bau_j_wrA{@BAU_12_BAU_12_g0_auto_13}.inc from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.out2[ 12*mux_1]
+New connection :bau_j_wrA{@BAU_12_BAU_12_g0_auto_13}.ld from tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_0}.start_J_[ 1*mux_1]
+New connection :bau_j_wrA{@BAU_12_BAU_12_g0_auto_13}.ld_val from bau_i_wrA{@BAU_12_BAU_12_g0_auto_10}.out[ 12*mux_1]
+New connection :bau_k_rdA{@BAU_12_BAU_12_g0_auto_2}.cmp from ZERO{@ZERO_g00}.fixed_out_12[ 12*mux_1]
+New connection :bau_k_rdA{@BAU_12_BAU_12_g0_auto_2}.en from tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_1}.enable_K_[ 1*mux_1]
+New connection :bau_k_rdA{@BAU_12_BAU_12_g0_auto_2}.inc from ONE{@ONE_g00}.fixed_out_12[ 12*mux_1]
+New connection :bau_k_rdA{@BAU_12_BAU_12_g0_auto_2}.ld from tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_1}.start_K_[ 1*mux_1]
+New connection :bau_k_rdA{@BAU_12_BAU_12_g0_auto_2}.ld_val from bau_j_rdA{@BAU_12_BAU_12_g0_auto_11}.out[ 12*mux_1]
+New connection :bau_k_rdB{@BAU_12_BAU_12_g0_auto_3}.cmp from ZERO{@ZERO_g00}.fixed_out_12[ 12*mux_1]
+New connection :bau_k_rdB{@BAU_12_BAU_12_g0_auto_3}.en from tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_1}.enable_K_[ 1*mux_1]
+New connection :bau_k_rdB{@BAU_12_BAU_12_g0_auto_3}.inc from ONE{@ONE_g00}.fixed_out_12[ 12*mux_1]
+New connection :bau_k_rdB{@BAU_12_BAU_12_g0_auto_3}.ld from tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_1}.start_K_[ 1*mux_1]
+New connection :bau_k_rdB{@BAU_12_BAU_12_g0_auto_3}.ld_val from bau_j_rdB{@BAU_12_BAU_12_g0_auto_12}.out[ 12*mux_1]
+New connection :bau_k_wrA{@BAU_12_BAU_12_g0_auto_4}.cmp from ZERO{@ZERO_g00}.fixed_out_12[ 12*mux_1]
+New connection :bau_k_wrA{@BAU_12_BAU_12_g0_auto_4}.en from tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_0}.enable_K_[ 1*mux_1]
+New connection :bau_k_wrA{@BAU_12_BAU_12_g0_auto_4}.inc from ONE{@ONE_g00}.fixed_out_12[ 12*mux_1]
+New connection :bau_k_wrA{@BAU_12_BAU_12_g0_auto_4}.ld from tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_0}.start_K_[ 1*mux_1]
+New connection :bau_k_wrA{@BAU_12_BAU_12_g0_auto_4}.ld_val from bau_j_wrA{@BAU_12_BAU_12_g0_auto_13}.out[ 12*mux_1]
+New connection :byte_mux{@BM_BM_g0_auto_0}.i0 from t0{@BADD3_32_BADD3_32_g0_auto_0}.out[ 8*mux_1]
+New connection :byte_mux{@BM_BM_g0_auto_0}.i1 from t1{@BADD3_32_BADD3_32_g0_auto_1}.out[ 8*mux_1]
+New connection :byte_mux{@BM_BM_g0_auto_0}.i2 from t2{@BADD3_32_BADD3_32_g0_auto_2}.out[ 8*mux_1]
+New connection :byte_mux{@BM_BM_g0_auto_0}.i3 from t3{@BADD3_32_BADD3_32_g0_auto_3}.out[ 8*mux_1]
+New connection :concA{@CONC_32_CONC_32_g0_auto_0}.b0 from sepA{@SEP_32_SEP_32_g0_auto_0}.b0[ 1*mux_1]
+New connection :concA{@CONC_32_CONC_32_g0_auto_0}.b1 from sepA{@SEP_32_SEP_32_g0_auto_0}.b1[ 1*mux_1]
+New connection :concA{@CONC_32_CONC_32_g0_auto_0}.b10 from ZERO{@ZERO_g00}.fixed_out_1[ 1*mux_1]
+New connection :concA{@CONC_32_CONC_32_g0_auto_0}.b11 from ZERO{@ZERO_g00}.fixed_out_1[ 1*mux_1]
+New connection :concA{@CONC_32_CONC_32_g0_auto_0}.b12 from ZERO{@ZERO_g00}.fixed_out_1[ 1*mux_1]
+New connection :concA{@CONC_32_CONC_32_g0_auto_0}.b13 from ZERO{@ZERO_g00}.fixed_out_1[ 1*mux_1]
+New connection :concA{@CONC_32_CONC_32_g0_auto_0}.b14 from ZERO{@ZERO_g00}.fixed_out_1[ 1*mux_1]
+New connection :concA{@CONC_32_CONC_32_g0_auto_0}.b15 from ZERO{@ZERO_g00}.fixed_out_1[ 1*mux_1]
+New connection :concA{@CONC_32_CONC_32_g0_auto_0}.b2 from sepA{@SEP_32_SEP_32_g0_auto_0}.b2[ 1*mux_1]
+New connection :concA{@CONC_32_CONC_32_g0_auto_0}.b3 from sepA{@SEP_32_SEP_32_g0_auto_0}.b3[ 1*mux_1]
+New connection :concA{@CONC_32_CONC_32_g0_auto_0}.b4 from sepA{@SEP_32_SEP_32_g0_auto_0}.b4[ 1*mux_1]
+New connection :concA{@CONC_32_CONC_32_g0_auto_0}.b5 from sepA{@SEP_32_SEP_32_g0_auto_0}.b5[ 1*mux_1]
+New connection :concA{@CONC_32_CONC_32_g0_auto_0}.b6 from sepA{@SEP_32_SEP_32_g0_auto_0}.b6[ 1*mux_1]
+New connection :concA{@CONC_32_CONC_32_g0_auto_0}.b7 from sepA{@SEP_32_SEP_32_g0_auto_0}.b7[ 1*mux_1]
+New connection :concA{@CONC_32_CONC_32_g0_auto_0}.b8 from ONE{@ONE_g00}.fixed_out_1[ 1*mux_1]
+New connection :concA{@CONC_32_CONC_32_g0_auto_0}.b9 from ONE{@ONE_g00}.fixed_out_1[ 1*mux_1]
+New connection :concB{@CONC_32_CONC_32_g0_auto_1}.b0 from sepB{@SEP_32_SEP_32_g0_auto_1}.b0[ 1*mux_1]
+New connection :concB{@CONC_32_CONC_32_g0_auto_1}.b1 from sepB{@SEP_32_SEP_32_g0_auto_1}.b1[ 1*mux_1]
+New connection :concB{@CONC_32_CONC_32_g0_auto_1}.b10 from ZERO{@ZERO_g00}.fixed_out_1[ 1*mux_1]
+New connection :concB{@CONC_32_CONC_32_g0_auto_1}.b11 from ZERO{@ZERO_g00}.fixed_out_1[ 1*mux_1]
+New connection :concB{@CONC_32_CONC_32_g0_auto_1}.b12 from ZERO{@ZERO_g00}.fixed_out_1[ 1*mux_1]
+New connection :concB{@CONC_32_CONC_32_g0_auto_1}.b13 from ZERO{@ZERO_g00}.fixed_out_1[ 1*mux_1]
+New connection :concB{@CONC_32_CONC_32_g0_auto_1}.b14 from ZERO{@ZERO_g00}.fixed_out_1[ 1*mux_1]
+New connection :concB{@CONC_32_CONC_32_g0_auto_1}.b15 from ZERO{@ZERO_g00}.fixed_out_1[ 1*mux_1]
+New connection :concB{@CONC_32_CONC_32_g0_auto_1}.b2 from sepB{@SEP_32_SEP_32_g0_auto_1}.b2[ 1*mux_1]
+New connection :concB{@CONC_32_CONC_32_g0_auto_1}.b3 from sepB{@SEP_32_SEP_32_g0_auto_1}.b3[ 1*mux_1]
+New connection :concB{@CONC_32_CONC_32_g0_auto_1}.b4 from sepB{@SEP_32_SEP_32_g0_auto_1}.b4[ 1*mux_1]
+New connection :concB{@CONC_32_CONC_32_g0_auto_1}.b5 from sepB{@SEP_32_SEP_32_g0_auto_1}.b5[ 1*mux_1]
+New connection :concB{@CONC_32_CONC_32_g0_auto_1}.b6 from sepB{@SEP_32_SEP_32_g0_auto_1}.b6[ 1*mux_1]
+New connection :concB{@CONC_32_CONC_32_g0_auto_1}.b7 from sepB{@SEP_32_SEP_32_g0_auto_1}.b7[ 1*mux_1]
+New connection :concB{@CONC_32_CONC_32_g0_auto_1}.b8 from ONE{@ONE_g00}.fixed_out_1[ 1*mux_1]
+New connection :concB{@CONC_32_CONC_32_g0_auto_1}.b9 from ONE{@ONE_g00}.fixed_out_1[ 1*mux_1]
+New connection :m1{@MEM_g01}.address_a from bau_k_wrA{@BAU_12_BAU_12_g0_auto_4}.out[ 10*mux_1]
+New connection :m1{@MEM_g01}.data_in_a from byte_mux{@BM_BM_g0_auto_0}.out[ 32*mux_1]
+New connection :m1{@MEM_g01}.write_a from tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_0}.enable_K_[ 1*mux_2]
+New connection :mult0_0{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_0}.i0 from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.m0A_out0[ 32*mux_1]
+New connection :mult0_0{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_0}.i1 from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.out6[ 32*mux_1]
+New connection :mult0_0{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_0}.lohi from ONE{@ONE_g00}.fixed_out_1[ 1*mux_1]
+New connection :mult0_1{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_1}.i0 from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.m0B_out0[ 32*mux_1]
+New connection :mult0_1{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_1}.i1 from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.out7[ 32*mux_1]
+New connection :mult0_1{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_1}.lohi from ONE{@ONE_g00}.fixed_out_1[ 1*mux_1]
+New connection :mult1_0{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_2}.i0 from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.m0A_out1[ 32*mux_1]
+New connection :mult1_0{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_2}.i1 from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.out6[ 32*mux_1]
+New connection :mult1_0{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_2}.lohi from ONE{@ONE_g00}.fixed_out_1[ 1*mux_1]
+New connection :mult1_1{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_3}.i0 from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.m0B_out1[ 32*mux_1]
+New connection :mult1_1{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_3}.i1 from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.out7[ 32*mux_1]
+New connection :mult1_1{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_3}.lohi from ONE{@ONE_g00}.fixed_out_1[ 1*mux_1]
+New connection :mult2_0{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_4}.i0 from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.m0A_out2[ 32*mux_1]
+New connection :mult2_0{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_4}.i1 from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.out6[ 32*mux_1]
+New connection :mult2_0{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_4}.lohi from ONE{@ONE_g00}.fixed_out_1[ 1*mux_1]
+New connection :mult2_1{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_5}.i0 from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.m0B_out2[ 32*mux_1]
+New connection :mult2_1{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_5}.i1 from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.out7[ 32*mux_1]
+New connection :mult2_1{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_5}.lohi from ONE{@ONE_g00}.fixed_out_1[ 1*mux_1]
+New connection :mult3_0{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_6}.i0 from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.m0A_out3[ 32*mux_1]
+New connection :mult3_0{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_6}.i1 from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.out6[ 32*mux_1]
+New connection :mult3_0{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_6}.lohi from ONE{@ONE_g00}.fixed_out_1[ 1*mux_1]
+New connection :mult3_1{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_7}.i0 from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.m0B_out3[ 32*mux_1]
+New connection :mult3_1{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_7}.i1 from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.out7[ 32*mux_1]
+New connection :mult3_1{@MUL_D4_32_64_MUL_D4_32_64_g0_auto_7}.lohi from ONE{@ONE_g00}.fixed_out_1[ 1*mux_1]
+New connection :sepA{@SEP_32_SEP_32_g0_auto_0}.in from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.out4[ 32*mux_1]
+New connection :sepB{@SEP_32_SEP_32_g0_auto_1}.in from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.out5[ 32*mux_1]
+New connection :shift0{@SHIFT_R5_32_SHIFT_R5_32_g0_auto_0}.in from badd0{@BADD_32_BADD_32_g0_auto_0}.add[ 32*mux_1]
+New connection :shift1{@SHIFT_R5_32_SHIFT_R5_32_g0_auto_1}.in from badd1{@BADD_32_BADD_32_g0_auto_1}.add[ 32*mux_1]
+New connection :shift2{@SHIFT_R5_32_SHIFT_R5_32_g0_auto_2}.in from badd2{@BADD_32_BADD_32_g0_auto_10}.add[ 32*mux_1]
+New connection :shift3{@SHIFT_R5_32_SHIFT_R5_32_g0_auto_3}.in from badd3{@BADD_32_BADD_32_g0_auto_2}.add[ 32*mux_1]
+New connection :siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.done from tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_0}.done[ 1*mux_1]
+New connection :siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.in_addr_a from ZERO{@ZERO_g00}.fixed_out_8[ 8*mux_1]
+New connection :siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.in_addr_b from ZERO{@ZERO_g00}.fixed_out_8[ 8*mux_1]
+New connection :siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.is_last from ZERO{@ZERO_g00}.fixed_out_1[ 1*mux_1]
+New connection :siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.m0_addr_a from bau_k_rdA{@BAU_12_BAU_12_g0_auto_2}.out[ 12*mux_1]
+New connection :siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.m0_addr_b from bau_k_rdB{@BAU_12_BAU_12_g0_auto_3}.out[ 12*mux_1]
+New connection :siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.next from ZERO{@ZERO_g00}.fixed_out_7[ 7*mux_1]
+New connection :siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.rd_next from ZERO{@ZERO_g00}.fixed_out_1[ 1*mux_1]
+New connection :tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_1}.en from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.en[ 1*mux_1]
+New connection :tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_1}.limit_h from ZERO{@ZERO_g00}.fixed_out_12[ 12*mux_1]
+New connection :tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_1}.limit_i from ONE{@ONE_g00}.fixed_out_12[ 12*mux_1]
+New connection :tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_1}.limit_j from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.out1[ 12*mux_1]
+New connection :tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_1}.limit_k from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.out0[ 12*mux_1]
+New connection :tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_0}.en from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.en[ 1*mux_1]
+New connection :tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_0}.limit_h from ZERO{@ZERO_g00}.fixed_out_12[ 12*mux_1]
+New connection :tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_0}.limit_i from ONE{@ONE_g00}.fixed_out_12[ 12*mux_1]
+New connection :tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_0}.limit_j from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.out1[ 12*mux_1]
+New connection :tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_0}.limit_k from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.out0[ 12*mux_1]
+
+MUX_0: 4608 	[0]
+
+MUX_1: 1965 	[0]
+
+MUX_2: 1 	[1]
+-------------------
+-------------------func_get_chroma_0x-------------------
+
+Done!
+  Combining designs/inverse/recon8x8.dsn:recon8x8 ...	
+-------------------recon8x8-------------------
+designs/inverse/recon8x8.dsn:0: Logical FU: const_11 placed at GENERIC_VALUE_g02
+designs/inverse/recon8x8.dsn:0: Logical FU: const_12 placed at GENERIC_VALUE_g03
+designs/inverse/recon8x8.dsn:0: Logical FU: const_16 placed at GENERIC_VALUE_g04
+designs/inverse/recon8x8.dsn:0: Logical FU: const_255 placed at GENERIC_VALUE_g05
+designs/inverse/recon8x8.dsn:0: Logical FU: const_4 placed at GENERIC_VALUE_g06
+designs/inverse/recon8x8.dsn:0: Logical FU: const_8 placed at GENERIC_VALUE_g07
+designs/inverse/recon8x8.dsn:0: Logical FU: const_m3 placed at GENERIC_VALUE_g08
+designs/inverse/recon8x8.dsn:0: Logical FU: m0 placed at MEM_g00
+designs/inverse/recon8x8.dsn:0: Logical FU: m1 placed at MEM_g01
+designs/inverse/recon8x8.dsn:0: Logical FU: m3 placed at MEM_g03
+designs/inverse/recon8x8.dsn:0: Logical FU: m4 placed at MEM_g04
+designs/inverse/recon8x8.dsn:0: Logical FU: m5 placed at MEM_g05
+designs/inverse/recon8x8.dsn:0: Logical FU: m6 placed at MEM_g06
+designs/inverse/recon8x8.dsn:0: Logical FU: m7 placed at MEM_g07
+designs/inverse/recon8x8.dsn:0: Logical FU: m8 placed at MEM_g08
+designs/inverse/recon8x8.dsn:0: Logical FU: m9 placed at MEM_g09
+designs/inverse/recon8x8.dsn:0: Logical FU: ONE placed at ONE_g00
+designs/inverse/recon8x8.dsn:0: Logical FU: THREE placed at THREE_g00
+designs/inverse/recon8x8.dsn:0: Logical FU: TWO placed at TWO_g00
+designs/inverse/recon8x8.dsn:0: Logical FU: ZERO placed at ZERO_g00
+designs/inverse/recon8x8.dsn:0: Logical FU: fIXED128 placed at fIXED128_g00
+designs/inverse/recon8x8.dsn:0: Logical FU: fIXED31 placed at fIXED31_g00
+designs/inverse/recon8x8.dsn:0: Logical FU: mONE placed at mONE_g00
+designs/inverse/recon8x8.dsn:0: Logical FU: mTWO placed at mTWO_g00
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: siw_ctrl placed at SIW_CTRL_SIW_CTRL_auto_0
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: nd placed at ND_ND_g0_auto_0
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: tu_wr placed at TU_4_4_12_TU_4_4_12_g0_auto_1
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: tu_rd placed at TU_4_4_12_TU_4_4_12_g0_auto_0
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: bau_k_wr_up_inc placed at BAU_12_BAU_12_g0_auto_2
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: sel_rd_aux placed at BAU_12_BAU_12_g0_auto_4
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: bau_j_rd_0A placed at BAU_12_BAU_12_g0_auto_13
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: bau_j_rd_0B placed at BAU_12_BAU_12_g0_auto_0
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: bau_j_rd_A placed at BAU_12_BAU_12_g0_auto_1
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: bau_j_rd_B placed at BAU_12_BAU_12_g0_auto_10
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: bau_j_wr_uplr_B placed at BAU_12_BAU_12_g0_auto_11
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: bau_k_rd_0A placed at BAU_12_BAU_12_g0_auto_12
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: bau_k_rd_0B placed at BAU_12_BAU_12_g0_auto_3
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: bau_k_rd_A placed at BAU_12_BAU_12_g0_auto_5
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: bau_k_rd_B placed at BAU_12_BAU_12_g0_auto_6
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: bau_k_wr_left_A placed at BAU_12_BAU_12_g0_auto_7
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: bau_k_wr_up_A placed at BAU_12_BAU_12_g0_auto_8
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: bau_k_wr_uplr_B placed at BAU_12_BAU_12_g0_auto_9
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: bau_j_wr_A placed at BAU_14_BAU_14_g0_auto_0
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: bau_j_wr_B placed at BAU_14_BAU_14_g0_auto_1
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: bau_k_wr_A placed at BAU_14_BAU_14_g0_auto_2
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: bau_k_wr_B placed at BAU_14_BAU_14_g0_auto_3
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: res0 placed at MUX4TO1_32_MUX4TO1_32_g0_auto_0
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: res1 placed at MUX4TO1_32_MUX4TO1_32_g0_auto_1
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: res2 placed at MUX4TO1_32_MUX4TO1_32_g0_auto_2
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: res3 placed at MUX4TO1_32_MUX4TO1_32_g0_auto_3
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: res4 placed at MUX4TO1_32_MUX4TO1_32_g0_auto_4
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: res5 placed at MUX4TO1_32_MUX4TO1_32_g0_auto_5
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: res6 placed at MUX4TO1_32_MUX4TO1_32_g0_auto_6
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: res7 placed at MUX4TO1_32_MUX4TO1_32_g0_auto_7
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: byte_demux_A placed at BD_BD_g0_auto_0
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: byte_demux_B placed at BD_BD_g0_auto_1
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: byte_mux_A placed at BM_BM_g0_auto_1
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: byte_mux_B placed at BM_BM_g0_auto_2
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: byte_mux_left placed at BM_BM_g0_auto_0
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: t0 placed at BADD3_32_BADD3_32_g0_auto_0
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: t1 placed at BADD3_32_BADD3_32_g0_auto_1
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: t2 placed at BADD3_32_BADD3_32_g0_auto_2
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: t3 placed at BADD3_32_BADD3_32_g0_auto_3
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: t4 placed at BADD3_32_BADD3_32_g0_auto_4
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: t5 placed at BADD3_32_BADD3_32_g0_auto_5
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: t6 placed at BADD3_32_BADD3_32_g0_auto_6
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: t7 placed at BADD3_32_BADD3_32_g0_auto_7
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: clip0 placed at CLIP_32_CLIP_32_g0_auto_0
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: clip1 placed at CLIP_32_CLIP_32_g0_auto_1
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: clip2 placed at CLIP_32_CLIP_32_g0_auto_2
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: clip3 placed at CLIP_32_CLIP_32_g0_auto_3
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: clip4 placed at CLIP_32_CLIP_32_g0_auto_4
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: clip5 placed at CLIP_32_CLIP_32_g0_auto_5
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: clip6 placed at CLIP_32_CLIP_32_g0_auto_6
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: clip7 placed at CLIP_32_CLIP_32_g0_auto_7
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: bau_rd_inc_dly placed at MUX2TO1_32_MUX2TO1_32_g0_auto_0
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: aau_uprl_ld placed at BADD_32_BADD_32_g0_auto_3
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: aau_wr_le placed at BADD_32_BADD_32_g0_auto_4
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: badd0 placed at BADD_32_BADD_32_g0_auto_5
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: badd1 placed at BADD_32_BADD_32_g0_auto_6
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: badd2 placed at BADD_32_BADD_32_g0_auto_7
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: badd3 placed at BADD_32_BADD_32_g0_auto_8
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: badd4 placed at BADD_32_BADD_32_g0_auto_9
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: badd5 placed at BADD_32_BADD_32_g0_auto_0
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: badd6 placed at BADD_32_BADD_32_g0_auto_1
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: badd7 placed at BADD_32_BADD_32_g0_auto_10
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: bau_wr_ldB placed at BADD_32_BADD_32_g0_auto_2
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: wr_en_le placed at BLU_1_BLU_1_g0_auto_0
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: wr_en_up placed at BLU_1_BLU_1_g0_auto_1
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: reg_k_rd_1A placed at SREG_12_SREG_12_g0_auto_0
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: reg_k_rd_1B placed at SREG_12_SREG_12_g0_auto_1
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: reg_res0A placed at SREG_32_SREG_32_g0_auto_0
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: reg_res0B placed at SREG_32_SREG_32_g0_auto_1
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: reg_res1A placed at SREG_32_SREG_32_g0_auto_2
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: reg_res1B placed at SREG_32_SREG_32_g0_auto_3
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: reg_res2A placed at SREG_32_SREG_32_g0_auto_4
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: reg_res2B placed at SREG_32_SREG_32_g0_auto_5
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: reg_res3A placed at SREG_32_SREG_32_g0_auto_6
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: reg_res3B placed at SREG_32_SREG_32_g0_auto_7
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: reg_v0 placed at SREG_32_SREG_32_g0_auto_8
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: reg_v2 placed at SREG_32_SREG_32_g0_auto_9
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: wr_en placed at DLINE_1_16_DLINE_1_16_g0_auto_0
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: bau_wr_inc_dly placed at DLINE_32_16_DLINE_32_16_g0_auto_0
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: sel placed at DLINE_32_16_DLINE_32_16_g0_auto_1
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: ioff_en placed at SEP_32_SEP_32_g0_auto_0
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: joff_en placed at SEP_32_SEP_32_g0_auto_1
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: shift0 placed at SHIFT_R5_32_SHIFT_R5_32_g0_auto_0
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: shift1 placed at SHIFT_R5_32_SHIFT_R5_32_g0_auto_1
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: shift2 placed at SHIFT_R5_32_SHIFT_R5_32_g0_auto_2
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: shift3 placed at SHIFT_R5_32_SHIFT_R5_32_g0_auto_3
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: shift4 placed at SHIFT_R5_32_SHIFT_R5_32_g0_auto_4
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: shift5 placed at SHIFT_R5_32_SHIFT_R5_32_g0_auto_5
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: shift6 placed at SHIFT_R5_32_SHIFT_R5_32_g0_auto_6
+designs/inverse/recon8x8.dsn:0: WARNING: Automatic place for Logical FU: shift7 placed at SHIFT_R5_32_SHIFT_R5_32_g0_auto_7
+	 PLACE(&siw_ctrl, "SIW_CTRL_auto_0");
+	 PLACE(&nd, "ND_g0_auto_0");
+	 PLACE(&tu_wr, "TU_4_4_12_g0_auto_1");
+	 PLACE(&tu_rd, "TU_4_4_12_g0_auto_0");
+	 PLACE(&bau_k_wr_up_inc, "BAU_12_g0_auto_2");
+	 PLACE(&sel_rd_aux, "BAU_12_g0_auto_4");
+	 PLACE(&bau_j_rd_0A, "BAU_12_g0_auto_13");
+	 PLACE(&bau_j_rd_0B, "BAU_12_g0_auto_0");
+	 PLACE(&bau_j_rd_A, "BAU_12_g0_auto_1");
+	 PLACE(&bau_j_rd_B, "BAU_12_g0_auto_10");
+	 PLACE(&bau_j_wr_uplr_B, "BAU_12_g0_auto_11");
+	 PLACE(&bau_k_rd_0A, "BAU_12_g0_auto_12");
+	 PLACE(&bau_k_rd_0B, "BAU_12_g0_auto_3");
+	 PLACE(&bau_k_rd_A, "BAU_12_g0_auto_5");
+	 PLACE(&bau_k_rd_B, "BAU_12_g0_auto_6");
+	 PLACE(&bau_k_wr_left_A, "BAU_12_g0_auto_7");
+	 PLACE(&bau_k_wr_up_A, "BAU_12_g0_auto_8");
+	 PLACE(&bau_k_wr_uplr_B, "BAU_12_g0_auto_9");
+	 PLACE(&bau_j_wr_A, "BAU_14_g0_auto_0");
+	 PLACE(&bau_j_wr_B, "BAU_14_g0_auto_1");
+	 PLACE(&bau_k_wr_A, "BAU_14_g0_auto_2");
+	 PLACE(&bau_k_wr_B, "BAU_14_g0_auto_3");
+	 PLACE(&res0, "MUX4TO1_32_g0_auto_0");
+	 PLACE(&res1, "MUX4TO1_32_g0_auto_1");
+	 PLACE(&res2, "MUX4TO1_32_g0_auto_2");
+	 PLACE(&res3, "MUX4TO1_32_g0_auto_3");
+	 PLACE(&res4, "MUX4TO1_32_g0_auto_4");
+	 PLACE(&res5, "MUX4TO1_32_g0_auto_5");
+	 PLACE(&res6, "MUX4TO1_32_g0_auto_6");
+	 PLACE(&res7, "MUX4TO1_32_g0_auto_7");
+	 PLACE(&byte_demux_A, "BD_g0_auto_0");
+	 PLACE(&byte_demux_B, "BD_g0_auto_1");
+	 PLACE(&byte_mux_A, "BM_g0_auto_1");
+	 PLACE(&byte_mux_B, "BM_g0_auto_2");
+	 PLACE(&byte_mux_left, "BM_g0_auto_0");
+	 PLACE(&t0, "BADD3_32_g0_auto_0");
+	 PLACE(&t1, "BADD3_32_g0_auto_1");
+	 PLACE(&t2, "BADD3_32_g0_auto_2");
+	 PLACE(&t3, "BADD3_32_g0_auto_3");
+	 PLACE(&t4, "BADD3_32_g0_auto_4");
+	 PLACE(&t5, "BADD3_32_g0_auto_5");
+	 PLACE(&t6, "BADD3_32_g0_auto_6");
+	 PLACE(&t7, "BADD3_32_g0_auto_7");
+	 PLACE(&clip0, "CLIP_32_g0_auto_0");
+	 PLACE(&clip1, "CLIP_32_g0_auto_1");
+	 PLACE(&clip2, "CLIP_32_g0_auto_2");
+	 PLACE(&clip3, "CLIP_32_g0_auto_3");
+	 PLACE(&clip4, "CLIP_32_g0_auto_4");
+	 PLACE(&clip5, "CLIP_32_g0_auto_5");
+	 PLACE(&clip6, "CLIP_32_g0_auto_6");
+	 PLACE(&clip7, "CLIP_32_g0_auto_7");
+	 PLACE(&bau_rd_inc_dly, "MUX2TO1_32_g0_auto_0");
+	 PLACE(&aau_uprl_ld, "BADD_32_g0_auto_3");
+	 PLACE(&aau_wr_le, "BADD_32_g0_auto_4");
+	 PLACE(&badd0, "BADD_32_g0_auto_5");
+	 PLACE(&badd1, "BADD_32_g0_auto_6");
+	 PLACE(&badd2, "BADD_32_g0_auto_7");
+	 PLACE(&badd3, "BADD_32_g0_auto_8");
+	 PLACE(&badd4, "BADD_32_g0_auto_9");
+	 PLACE(&badd5, "BADD_32_g0_auto_0");
+	 PLACE(&badd6, "BADD_32_g0_auto_1");
+	 PLACE(&badd7, "BADD_32_g0_auto_10");
+	 PLACE(&bau_wr_ldB, "BADD_32_g0_auto_2");
+	 PLACE(&wr_en_le, "BLU_1_g0_auto_0");
+	 PLACE(&wr_en_up, "BLU_1_g0_auto_1");
+	 PLACE(&reg_k_rd_1A, "SREG_12_g0_auto_0");
+	 PLACE(&reg_k_rd_1B, "SREG_12_g0_auto_1");
+	 PLACE(&reg_res0A, "SREG_32_g0_auto_0");
+	 PLACE(&reg_res0B, "SREG_32_g0_auto_1");
+	 PLACE(&reg_res1A, "SREG_32_g0_auto_2");
+	 PLACE(&reg_res1B, "SREG_32_g0_auto_3");
+	 PLACE(&reg_res2A, "SREG_32_g0_auto_4");
+	 PLACE(&reg_res2B, "SREG_32_g0_auto_5");
+	 PLACE(&reg_res3A, "SREG_32_g0_auto_6");
+	 PLACE(&reg_res3B, "SREG_32_g0_auto_7");
+	 PLACE(&reg_v0, "SREG_32_g0_auto_8");
+	 PLACE(&reg_v2, "SREG_32_g0_auto_9");
+	 PLACE(&wr_en, "DLINE_1_16_g0_auto_0");
+	 PLACE(&bau_wr_inc_dly, "DLINE_32_16_g0_auto_0");
+	 PLACE(&sel, "DLINE_32_16_g0_auto_1");
+	 PLACE(&ioff_en, "SEP_32_g0_auto_0");
+	 PLACE(&joff_en, "SEP_32_g0_auto_1");
+	 PLACE(&shift0, "SHIFT_R5_32_g0_auto_0");
+	 PLACE(&shift1, "SHIFT_R5_32_g0_auto_1");
+	 PLACE(&shift2, "SHIFT_R5_32_g0_auto_2");
+	 PLACE(&shift3, "SHIFT_R5_32_g0_auto_3");
+	 PLACE(&shift4, "SHIFT_R5_32_g0_auto_4");
+	 PLACE(&shift5, "SHIFT_R5_32_g0_auto_5");
+	 PLACE(&shift6, "SHIFT_R5_32_g0_auto_6");
+	 PLACE(&shift7, "SHIFT_R5_32_g0_auto_7");
+
+-------------------
+New connection :t4{@BADD3_32_BADD3_32_g0_auto_4}.i0 from shift4{@SHIFT_R5_32_SHIFT_R5_32_g0_auto_4}.out[ 32*mux_1]
+New connection :t4{@BADD3_32_BADD3_32_g0_auto_4}.i1 from ONE{@ONE_g00}.fixed_out_32[ 32*mux_1]
+New connection :t4{@BADD3_32_BADD3_32_g0_auto_4}.i2 from ZERO{@ZERO_g00}.fixed_out_32[ 32*mux_1]
+New connection :t5{@BADD3_32_BADD3_32_g0_auto_5}.i0 from shift5{@SHIFT_R5_32_SHIFT_R5_32_g0_auto_5}.out[ 32*mux_1]
+New connection :t5{@BADD3_32_BADD3_32_g0_auto_5}.i1 from ONE{@ONE_g00}.fixed_out_32[ 32*mux_1]
+New connection :t5{@BADD3_32_BADD3_32_g0_auto_5}.i2 from ZERO{@ZERO_g00}.fixed_out_32[ 32*mux_1]
+New connection :t6{@BADD3_32_BADD3_32_g0_auto_6}.i0 from shift6{@SHIFT_R5_32_SHIFT_R5_32_g0_auto_6}.out[ 32*mux_1]
+New connection :t6{@BADD3_32_BADD3_32_g0_auto_6}.i1 from ONE{@ONE_g00}.fixed_out_32[ 32*mux_1]
+New connection :t6{@BADD3_32_BADD3_32_g0_auto_6}.i2 from ZERO{@ZERO_g00}.fixed_out_32[ 32*mux_1]
+New connection :t7{@BADD3_32_BADD3_32_g0_auto_7}.i0 from shift7{@SHIFT_R5_32_SHIFT_R5_32_g0_auto_7}.out[ 32*mux_1]
+New connection :t7{@BADD3_32_BADD3_32_g0_auto_7}.i1 from ONE{@ONE_g00}.fixed_out_32[ 32*mux_1]
+New connection :t7{@BADD3_32_BADD3_32_g0_auto_7}.i2 from ZERO{@ZERO_g00}.fixed_out_32[ 32*mux_1]
+New connection :aau_uprl_ld{@BADD_32_BADD_32_g0_auto_3}.i0 from nd{@ND_ND_g0_auto_0}.urMO_[ 32*mux_1]
+New connection :aau_uprl_ld{@BADD_32_BADD_32_g0_auto_3}.i1 from mONE{@mONE_g00}.fixed_out_32[ 32*mux_1]
+New connection :aau_wr_le{@BADD_32_BADD_32_g0_auto_4}.i0 from nd{@ND_ND_g0_auto_0}.leMO_[ 32*mux_1]
+New connection :aau_wr_le{@BADD_32_BADD_32_g0_auto_4}.i1 from const_12{@GENERIC_VALUE_g03}.out[ 32*mux_1]
+New connection :badd0{@BADD_32_BADD_32_g0_auto_5}.i0 from t0{@BADD3_32_BADD3_32_g0_auto_0}.out[ 32*mux_1]
+New connection :badd0{@BADD_32_BADD_32_g0_auto_5}.i1 from byte_demux_A{@BD_BD_g0_auto_0}.out0[ 32*mux_1]
+New connection :badd1{@BADD_32_BADD_32_g0_auto_6}.i0 from t1{@BADD3_32_BADD3_32_g0_auto_1}.out[ 32*mux_1]
+New connection :badd1{@BADD_32_BADD_32_g0_auto_6}.i1 from byte_demux_A{@BD_BD_g0_auto_0}.out1[ 32*mux_1]
+New connection :badd2{@BADD_32_BADD_32_g0_auto_7}.i0 from t2{@BADD3_32_BADD3_32_g0_auto_2}.out[ 32*mux_1]
+New connection :badd2{@BADD_32_BADD_32_g0_auto_7}.i1 from byte_demux_A{@BD_BD_g0_auto_0}.out2[ 32*mux_1]
+New connection :badd3{@BADD_32_BADD_32_g0_auto_8}.i0 from t3{@BADD3_32_BADD3_32_g0_auto_3}.out[ 32*mux_1]
+New connection :badd3{@BADD_32_BADD_32_g0_auto_8}.i1 from byte_demux_A{@BD_BD_g0_auto_0}.out3[ 32*mux_1]
+New connection :badd4{@BADD_32_BADD_32_g0_auto_9}.i0 from t4{@BADD3_32_BADD3_32_g0_auto_4}.out[ 32*mux_1]
+New connection :badd4{@BADD_32_BADD_32_g0_auto_9}.i1 from byte_demux_B{@BD_BD_g0_auto_1}.out0[ 32*mux_1]
+New connection :badd5{@BADD_32_BADD_32_g0_auto_0}.i0 from t5{@BADD3_32_BADD3_32_g0_auto_5}.out[ 32*mux_2]
+New connection :badd5{@BADD_32_BADD_32_g0_auto_0}.i1 from byte_demux_B{@BD_BD_g0_auto_1}.out1[ 32*mux_2]
+New connection :badd6{@BADD_32_BADD_32_g0_auto_1}.i0 from t6{@BADD3_32_BADD3_32_g0_auto_6}.out[ 32*mux_2]
+New connection :badd6{@BADD_32_BADD_32_g0_auto_1}.i1 from byte_demux_B{@BD_BD_g0_auto_1}.out2[ 32*mux_2]
+New connection :badd7{@BADD_32_BADD_32_g0_auto_10}.i0 from t7{@BADD3_32_BADD3_32_g0_auto_7}.out[ 32*mux_2]
+New connection :badd7{@BADD_32_BADD_32_g0_auto_10}.i1 from byte_demux_B{@BD_BD_g0_auto_1}.out3[ 32*mux_2]
+New connection :bau_wr_ldB{@BADD_32_BADD_32_g0_auto_2}.i0 from nd{@ND_ND_g0_auto_0}.ulMO_[ 32*mux_2]
+New connection :bau_wr_ldB{@BADD_32_BADD_32_g0_auto_2}.i1 from const_8{@GENERIC_VALUE_g07}.out[ 32*mux_2]
+New connection :bau_j_rd_0A{@BAU_12_BAU_12_g0_auto_13}.inc from const_16{@GENERIC_VALUE_g04}.out[ 12*mux_2]
+New connection :bau_j_rd_0A{@BAU_12_BAU_12_g0_auto_13}.ld_val from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.out4[ 12*mux_2]
+New connection :bau_j_rd_0B{@BAU_12_BAU_12_g0_auto_0}.en from tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_0}.enable_J_[ 1*mux_2]
+New connection :bau_j_rd_0B{@BAU_12_BAU_12_g0_auto_0}.inc from const_16{@GENERIC_VALUE_g04}.out[ 12*mux_2]
+New connection :bau_j_rd_0B{@BAU_12_BAU_12_g0_auto_0}.ld from tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_0}.start_J_[ 1*mux_2]
+New connection :bau_j_rd_0B{@BAU_12_BAU_12_g0_auto_0}.ld_val from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.out5[ 12*mux_2]
+New connection :bau_j_rd_A{@BAU_12_BAU_12_g0_auto_1}.en from tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_0}.enable_J_[ 1*mux_2]
+New connection :bau_j_rd_A{@BAU_12_BAU_12_g0_auto_1}.inc from const_16{@GENERIC_VALUE_g04}.out[ 12*mux_2]
+New connection :bau_j_rd_A{@BAU_12_BAU_12_g0_auto_1}.ld from tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_0}.start_J_[ 1*mux_2]
+New connection :bau_j_rd_A{@BAU_12_BAU_12_g0_auto_1}.ld_val from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.out2[ 12*mux_2]
+New connection :bau_j_rd_B{@BAU_12_BAU_12_g0_auto_10}.en from tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_0}.enable_J_[ 1*mux_2]
+New connection :bau_j_rd_B{@BAU_12_BAU_12_g0_auto_10}.inc from const_16{@GENERIC_VALUE_g04}.out[ 12*mux_2]
+New connection :bau_j_rd_B{@BAU_12_BAU_12_g0_auto_10}.ld from tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_0}.start_J_[ 1*mux_2]
+New connection :bau_j_wr_uplr_B{@BAU_12_BAU_12_g0_auto_11}.inc from const_16{@GENERIC_VALUE_g04}.out[ 12*mux_2]
+New connection :bau_j_wr_uplr_B{@BAU_12_BAU_12_g0_auto_11}.ld_val from aau_uprl_ld{@BADD_32_BADD_32_g0_auto_3}.add[ 12*mux_2]
+New connection :bau_k_rd_0A{@BAU_12_BAU_12_g0_auto_12}.en from tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_0}.enable_K_[ 1*mux_2]
+New connection :bau_k_rd_0A{@BAU_12_BAU_12_g0_auto_12}.inc from TWO{@TWO_g00}.fixed_out_12[ 12*mux_2]
+New connection :bau_k_rd_0A{@BAU_12_BAU_12_g0_auto_12}.ld from tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_0}.start_K_[ 1*mux_2]
+New connection :bau_k_rd_0A{@BAU_12_BAU_12_g0_auto_12}.ld_val from bau_j_rd_0A{@BAU_12_BAU_12_g0_auto_13}.out[ 12*mux_2]
+New connection :bau_k_rd_0B{@BAU_12_BAU_12_g0_auto_3}.en from tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_0}.enable_K_[ 1*mux_2]
+New connection :bau_k_rd_0B{@BAU_12_BAU_12_g0_auto_3}.inc from TWO{@TWO_g00}.fixed_out_12[ 12*mux_2]
+New connection :bau_k_rd_0B{@BAU_12_BAU_12_g0_auto_3}.ld from tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_0}.start_K_[ 1*mux_2]
+New connection :bau_k_rd_0B{@BAU_12_BAU_12_g0_auto_3}.ld_val from bau_j_rd_0B{@BAU_12_BAU_12_g0_auto_0}.out[ 12*mux_2]
+New connection :bau_k_rd_A{@BAU_12_BAU_12_g0_auto_5}.cmp from ZERO{@ZERO_g00}.fixed_out_12[ 12*mux_1]
+New connection :bau_k_rd_A{@BAU_12_BAU_12_g0_auto_5}.en from tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_0}.enable_K_[ 1*mux_1]
+New connection :bau_k_rd_A{@BAU_12_BAU_12_g0_auto_5}.inc from bau_rd_inc_dly{@MUX2TO1_32_MUX2TO1_32_g0_auto_0}.out[ 12*mux_1]
+New connection :bau_k_rd_A{@BAU_12_BAU_12_g0_auto_5}.ld from tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_0}.start_K_[ 1*mux_1]
+New connection :bau_k_rd_A{@BAU_12_BAU_12_g0_auto_5}.ld_val from bau_j_rd_A{@BAU_12_BAU_12_g0_auto_1}.out[ 12*mux_1]
+New connection :bau_k_rd_B{@BAU_12_BAU_12_g0_auto_6}.cmp from ZERO{@ZERO_g00}.fixed_out_12[ 12*mux_1]
+New connection :bau_k_rd_B{@BAU_12_BAU_12_g0_auto_6}.en from tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_0}.enable_K_[ 1*mux_1]
+New connection :bau_k_rd_B{@BAU_12_BAU_12_g0_auto_6}.inc from bau_rd_inc_dly{@MUX2TO1_32_MUX2TO1_32_g0_auto_0}.out[ 12*mux_1]
+New connection :bau_k_rd_B{@BAU_12_BAU_12_g0_auto_6}.ld from tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_0}.start_K_[ 1*mux_1]
+New connection :bau_k_rd_B{@BAU_12_BAU_12_g0_auto_6}.ld_val from bau_j_rd_B{@BAU_12_BAU_12_g0_auto_10}.out[ 12*mux_1]
+New connection :bau_k_wr_left_A{@BAU_12_BAU_12_g0_auto_7}.cmp from ZERO{@ZERO_g00}.fixed_out_12[ 12*mux_1]
+New connection :bau_k_wr_left_A{@BAU_12_BAU_12_g0_auto_7}.en from tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_1}.enable_J_[ 1*mux_1]
+New connection :bau_k_wr_left_A{@BAU_12_BAU_12_g0_auto_7}.inc from const_16{@GENERIC_VALUE_g04}.out[ 12*mux_1]
+New connection :bau_k_wr_left_A{@BAU_12_BAU_12_g0_auto_7}.ld from tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_1}.start_J_[ 1*mux_1]
+New connection :bau_k_wr_left_A{@BAU_12_BAU_12_g0_auto_7}.ld_val from aau_wr_le{@BADD_32_BADD_32_g0_auto_4}.add[ 12*mux_1]
+New connection :bau_k_wr_up_A{@BAU_12_BAU_12_g0_auto_8}.cmp from ZERO{@ZERO_g00}.fixed_out_12[ 12*mux_1]
+New connection :bau_k_wr_up_A{@BAU_12_BAU_12_g0_auto_8}.en from bau_k_wr_up_inc{@BAU_12_BAU_12_g0_auto_2}.eq[ 1*mux_1]
+New connection :bau_k_wr_up_A{@BAU_12_BAU_12_g0_auto_8}.inc from ONE{@ONE_g00}.fixed_out_12[ 12*mux_1]
+New connection :bau_k_wr_up_A{@BAU_12_BAU_12_g0_auto_8}.ld from bau_k_wr_up_inc{@BAU_12_BAU_12_g0_auto_2}.lt[ 1*mux_1]
+New connection :bau_k_wr_up_A{@BAU_12_BAU_12_g0_auto_8}.ld_val from nd{@ND_ND_g0_auto_0}.upMO_[ 12*mux_1]
+New connection :bau_k_wr_up_inc{@BAU_12_BAU_12_g0_auto_2}.cmp from THREE{@THREE_g00}.fixed_out_12[ 12*mux_2]
+New connection :bau_k_wr_up_inc{@BAU_12_BAU_12_g0_auto_2}.ld_val from ZERO{@ZERO_g00}.fixed_out_12[ 12*mux_2]
+New connection :bau_k_wr_uplr_B{@BAU_12_BAU_12_g0_auto_9}.cmp from ZERO{@ZERO_g00}.fixed_out_12[ 12*mux_1]
+New connection :bau_k_wr_uplr_B{@BAU_12_BAU_12_g0_auto_9}.en from tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_1}.enable_K_[ 1*mux_1]
+New connection :bau_k_wr_uplr_B{@BAU_12_BAU_12_g0_auto_9}.inc from bau_wr_inc_dly{@DLINE_32_16_DLINE_32_16_g0_auto_0}.out[ 12*mux_1]
+New connection :bau_k_wr_uplr_B{@BAU_12_BAU_12_g0_auto_9}.ld from tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_1}.start_K_[ 1*mux_1]
+New connection :bau_k_wr_uplr_B{@BAU_12_BAU_12_g0_auto_9}.ld_val from bau_j_wr_uplr_B{@BAU_12_BAU_12_g0_auto_11}.out[ 12*mux_1]
+New connection :sel_rd_aux{@BAU_12_BAU_12_g0_auto_4}.ld_val from ZERO{@ZERO_g00}.fixed_out_12[ 12*mux_2]
+New connection :bau_j_wr_A{@BAU_14_BAU_14_g0_auto_0}.cmp from ZERO{@ZERO_g00}.fixed_out_14[ 14*mux_1]
+New connection :bau_j_wr_A{@BAU_14_BAU_14_g0_auto_0}.en from tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_1}.enable_J_[ 1*mux_1]
+New connection :bau_j_wr_A{@BAU_14_BAU_14_g0_auto_0}.inc from const_16{@GENERIC_VALUE_g04}.out[ 14*mux_1]
+New connection :bau_j_wr_A{@BAU_14_BAU_14_g0_auto_0}.ld from tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_1}.start_J_[ 1*mux_1]
+New connection :bau_j_wr_A{@BAU_14_BAU_14_g0_auto_0}.ld_val from nd{@ND_ND_g0_auto_0}.ulMO_[ 14*mux_1]
+New connection :bau_j_wr_B{@BAU_14_BAU_14_g0_auto_1}.cmp from ZERO{@ZERO_g00}.fixed_out_14[ 14*mux_1]
+New connection :bau_j_wr_B{@BAU_14_BAU_14_g0_auto_1}.en from tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_1}.enable_J_[ 1*mux_1]
+New connection :bau_j_wr_B{@BAU_14_BAU_14_g0_auto_1}.inc from const_16{@GENERIC_VALUE_g04}.out[ 14*mux_1]
+New connection :bau_j_wr_B{@BAU_14_BAU_14_g0_auto_1}.ld from tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_1}.start_J_[ 1*mux_1]
+New connection :bau_j_wr_B{@BAU_14_BAU_14_g0_auto_1}.ld_val from bau_wr_ldB{@BADD_32_BADD_32_g0_auto_2}.add[ 14*mux_1]
+New connection :bau_k_wr_A{@BAU_14_BAU_14_g0_auto_2}.cmp from ZERO{@ZERO_g00}.fixed_out_14[ 14*mux_1]
+New connection :bau_k_wr_A{@BAU_14_BAU_14_g0_auto_2}.en from wr_en{@DLINE_1_16_DLINE_1_16_g0_auto_0}.out[ 1*mux_1]
+New connection :bau_k_wr_A{@BAU_14_BAU_14_g0_auto_2}.inc from bau_wr_inc_dly{@DLINE_32_16_DLINE_32_16_g0_auto_0}.out[ 14*mux_1]
+New connection :bau_k_wr_A{@BAU_14_BAU_14_g0_auto_2}.ld from tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_1}.start_K_[ 1*mux_1]
+New connection :bau_k_wr_A{@BAU_14_BAU_14_g0_auto_2}.ld_val from bau_j_wr_A{@BAU_14_BAU_14_g0_auto_0}.out[ 14*mux_1]
+New connection :bau_k_wr_B{@BAU_14_BAU_14_g0_auto_3}.cmp from ZERO{@ZERO_g00}.fixed_out_14[ 14*mux_1]
+New connection :bau_k_wr_B{@BAU_14_BAU_14_g0_auto_3}.en from wr_en{@DLINE_1_16_DLINE_1_16_g0_auto_0}.out[ 1*mux_1]
+New connection :bau_k_wr_B{@BAU_14_BAU_14_g0_auto_3}.inc from bau_wr_inc_dly{@DLINE_32_16_DLINE_32_16_g0_auto_0}.out[ 14*mux_1]
+New connection :bau_k_wr_B{@BAU_14_BAU_14_g0_auto_3}.ld from tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_1}.start_K_[ 1*mux_1]
+New connection :bau_k_wr_B{@BAU_14_BAU_14_g0_auto_3}.ld_val from bau_j_wr_B{@BAU_14_BAU_14_g0_auto_1}.out[ 14*mux_1]
+New connection :byte_demux_A{@BD_BD_g0_auto_0}.in from m6{@MEM_g06}.data_a[ 32*mux_1]
+New connection :byte_demux_B{@BD_BD_g0_auto_1}.in from m6{@MEM_g06}.data_b[ 32*mux_1]
+New connection :wr_en_le{@BLU_1_BLU_1_g0_auto_0}.i0 from wr_en{@DLINE_1_16_DLINE_1_16_g0_auto_0}.out[ 1*mux_1]
+New connection :wr_en_le{@BLU_1_BLU_1_g0_auto_0}.i1 from ioff_en{@SEP_32_SEP_32_g0_auto_0}.b1[ 1*mux_1]
+New connection :wr_en_up{@BLU_1_BLU_1_g0_auto_1}.i0 from wr_en{@DLINE_1_16_DLINE_1_16_g0_auto_0}.out[ 1*mux_1]
+New connection :wr_en_up{@BLU_1_BLU_1_g0_auto_1}.i1 from joff_en{@SEP_32_SEP_32_g0_auto_1}.b1[ 1*mux_1]
+New connection :byte_mux_A{@BM_BM_g0_auto_1}.i0 from clip0{@CLIP_32_CLIP_32_g0_auto_0}.out[ 8*mux_1]
+New connection :byte_mux_A{@BM_BM_g0_auto_1}.i1 from clip1{@CLIP_32_CLIP_32_g0_auto_1}.out[ 8*mux_1]
+New connection :byte_mux_A{@BM_BM_g0_auto_1}.i2 from clip2{@CLIP_32_CLIP_32_g0_auto_2}.out[ 8*mux_1]
+New connection :byte_mux_A{@BM_BM_g0_auto_1}.i3 from clip3{@CLIP_32_CLIP_32_g0_auto_3}.out[ 8*mux_1]
+New connection :byte_mux_B{@BM_BM_g0_auto_2}.i0 from clip4{@CLIP_32_CLIP_32_g0_auto_4}.out[ 8*mux_1]
+New connection :byte_mux_B{@BM_BM_g0_auto_2}.i1 from clip5{@CLIP_32_CLIP_32_g0_auto_5}.out[ 8*mux_1]
+New connection :byte_mux_B{@BM_BM_g0_auto_2}.i2 from clip6{@CLIP_32_CLIP_32_g0_auto_6}.out[ 8*mux_1]
+New connection :byte_mux_B{@BM_BM_g0_auto_2}.i3 from clip7{@CLIP_32_CLIP_32_g0_auto_7}.out[ 8*mux_1]
+New connection :byte_mux_left{@BM_BM_g0_auto_0}.i0 from reg_v0{@SREG_32_SREG_32_g0_auto_8}.out[ 8*mux_2]
+New connection :byte_mux_left{@BM_BM_g0_auto_0}.i1 from clip3{@CLIP_32_CLIP_32_g0_auto_3}.out[ 8*mux_2]
+New connection :byte_mux_left{@BM_BM_g0_auto_0}.i2 from reg_v2{@SREG_32_SREG_32_g0_auto_9}.out[ 8*mux_2]
+New connection :byte_mux_left{@BM_BM_g0_auto_0}.i3 from clip7{@CLIP_32_CLIP_32_g0_auto_7}.out[ 8*mux_2]
+New connection :clip0{@CLIP_32_CLIP_32_g0_auto_0}.down from ZERO{@ZERO_g00}.fixed_out_32[ 32*mux_1]
+New connection :clip0{@CLIP_32_CLIP_32_g0_auto_0}.in from badd0{@BADD_32_BADD_32_g0_auto_5}.add[ 32*mux_1]
+New connection :clip0{@CLIP_32_CLIP_32_g0_auto_0}.up from const_255{@GENERIC_VALUE_g05}.out[ 32*mux_1]
+New connection :clip1{@CLIP_32_CLIP_32_g0_auto_1}.down from ZERO{@ZERO_g00}.fixed_out_32[ 32*mux_1]
+New connection :clip1{@CLIP_32_CLIP_32_g0_auto_1}.in from badd1{@BADD_32_BADD_32_g0_auto_6}.add[ 32*mux_1]
+New connection :clip1{@CLIP_32_CLIP_32_g0_auto_1}.up from const_255{@GENERIC_VALUE_g05}.out[ 32*mux_1]
+New connection :clip2{@CLIP_32_CLIP_32_g0_auto_2}.down from ZERO{@ZERO_g00}.fixed_out_32[ 32*mux_1]
+New connection :clip2{@CLIP_32_CLIP_32_g0_auto_2}.in from badd2{@BADD_32_BADD_32_g0_auto_7}.add[ 32*mux_1]
+New connection :clip2{@CLIP_32_CLIP_32_g0_auto_2}.up from const_255{@GENERIC_VALUE_g05}.out[ 32*mux_1]
+New connection :clip3{@CLIP_32_CLIP_32_g0_auto_3}.down from ZERO{@ZERO_g00}.fixed_out_32[ 32*mux_1]
+New connection :clip3{@CLIP_32_CLIP_32_g0_auto_3}.in from badd3{@BADD_32_BADD_32_g0_auto_8}.add[ 32*mux_1]
+New connection :clip3{@CLIP_32_CLIP_32_g0_auto_3}.up from const_255{@GENERIC_VALUE_g05}.out[ 32*mux_1]
+New connection :clip4{@CLIP_32_CLIP_32_g0_auto_4}.down from ZERO{@ZERO_g00}.fixed_out_32[ 32*mux_1]
+New connection :clip4{@CLIP_32_CLIP_32_g0_auto_4}.in from badd4{@BADD_32_BADD_32_g0_auto_9}.add[ 32*mux_1]
+New connection :clip4{@CLIP_32_CLIP_32_g0_auto_4}.up from const_255{@GENERIC_VALUE_g05}.out[ 32*mux_1]
+New connection :clip5{@CLIP_32_CLIP_32_g0_auto_5}.down from ZERO{@ZERO_g00}.fixed_out_32[ 32*mux_1]
+New connection :clip5{@CLIP_32_CLIP_32_g0_auto_5}.in from badd5{@BADD_32_BADD_32_g0_auto_0}.add[ 32*mux_1]
+New connection :clip5{@CLIP_32_CLIP_32_g0_auto_5}.up from const_255{@GENERIC_VALUE_g05}.out[ 32*mux_1]
+New connection :clip6{@CLIP_32_CLIP_32_g0_auto_6}.down from ZERO{@ZERO_g00}.fixed_out_32[ 32*mux_1]
+New connection :clip6{@CLIP_32_CLIP_32_g0_auto_6}.in from badd6{@BADD_32_BADD_32_g0_auto_1}.add[ 32*mux_1]
+New connection :clip6{@CLIP_32_CLIP_32_g0_auto_6}.up from const_255{@GENERIC_VALUE_g05}.out[ 32*mux_1]
+New connection :clip7{@CLIP_32_CLIP_32_g0_auto_7}.down from ZERO{@ZERO_g00}.fixed_out_32[ 32*mux_1]
+New connection :clip7{@CLIP_32_CLIP_32_g0_auto_7}.in from badd7{@BADD_32_BADD_32_g0_auto_10}.add[ 32*mux_1]
+New connection :clip7{@CLIP_32_CLIP_32_g0_auto_7}.up from const_255{@GENERIC_VALUE_g05}.out[ 32*mux_1]
+New connection :wr_en{@DLINE_1_16_DLINE_1_16_g0_auto_0}.in from sel_rd_aux{@BAU_12_BAU_12_g0_auto_4}.gt[ 1*mux_1]
+New connection :bau_wr_inc_dly{@DLINE_32_16_DLINE_32_16_g0_auto_0}.in from bau_rd_inc_dly{@MUX2TO1_32_MUX2TO1_32_g0_auto_0}.out[ 32*mux_1]
+New connection :sel{@DLINE_32_16_DLINE_32_16_g0_auto_1}.in from sel_rd_aux{@BAU_12_BAU_12_g0_auto_4}.out[ 32*mux_1]
+New connection :m0{@MEM_g00}.address_a from bau_k_rd_0A{@BAU_12_BAU_12_g0_auto_12}.out[ 10*mux_1]
+New connection :m0{@MEM_g00}.address_b from bau_k_rd_0B{@BAU_12_BAU_12_g0_auto_3}.out[ 10*mux_1]
+New connection :m1{@MEM_g01}.address_a from reg_k_rd_1A{@SREG_12_SREG_12_g0_auto_0}.out[ 10*mux_2]
+New connection :m1{@MEM_g01}.address_b from reg_k_rd_1B{@SREG_12_SREG_12_g0_auto_1}.out[ 10*mux_1]
+New connection :m3{@MEM_g03}.address_a from bau_k_wr_up_A{@BAU_12_BAU_12_g0_auto_8}.out[ 10*mux_1]
+New connection :m3{@MEM_g03}.address_b from bau_k_wr_uplr_B{@BAU_12_BAU_12_g0_auto_9}.out[ 10*mux_1]
+New connection :m3{@MEM_g03}.data_in_a from byte_mux_B{@BM_BM_g0_auto_2}.out[ 32*mux_1]
+New connection :m3{@MEM_g03}.data_in_b from byte_mux_B{@BM_BM_g0_auto_2}.out[ 32*mux_1]
+New connection :m3{@MEM_g03}.write_a from wr_en_up{@BLU_1_BLU_1_g0_auto_1}.out[ 1*mux_2]
+New connection :m3{@MEM_g03}.write_b from wr_en{@DLINE_1_16_DLINE_1_16_g0_auto_0}.out[ 1*mux_2]
+New connection :m4{@MEM_g04}.address_a from bau_k_wr_up_A{@BAU_12_BAU_12_g0_auto_8}.out[ 10*mux_1]
+New connection :m4{@MEM_g04}.address_b from bau_k_wr_uplr_B{@BAU_12_BAU_12_g0_auto_9}.out[ 10*mux_1]
+New connection :m4{@MEM_g04}.data_in_a from byte_mux_B{@BM_BM_g0_auto_2}.out[ 32*mux_1]
+New connection :m4{@MEM_g04}.data_in_b from byte_mux_B{@BM_BM_g0_auto_2}.out[ 32*mux_1]
+New connection :m4{@MEM_g04}.write_a from wr_en_up{@BLU_1_BLU_1_g0_auto_1}.out[ 1*mux_2]
+New connection :m4{@MEM_g04}.write_b from wr_en{@DLINE_1_16_DLINE_1_16_g0_auto_0}.out[ 1*mux_2]
+New connection :m5{@MEM_g05}.address_a from bau_k_wr_left_A{@BAU_12_BAU_12_g0_auto_7}.out[ 10*mux_1]
+New connection :m5{@MEM_g05}.address_b from bau_k_wr_uplr_B{@BAU_12_BAU_12_g0_auto_9}.out[ 10*mux_1]
+New connection :m5{@MEM_g05}.data_in_a from byte_mux_left{@BM_BM_g0_auto_0}.out[ 32*mux_1]
+New connection :m5{@MEM_g05}.data_in_b from byte_mux_left{@BM_BM_g0_auto_0}.out[ 32*mux_1]
+New connection :m5{@MEM_g05}.write_a from wr_en_le{@BLU_1_BLU_1_g0_auto_0}.out[ 1*mux_2]
+New connection :m5{@MEM_g05}.write_b from wr_en{@DLINE_1_16_DLINE_1_16_g0_auto_0}.out[ 1*mux_2]
+New connection :m6{@MEM_g06}.address_a from bau_k_rd_A{@BAU_12_BAU_12_g0_auto_5}.out[ 10*mux_1]
+New connection :m6{@MEM_g06}.address_b from bau_k_rd_B{@BAU_12_BAU_12_g0_auto_6}.out[ 10*mux_1]
+New connection :m7{@MEM_g07}.address_a from bau_k_wr_A{@BAU_14_BAU_14_g0_auto_2}.out[ 14*mux_1]
+New connection :m7{@MEM_g07}.address_b from bau_k_wr_B{@BAU_14_BAU_14_g0_auto_3}.out[ 14*mux_1]
+New connection :m7{@MEM_g07}.data_in_a from byte_mux_A{@BM_BM_g0_auto_1}.out[ 32*mux_1]
+New connection :m7{@MEM_g07}.data_in_b from byte_mux_B{@BM_BM_g0_auto_2}.out[ 32*mux_1]
+New connection :m7{@MEM_g07}.write_a from wr_en{@DLINE_1_16_DLINE_1_16_g0_auto_0}.out[ 1*mux_2]
+New connection :m7{@MEM_g07}.write_b from wr_en{@DLINE_1_16_DLINE_1_16_g0_auto_0}.out[ 1*mux_2]
+New connection :m8{@MEM_g08}.address_a from bau_k_rd_0A{@BAU_12_BAU_12_g0_auto_12}.out[ 10*mux_1]
+New connection :m8{@MEM_g08}.address_b from bau_k_rd_0B{@BAU_12_BAU_12_g0_auto_3}.out[ 10*mux_1]
+New connection :m9{@MEM_g09}.address_a from reg_k_rd_1A{@SREG_12_SREG_12_g0_auto_0}.out[ 10*mux_1]
+New connection :m9{@MEM_g09}.address_b from reg_k_rd_1B{@SREG_12_SREG_12_g0_auto_1}.out[ 10*mux_1]
+New connection :bau_rd_inc_dly{@MUX2TO1_32_MUX2TO1_32_g0_auto_0}.i0 from const_m3{@GENERIC_VALUE_g08}.out[ 32*mux_1]
+New connection :bau_rd_inc_dly{@MUX2TO1_32_MUX2TO1_32_g0_auto_0}.i1 from const_4{@GENERIC_VALUE_g06}.out[ 32*mux_1]
+New connection :bau_rd_inc_dly{@MUX2TO1_32_MUX2TO1_32_g0_auto_0}.s0 from sel_rd_aux{@BAU_12_BAU_12_g0_auto_4}.out[ 1*mux_1]
+New connection :res0{@MUX4TO1_32_MUX4TO1_32_g0_auto_0}.i0 from reg_res1A{@SREG_32_SREG_32_g0_auto_2}.out[ 32*mux_1]
+New connection :res0{@MUX4TO1_32_MUX4TO1_32_g0_auto_0}.i1 from reg_res0A{@SREG_32_SREG_32_g0_auto_0}.out[ 32*mux_1]
+New connection :res0{@MUX4TO1_32_MUX4TO1_32_g0_auto_0}.i2 from reg_res1A{@SREG_32_SREG_32_g0_auto_2}.out[ 32*mux_1]
+New connection :res0{@MUX4TO1_32_MUX4TO1_32_g0_auto_0}.i3 from reg_res0A{@SREG_32_SREG_32_g0_auto_0}.out[ 32*mux_1]
+New connection :res0{@MUX4TO1_32_MUX4TO1_32_g0_auto_0}.s0 from sel{@DLINE_32_16_DLINE_32_16_g0_auto_1}.out[ 2*mux_1]
+New connection :res1{@MUX4TO1_32_MUX4TO1_32_g0_auto_1}.i0 from reg_res1B{@SREG_32_SREG_32_g0_auto_3}.out[ 32*mux_1]
+New connection :res1{@MUX4TO1_32_MUX4TO1_32_g0_auto_1}.i1 from reg_res0B{@SREG_32_SREG_32_g0_auto_1}.out[ 32*mux_1]
+New connection :res1{@MUX4TO1_32_MUX4TO1_32_g0_auto_1}.i2 from reg_res1B{@SREG_32_SREG_32_g0_auto_3}.out[ 32*mux_1]
+New connection :res1{@MUX4TO1_32_MUX4TO1_32_g0_auto_1}.i3 from reg_res0B{@SREG_32_SREG_32_g0_auto_1}.out[ 32*mux_1]
+New connection :res1{@MUX4TO1_32_MUX4TO1_32_g0_auto_1}.s0 from sel{@DLINE_32_16_DLINE_32_16_g0_auto_1}.out[ 2*mux_1]
+New connection :res2{@MUX4TO1_32_MUX4TO1_32_g0_auto_2}.i0 from m1{@MEM_g01}.data_a[ 32*mux_1]
+New connection :res2{@MUX4TO1_32_MUX4TO1_32_g0_auto_2}.i1 from m0{@MEM_g00}.data_a[ 32*mux_1]
+New connection :res2{@MUX4TO1_32_MUX4TO1_32_g0_auto_2}.i2 from m1{@MEM_g01}.data_a[ 32*mux_1]
+New connection :res2{@MUX4TO1_32_MUX4TO1_32_g0_auto_2}.i3 from m0{@MEM_g00}.data_a[ 32*mux_1]
+New connection :res2{@MUX4TO1_32_MUX4TO1_32_g0_auto_2}.s0 from sel{@DLINE_32_16_DLINE_32_16_g0_auto_1}.out[ 2*mux_1]
+New connection :res3{@MUX4TO1_32_MUX4TO1_32_g0_auto_3}.i0 from m1{@MEM_g01}.data_b[ 32*mux_1]
+New connection :res3{@MUX4TO1_32_MUX4TO1_32_g0_auto_3}.i1 from m0{@MEM_g00}.data_b[ 32*mux_1]
+New connection :res3{@MUX4TO1_32_MUX4TO1_32_g0_auto_3}.i2 from m1{@MEM_g01}.data_b[ 32*mux_1]
+New connection :res3{@MUX4TO1_32_MUX4TO1_32_g0_auto_3}.i3 from m0{@MEM_g00}.data_b[ 32*mux_1]
+New connection :res3{@MUX4TO1_32_MUX4TO1_32_g0_auto_3}.s0 from sel{@DLINE_32_16_DLINE_32_16_g0_auto_1}.out[ 2*mux_1]
+New connection :res4{@MUX4TO1_32_MUX4TO1_32_g0_auto_4}.i0 from reg_res3A{@SREG_32_SREG_32_g0_auto_6}.out[ 32*mux_1]
+New connection :res4{@MUX4TO1_32_MUX4TO1_32_g0_auto_4}.i1 from reg_res2A{@SREG_32_SREG_32_g0_auto_4}.out[ 32*mux_1]
+New connection :res4{@MUX4TO1_32_MUX4TO1_32_g0_auto_4}.i2 from reg_res3A{@SREG_32_SREG_32_g0_auto_6}.out[ 32*mux_1]
+New connection :res4{@MUX4TO1_32_MUX4TO1_32_g0_auto_4}.i3 from reg_res2A{@SREG_32_SREG_32_g0_auto_4}.out[ 32*mux_1]
+New connection :res4{@MUX4TO1_32_MUX4TO1_32_g0_auto_4}.s0 from sel{@DLINE_32_16_DLINE_32_16_g0_auto_1}.out[ 2*mux_1]
+New connection :res5{@MUX4TO1_32_MUX4TO1_32_g0_auto_5}.i0 from reg_res3B{@SREG_32_SREG_32_g0_auto_7}.out[ 32*mux_1]
+New connection :res5{@MUX4TO1_32_MUX4TO1_32_g0_auto_5}.i1 from reg_res2B{@SREG_32_SREG_32_g0_auto_5}.out[ 32*mux_1]
+New connection :res5{@MUX4TO1_32_MUX4TO1_32_g0_auto_5}.i2 from reg_res3B{@SREG_32_SREG_32_g0_auto_7}.out[ 32*mux_1]
+New connection :res5{@MUX4TO1_32_MUX4TO1_32_g0_auto_5}.i3 from reg_res2B{@SREG_32_SREG_32_g0_auto_5}.out[ 32*mux_1]
+New connection :res5{@MUX4TO1_32_MUX4TO1_32_g0_auto_5}.s0 from sel{@DLINE_32_16_DLINE_32_16_g0_auto_1}.out[ 2*mux_1]
+New connection :res6{@MUX4TO1_32_MUX4TO1_32_g0_auto_6}.i0 from m9{@MEM_g09}.data_a[ 32*mux_1]
+New connection :res6{@MUX4TO1_32_MUX4TO1_32_g0_auto_6}.i1 from m8{@MEM_g08}.data_a[ 32*mux_1]
+New connection :res6{@MUX4TO1_32_MUX4TO1_32_g0_auto_6}.i2 from m9{@MEM_g09}.data_a[ 32*mux_1]
+New connection :res6{@MUX4TO1_32_MUX4TO1_32_g0_auto_6}.i3 from m8{@MEM_g08}.data_a[ 32*mux_1]
+New connection :res6{@MUX4TO1_32_MUX4TO1_32_g0_auto_6}.s0 from sel{@DLINE_32_16_DLINE_32_16_g0_auto_1}.out[ 2*mux_1]
+New connection :res7{@MUX4TO1_32_MUX4TO1_32_g0_auto_7}.i0 from m9{@MEM_g09}.data_b[ 32*mux_1]
+New connection :res7{@MUX4TO1_32_MUX4TO1_32_g0_auto_7}.i1 from m8{@MEM_g08}.data_b[ 32*mux_1]
+New connection :res7{@MUX4TO1_32_MUX4TO1_32_g0_auto_7}.i2 from m9{@MEM_g09}.data_b[ 32*mux_1]
+New connection :res7{@MUX4TO1_32_MUX4TO1_32_g0_auto_7}.i3 from m8{@MEM_g08}.data_b[ 32*mux_1]
+New connection :res7{@MUX4TO1_32_MUX4TO1_32_g0_auto_7}.s0 from sel{@DLINE_32_16_DLINE_32_16_g0_auto_1}.out[ 2*mux_1]
+New connection :nd{@ND_ND_g0_auto_0}.bSize from ZERO{@ZERO_g00}.fixed_out_32[ 32*mux_1]
+New connection :nd{@ND_ND_g0_auto_0}.chroma from ZERO{@ZERO_g00}.fixed_out_2[ 2*mux_1]
+New connection :nd{@ND_ND_g0_auto_0}.en from ONE{@ONE_g00}.fixed_out_1[ 1*mux_1]
+New connection :nd{@ND_ND_g0_auto_0}.mode from ONE{@ONE_g00}.fixed_out_1[ 1*mux_1]
+New connection :nd{@ND_ND_g0_auto_0}.posX from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.out0[ 32*mux_1]
+New connection :nd{@ND_ND_g0_auto_0}.posY from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.out1[ 32*mux_1]
+New connection :ioff_en{@SEP_32_SEP_32_g0_auto_0}.in from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.out0[ 32*mux_2]
+New connection :joff_en{@SEP_32_SEP_32_g0_auto_1}.in from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.out1[ 32*mux_2]
+New connection :shift0{@SHIFT_R5_32_SHIFT_R5_32_g0_auto_0}.in from res0{@MUX4TO1_32_MUX4TO1_32_g0_auto_0}.out[ 32*mux_2]
+New connection :shift1{@SHIFT_R5_32_SHIFT_R5_32_g0_auto_1}.in from res1{@MUX4TO1_32_MUX4TO1_32_g0_auto_1}.out[ 32*mux_2]
+New connection :shift2{@SHIFT_R5_32_SHIFT_R5_32_g0_auto_2}.in from res2{@MUX4TO1_32_MUX4TO1_32_g0_auto_2}.out[ 32*mux_2]
+New connection :shift3{@SHIFT_R5_32_SHIFT_R5_32_g0_auto_3}.in from res3{@MUX4TO1_32_MUX4TO1_32_g0_auto_3}.out[ 32*mux_2]
+New connection :shift4{@SHIFT_R5_32_SHIFT_R5_32_g0_auto_4}.in from res4{@MUX4TO1_32_MUX4TO1_32_g0_auto_4}.out[ 32*mux_1]
+New connection :shift5{@SHIFT_R5_32_SHIFT_R5_32_g0_auto_5}.in from res5{@MUX4TO1_32_MUX4TO1_32_g0_auto_5}.out[ 32*mux_1]
+New connection :shift6{@SHIFT_R5_32_SHIFT_R5_32_g0_auto_6}.in from res6{@MUX4TO1_32_MUX4TO1_32_g0_auto_6}.out[ 32*mux_1]
+New connection :shift7{@SHIFT_R5_32_SHIFT_R5_32_g0_auto_7}.in from res7{@MUX4TO1_32_MUX4TO1_32_g0_auto_7}.out[ 32*mux_1]
+New connection :siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.done from tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_1}.done[ 1*mux_2]
+New connection :reg_k_rd_1A{@SREG_12_SREG_12_g0_auto_0}.en from ONE{@ONE_g00}.fixed_out_1[ 1*mux_1]
+New connection :reg_k_rd_1A{@SREG_12_SREG_12_g0_auto_0}.in from bau_k_rd_0A{@BAU_12_BAU_12_g0_auto_12}.out[ 12*mux_1]
+New connection :reg_k_rd_1B{@SREG_12_SREG_12_g0_auto_1}.en from ONE{@ONE_g00}.fixed_out_1[ 1*mux_1]
+New connection :reg_k_rd_1B{@SREG_12_SREG_12_g0_auto_1}.in from bau_k_rd_0B{@BAU_12_BAU_12_g0_auto_3}.out[ 12*mux_1]
+New connection :reg_res0A{@SREG_32_SREG_32_g0_auto_0}.en from ONE{@ONE_g00}.fixed_out_1[ 1*mux_1]
+New connection :reg_res0A{@SREG_32_SREG_32_g0_auto_0}.in from m0{@MEM_g00}.data_a[ 32*mux_1]
+New connection :reg_res0B{@SREG_32_SREG_32_g0_auto_1}.en from ONE{@ONE_g00}.fixed_out_1[ 1*mux_1]
+New connection :reg_res0B{@SREG_32_SREG_32_g0_auto_1}.in from m0{@MEM_g00}.data_b[ 32*mux_1]
+New connection :reg_res1A{@SREG_32_SREG_32_g0_auto_2}.en from ONE{@ONE_g00}.fixed_out_1[ 1*mux_1]
+New connection :reg_res1A{@SREG_32_SREG_32_g0_auto_2}.in from m1{@MEM_g01}.data_a[ 32*mux_1]
+New connection :reg_res1B{@SREG_32_SREG_32_g0_auto_3}.en from ONE{@ONE_g00}.fixed_out_1[ 1*mux_1]
+New connection :reg_res1B{@SREG_32_SREG_32_g0_auto_3}.in from m1{@MEM_g01}.data_b[ 32*mux_1]
+New connection :reg_res2A{@SREG_32_SREG_32_g0_auto_4}.en from ONE{@ONE_g00}.fixed_out_1[ 1*mux_1]
+New connection :reg_res2A{@SREG_32_SREG_32_g0_auto_4}.in from m8{@MEM_g08}.data_a[ 32*mux_1]
+New connection :reg_res2B{@SREG_32_SREG_32_g0_auto_5}.en from ONE{@ONE_g00}.fixed_out_1[ 1*mux_1]
+New connection :reg_res2B{@SREG_32_SREG_32_g0_auto_5}.in from m8{@MEM_g08}.data_b[ 32*mux_1]
+New connection :reg_res3A{@SREG_32_SREG_32_g0_auto_6}.en from ONE{@ONE_g00}.fixed_out_1[ 1*mux_1]
+New connection :reg_res3A{@SREG_32_SREG_32_g0_auto_6}.in from m9{@MEM_g09}.data_a[ 32*mux_1]
+New connection :reg_res3B{@SREG_32_SREG_32_g0_auto_7}.en from ONE{@ONE_g00}.fixed_out_1[ 1*mux_1]
+New connection :reg_res3B{@SREG_32_SREG_32_g0_auto_7}.in from m9{@MEM_g09}.data_b[ 32*mux_1]
+New connection :reg_v0{@SREG_32_SREG_32_g0_auto_8}.en from ONE{@ONE_g00}.fixed_out_1[ 1*mux_1]
+New connection :reg_v0{@SREG_32_SREG_32_g0_auto_8}.in from clip3{@CLIP_32_CLIP_32_g0_auto_3}.out[ 32*mux_1]
+New connection :reg_v2{@SREG_32_SREG_32_g0_auto_9}.en from ONE{@ONE_g00}.fixed_out_1[ 1*mux_1]
+New connection :reg_v2{@SREG_32_SREG_32_g0_auto_9}.in from clip7{@CLIP_32_CLIP_32_g0_auto_7}.out[ 32*mux_1]
+New connection :tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_0}.limit_i from ZERO{@ZERO_g00}.fixed_out_12[ 12*mux_2]
+New connection :tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_0}.limit_j from ONE{@ONE_g00}.fixed_out_12[ 12*mux_2]
+New connection :tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_0}.limit_k from const_4{@GENERIC_VALUE_g06}.out[ 12*mux_2]
+New connection :tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_1}.limit_i from ZERO{@ZERO_g00}.fixed_out_12[ 12*mux_2]
+New connection :tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_1}.limit_j from ONE{@ONE_g00}.fixed_out_12[ 12*mux_2]
+New connection :tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_1}.limit_k from const_4{@GENERIC_VALUE_g06}.out[ 12*mux_2]
+
+MUX_0: 322 	[0]
+
+MUX_1: 5478 	[0]
+
+MUX_2: 774 	[774]
+-------------------
+-------------------recon8x8-------------------
+
+Done!
+Report:
+  Generating functional units usage report output//cwdv264_siw_FU_report.csv ...	
+Done!
+  Generating functional units fan in report output//cwdv264_siw_fan_in_report.csv ...	
+Done!
+  Generating functional units fan out report output//cwdv264_siw_fan_out_report.csv ...	
+Done!
+Resource usage:
+----------------  ReadXbar --------------
+MUX_1: 5800 	[0]
+MUX_2: 774 	[774]
+Total LUTs  :774
+Total Wires :7348
+---------------------------------------
+
+FU configurations:   146
+XBAR configurations: 61
+Configuration bits:  8 (7.437500)
+
+Saving Sideworks:
+  Save Physical Sideworks file output//cwdv264_siw.xml ...	
+Done!
+  Save SideC files (output//cwdv264_siw.c, output//cwdv264_siw.h) ...	
+Done!
+
+generateParametricFus...
+Done!
+generateVerilog...
+Done!
+Sideconf done.

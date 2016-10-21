@@ -12,7 +12,6 @@
 class FUDescription;
 class LogicalFUInstance:public FUInstance {
 	std::string funcname;
-	std::unordered_map<std::string, long>			  parameters;
 	FUInstance* correspond_physicalFUInstance;
 	void addInputPort(const std::string&, int width);
 	void addOutputPort(const std::string&, int width);
@@ -23,6 +22,7 @@ public:
 	virtual ~LogicalFUInstance();
 	FUInstance* correspondence(int)const {return correspond_physicalFUInstance;}
 	void place(FUInstance*);
+	bool isPlaced(int){ return correspond_physicalFUInstance != NULL;}
 	double estimatePlacementDecisionCost(FUInstance*);
 };
 

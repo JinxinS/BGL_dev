@@ -25,7 +25,6 @@ int Sideworks::size() const {
 }
 
 void Sideworks::addFU(FUInstance* fu){
-	vFuMap			 fuMap = get(boost::vertex_bundle, siw_graph);
 	++resource_usage[fu->type];
 	graph_t::vertex_descriptor v = boost::add_vertex(vertex_properties("",*fu), siw_graph);
 	fuList.push_back(fu);

@@ -15,10 +15,9 @@ class FunctionalUnitLibrary {
 public:
     void addFUDescription(const std::string &type,FUDescription* fu_desc);
     inline FUDescription* getFUDescription(const std::string& type)const {return fu_desc_list.at(type);}
-
-    FUInstance*   getLogicalFUInstance(const std::string &type,const std::string &name,const std::string &func="") const;
-    FUInstance* getPhysicalFUInstance(const std::string &type,const std::string &name) const;
-    FUInstance* getLogicalMEMInstance(const std::string &name,int a_width,int d_width,int nwords) const;
+    FUInstance* getLogicalMEMInstance(const std::string &,int,int,int,const std::string&);
+    FUInstance*   getLogicalFUInstance(const std::string &,const std::string &,const std::string &func="")const;
+    FUInstance* getPhysicalFUInstance(const std::string &,const std::string &)const;
     FunctionalUnitLibrary();
 	virtual ~FunctionalUnitLibrary();
 };

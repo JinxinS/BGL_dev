@@ -22,7 +22,7 @@ SideConf::SideConf()
 : fu_library(),
   logical_sideworks_list(),
   physical_sideWorks(){
-    logging::core::get()->set_filter(logging::trivial::severity >= logging::trivial::trace);
+    logging::core::get()->set_filter(logging::trivial::severity >= logging::trivial::fatal);
 }
 
 SideConf::~SideConf() {

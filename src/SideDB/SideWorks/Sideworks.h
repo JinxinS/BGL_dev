@@ -17,11 +17,10 @@ protected:
 public:
 	inline graph_t& getGraph(){return siw_graph;}
 	inline const std::map<std::string, unsigned int>& getResourceUsage() const{return resource_usage; }
-	inline const std::vector<FUInstance*>& getAllFU()const {return fuList;}
 	Sideworks();
 	virtual ~Sideworks();
 	virtual void addFU(FUInstance* fu);
-	int addConection(const graph_t::vertex_descriptor& v1,const graph_t::vertex_descriptor& v2,const std::string& o,const std::string& i);
+	virtual int addConection(const graph_t::vertex_descriptor& v1,const graph_t::vertex_descriptor& v2,const std::string& o,const std::string& i);
 	graph_t::vertex_descriptor getFU(const std::string& kname);
 };
 

@@ -8,8 +8,7 @@
 #include <LogicalOutputPort.h>
 #include "LogicalInputPort.h"
 LogicalOutputPort::LogicalOutputPort(const std::string& name,int width,FUInstance* p)
-:OutputPort(name, width, p),
- destination_input()
+:OutputPort(name, width, p)
 {
 	// TODO Auto-generated constructor stub
 
@@ -22,7 +21,7 @@ LogicalOutputPort::~LogicalOutputPort() {
 int LogicalOutputPort::calcCost(Port* phyOut){
 	int cost  = 0;
 	if(this->isConnected()){
-		for(auto logIn:destination_input)
+		for(auto logIn:destination_inputs)
 			cost += phyOut->calcCost(logIn);
 	}
 	return cost;

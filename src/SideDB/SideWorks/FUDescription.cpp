@@ -31,7 +31,7 @@ void FUDescription::addInputPort(const std::string& name,int width){
 void FUDescription::addOutputPort(const std::string& name,int width){
     std::pair<std::unordered_map<std::string,int>::iterator,bool> ret;
     ret = output_ports_width.insert(make_pair(name, width) );
-    if(!ret.second) throw SideConfException("can not add OutputPort!");
+  //  if(!ret.second) throw SideConfException("can not add OutputPort!");
 }
 
 void FUDescription::addParameter(const std::string& name,int width){
@@ -57,7 +57,6 @@ bool FUDescription::isParameter(const std::string& arg){
 int FUDescription::getInputWidth(const std::string& in){
 	return input_ports_width.at(in);
 }
-
 
 Function* FUDescription::getFUFunction(const std::string& funcname){
 	return function_descriptions.at(funcname);

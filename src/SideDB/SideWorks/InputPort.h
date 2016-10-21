@@ -11,6 +11,7 @@
 #include <map>
 class OutputPort;
 class InputPort:public Port {
+	friend class PhysicalFUInstance;
 protected:
     std::map < OutputPort*, int > source_outputs;
 public:

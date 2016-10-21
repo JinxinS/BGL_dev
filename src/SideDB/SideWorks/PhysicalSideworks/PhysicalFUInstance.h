@@ -20,6 +20,7 @@ public:
 	FUInstance* correspondence(int i)const {return correspond_LogicalFUInstance[i];}
 	void place(FUInstance*);
 	bool isPlaced(int simid);
+	void getReadXbarMuxCount(int*,int);
 };
 
 #endif /* PHYSICALFUINSTANCE_H_ */

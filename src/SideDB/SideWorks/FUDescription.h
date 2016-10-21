@@ -9,6 +9,7 @@
 #define FUDESCRIPTION_H_
 #include "sic_types.h"
 class Function;
+class FUInstance;
 class FUDescription {
 	std::string 						  type;
 	std::unordered_map<std::string, int> input_ports_width;

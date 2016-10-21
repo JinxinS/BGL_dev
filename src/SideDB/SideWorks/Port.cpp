@@ -25,5 +25,8 @@ bool Port::match(Port* p){
 }
 
 bool Port::strictMatch(Port* p){
-	return this->match(p) && (this->parent == p->parent);
+	bool ret = this->match(p) && (this->parent == p->parent->correspondence(0));
+	//std::cout<<this->name<<":"<<this->parent->name<<"strict match"<<p->parent->correspondence(0)->name<<"?"<<ret<<std::endl;
+
+	return this->match(p) && (this->parent == p->parent->correspondence(0));
 }

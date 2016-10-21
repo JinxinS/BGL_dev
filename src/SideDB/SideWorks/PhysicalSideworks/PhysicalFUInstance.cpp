@@ -9,7 +9,7 @@
 #include "FUDescription.h"
 #include "PhysicalInputPort.h"
 #include "PhysicalOutputPort.h"
-
+#include "SideConfException.h"
 PhysicalFUInstance::PhysicalFUInstance(const std::string& name,const std::string& type,FUDescription* desc)
 :FUInstance(name,type,desc),
  correspond_LogicalFUInstance()
@@ -41,5 +41,12 @@ void PhysicalFUInstance::place(FUInstance* lfu){
 
 bool PhysicalFUInstance::isPlaced(int simid){
 	return correspond_LogicalFUInstance.size() > (uint)simid;
+}
+
+void PhysicalFUInstance::getReadXbarMuxCount(int* muxCount,int maxsz){
+	for(auto i: inports){
+		if(i.second->size() >= maxsz) throw SideConfException(i.first+"exceed maximum allowed mux size of "+std::to_string(maxsz));
+		muxCount[i.second->size()] += i.second->width;
+	}
 }
 

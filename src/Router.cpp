@@ -21,5 +21,6 @@ Router::~Router() {
 }
 
 void Router::route(LogicalSideworks* logical_sideworks,PhysicalSideworks& physical_sideWorks,int simid){
-	logical_sideworks->route(physical_sideWorks);
+	physical_sideWorks.route(*logical_sideworks);
+
 }

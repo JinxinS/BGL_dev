@@ -9,8 +9,7 @@
 #include "OutputPort.h"
 
 PhysicalInputPort::PhysicalInputPort(const std::string& name,int width,FUInstance* p)
-:InputPort(name, width, p)
-{
+:InputPort(name, width, p){
 	// TODO Auto-generated constructor stub
 
 }
