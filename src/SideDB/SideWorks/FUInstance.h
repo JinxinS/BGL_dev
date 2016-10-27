@@ -9,6 +9,8 @@
 #define FUINSTANCE_H_
 #include <unordered_map>
 #include <boost/graph/properties.hpp>
+#include <string>
+#include <list>
 class InputPort;
 class OutputPort;
 class FUDescription;
@@ -34,18 +36,18 @@ public:
 	FUInstance(const FUInstance& obj);
 	FUInstance(const std::string& name="no_name", const std::string& type="no_type", FUDescription* desc=0);
 	virtual ~FUInstance();
-	int size();
-
-
-	void setParameter(const std::string&, long);
+	int fanInSize();
+	int fanOutSize();
 	int connect(const std::string&, FUInstance*,const std::string&);
 	bool isConnected(const std::string&, FUInstance* ,const std::string&);
+	virtual void setParameter(const std::string&, long);
 	virtual FUInstance* correspondence(int)const{return NULL;}
-	virtual void place(FUInstance*){}
+	virtual void place(FUInstance*,int){}
 	virtual bool isPlaced(int){ return false;}
 	virtual double estimatePlacementDecisionCost(FUInstance*){return 0;}
 	virtual void getReadXbarMuxCount(int*,int){}
 
+	virtual FUInstance* createPhysicalFUInstance(const std::string &){}
 	friend std::ostream& operator<<(std::ostream& os, const FUInstance& o){
 		return os<<o.name;
 	}

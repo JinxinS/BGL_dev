@@ -24,6 +24,7 @@ public:
     bool isInputPort(const std::string& arg);
     bool isParameter(const std::string& arg);
     int  getInputWidth(const std::string& in);
+	virtual FUInstance* createLogicalFUInstance(const std::string &,const std::string &,const std::string &);
     inline const std::unordered_map<std::string, int>& getOutputPorts() const { return output_ports_width; }
     inline const std::unordered_map<std::string, int>&  getInputPorts() const { return input_ports_width; }
     Function* getFUFunction(const std::string& funcname);

@@ -12,7 +12,7 @@ class PhysicalOutputPort :public OutputPort {
 public:
 	PhysicalOutputPort(const std::string& name,int width,FUInstance* p);
 	virtual ~PhysicalOutputPort();
-	int calcCost(Port* logIn);
+	double calcCost(Port* logIn);
 };
 
 #endif /* PHYSICALOUTPUTPORT_H_ */

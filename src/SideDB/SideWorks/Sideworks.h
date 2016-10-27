@@ -10,13 +10,11 @@
 #include "sic_types.h"
 class Sideworks {
 protected:
-    std::map<std::string, unsigned int> resource_usage;
 	graph_t siw_graph;
 	std::vector<FUInstance*> fuList;
 	int size() const;
 public:
 	inline graph_t& getGraph(){return siw_graph;}
-	inline const std::map<std::string, unsigned int>& getResourceUsage() const{return resource_usage; }
 	Sideworks();
 	virtual ~Sideworks();
 	virtual void addFU(FUInstance* fu);

@@ -79,9 +79,9 @@ void SideConf::loadLogicalSideworks(){
 }
 
 void SideConf::generatePhysicalSideworks(){
-	ResourceAllocator r;
-	r.addLSiWResources(logical_sideworks_list);
-	r.allocateResources(physical_sideWorks,fu_library);
+//	ResourceAllocator r;
+//	r.addLSiWResources(logical_sideworks_list);
+//	r.allocateResources(physical_sideWorks,fu_library);
     for(unsigned int i = 0; i < logical_sideworks_list.size(); i++){
 		BOOST_LOG_TRIVIAL(info)<<"Placing" <<i;
     	Placer::place(logical_sideworks_list[i],physical_sideWorks,i);

@@ -7,6 +7,8 @@
 
 #include "Mem.h"
 #include "Function.h"
+#include "FUInstance.h"
+
 const std::string Mem::TYPE = "MEM";
 const std::string Mem::FUNC_NAME = "SIW_AUTO_FUNC";
 
@@ -39,3 +41,18 @@ Mem::~Mem() {
 	// TODO Auto-generated destructor stub
 }
 
+FUInstance* Mem::createLogicalFUInstance(const std::string &name,const std::string &type,const std::string &func){
+	return new MemFUInstance(name,type,func,this);
+}
+
+MemFUInstance::MemFUInstance(const std::string &name,const std::string &type,const std::string &func, FUDescription* desc)
+:LogicalFUInstance(name,type,func,desc),
+ id(0){}
+
+MemFUInstance::~MemFUInstance(){
+
+}
+
+void MemFUInstance::setParameter(const std::string& param, long val){
+	FUInstance::setParameter(param,val);
+}

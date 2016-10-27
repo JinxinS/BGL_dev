@@ -18,7 +18,7 @@ PhysicalInputPort::~PhysicalInputPort() {
 	// TODO Auto-generated destructor stub
 }
 
-int PhysicalInputPort::calcCost(Port* logOut){
+double PhysicalInputPort::calcCost(Port* logOut){
 	if(logOut->isPlaced()){
 		for(auto o: source_outputs){
 			if(o.first->strictMatch(logOut)) return 0;
@@ -29,7 +29,7 @@ int PhysicalInputPort::calcCost(Port* logOut){
 		for(auto o: source_outputs){
 			if(o.first->match(logOut)) ++num_possible_ports;
 		}
-		return 16/(1<<num_possible_ports)*width;
+		return 16/pow(2,num_possible_ports)*width;
 	}
 }
 

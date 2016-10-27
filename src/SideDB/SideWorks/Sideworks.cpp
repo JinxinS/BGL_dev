@@ -9,7 +9,7 @@
 #include "FUInstance.h"
 #include "SideConfException.h"
 Sideworks::Sideworks()
-:resource_usage(),
+:
  siw_graph(),
  fuList(){
 	// TODO Auto-generated constructor stub
@@ -25,7 +25,6 @@ int Sideworks::size() const {
 }
 
 void Sideworks::addFU(FUInstance* fu){
-	++resource_usage[fu->type];
 	graph_t::vertex_descriptor v = boost::add_vertex(vertex_properties("",*fu), siw_graph);
 	fuList.push_back(fu);
 }

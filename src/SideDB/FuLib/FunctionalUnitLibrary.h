@@ -17,7 +17,7 @@ public:
     inline FUDescription* getFUDescription(const std::string& type)const {return fu_desc_list.at(type);}
     FUInstance* getLogicalMEMInstance(const std::string &,int,int,int,const std::string&);
     FUInstance*   getLogicalFUInstance(const std::string &,const std::string &,const std::string &func="")const;
-    FUInstance* getPhysicalFUInstance(const std::string &,const std::string &)const;
+ //   FUInstance* getPhysicalFUInstance(const std::string &,const std::string &)const;
     FunctionalUnitLibrary();
 	virtual ~FunctionalUnitLibrary();
 };

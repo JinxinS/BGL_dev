@@ -170,7 +170,7 @@
     <FunctionArg name='i3' value='m8.data_a' />
     <FunctionArg name='i0' value='m9.data_a' />
   </FUFunction>
-  <FUMem fu_name='m6' datapath='recon8x8' a_width='12' d_width='32' nwords='4096'>
+  <FUMem fu_name='m6' datapath='recon8x8' a_width='10' d_width='32' nwords='1024'>
     <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
     <FunctionArg name='address_a' value='bau_k_rd_A.out' />
     <FunctionArg name='address_b' value='bau_k_rd_B.out' />
@@ -181,7 +181,7 @@
     <FunctionArg name='dly_b' value='0' />
     <FunctionArg name='dly_a' value='0' />
   </FUMem>
-  <FUMem fu_name='m7' datapath='recon8x8' a_width='13' d_width='32' nwords='5248'>
+  <FUMem fu_name='m7' datapath='recon8x8' a_width='14' d_width='32' nwords='16384'>
     <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
     <FunctionArg name='address_a' value='bau_k_wr_A.out' />
     <FunctionArg name='address_b' value='bau_k_wr_B.out' />
@@ -399,7 +399,7 @@
     <FunctionArg name='ld' value='tu_wr.start_K_' />
     <FunctionArg name='en' value='tu_wr.enable_K_' />
   </FUFunction>
-  <FUMem fu_name='m9' datapath='recon8x8' a_width='12' d_width='32' nwords='4096'>
+  <FUMem fu_name='m9' datapath='recon8x8' a_width='10' d_width='32' nwords='1024'>
     <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
     <FunctionArg name='address_a' value='reg_k_rd_1A.out' />
     <FunctionArg name='address_b' value='reg_k_rd_1B.out' />
@@ -410,7 +410,7 @@
     <FunctionArg name='dly_b' value='0' />
     <FunctionArg name='dly_a' value='0' />
   </FUMem>
-  <FUMem fu_name='m8' datapath='recon8x8' a_width='12' d_width='32' nwords='4096'>
+  <FUMem fu_name='m8' datapath='recon8x8' a_width='10' d_width='32' nwords='1024'>
     <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
     <FunctionArg name='address_a' value='bau_k_rd_0A.out' />
     <FunctionArg name='address_b' value='bau_k_rd_0B.out' />
@@ -421,7 +421,7 @@
     <FunctionArg name='dly_b' value='0' />
     <FunctionArg name='dly_a' value='0' />
   </FUMem>
-  <FUMem fu_name='m1' datapath='recon8x8' a_width='12' d_width='32' nwords='4096'>
+  <FUMem fu_name='m1' datapath='recon8x8' a_width='10' d_width='32' nwords='1024'>
     <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
     <FunctionArg name='address_a' value='reg_k_rd_1A.out' />
     <FunctionArg name='address_b' value='reg_k_rd_1B.out' />
@@ -432,7 +432,7 @@
     <FunctionArg name='dly_b' value='0' />
     <FunctionArg name='dly_a' value='0' />
   </FUMem>
-  <FUMem fu_name='m0' datapath='recon8x8' a_width='12' d_width='32' nwords='4096'>
+  <FUMem fu_name='m0' datapath='recon8x8' a_width='10' d_width='32' nwords='1024'>
     <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
     <FunctionArg name='address_a' value='bau_k_rd_0A.out' />
     <FunctionArg name='address_b' value='bau_k_rd_0B.out' />
@@ -443,7 +443,7 @@
     <FunctionArg name='dly_b' value='0' />
     <FunctionArg name='dly_a' value='0' />
   </FUMem>
-  <FUMem fu_name='m5' datapath='recon8x8' a_width='12' d_width='32' nwords='4096'>
+  <FUMem fu_name='m5' datapath='recon8x8' a_width='10' d_width='32' nwords='1024'>
     <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
     <FunctionArg name='address_a' value='bau_k_wr_left_A.out' />
     <FunctionArg name='address_b' value='bau_k_wr_uplr_B.out' />
@@ -454,7 +454,7 @@
     <FunctionArg name='dly_b' value='2' />
     <FunctionArg name='dly_a' value='1' />
   </FUMem>
-  <FUMem fu_name='m3' datapath='recon8x8' a_width='12' d_width='32' nwords='4096'>
+  <FUMem fu_name='m3' datapath='recon8x8' a_width='10' d_width='32' nwords='1024'>
     <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
     <FunctionArg name='address_a' value='bau_k_wr_up_A.out' />
     <FunctionArg name='address_b' value='bau_k_wr_uplr_B.out' />
@@ -465,7 +465,7 @@
     <FunctionArg name='dly_b' value='2' />
     <FunctionArg name='dly_a' value='1' />
   </FUMem>
-  <FUMem fu_name='m4' datapath='recon8x8' a_width='12' d_width='32' nwords='4096'>
+  <FUMem fu_name='m4' datapath='recon8x8' a_width='10' d_width='32' nwords='1024'>
     <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
     <FunctionArg name='address_a' value='bau_k_wr_up_A.out' />
     <FunctionArg name='address_b' value='bau_k_wr_uplr_B.out' />
@@ -506,7 +506,7 @@
     <FunctionArg name='value' value='255' />
     <FunctionArg name='width' value='32' />
   </FUFunction>
-  <FUFunction fu_name='bau_j_wr_A' datapath='recon8x8' type_name='BAU_13' func_name='F_BAU_13'>
+  <FUFunction fu_name='bau_j_wr_A' datapath='recon8x8' type_name='BAU_14' func_name='F_BAU_14'>
     <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
     <FunctionArg name='ld_val' value='nd.ulMO_' />
     <FunctionArg name='cmp' value='undefined' />
@@ -515,7 +515,7 @@
     <FunctionArg name='ld' value='tu_wr.start_J_' />
     <FunctionArg name='en' value='tu_wr.enable_J_' />
   </FUFunction>
-  <FUFunction fu_name='bau_k_wr_A' datapath='recon8x8' type_name='BAU_13' func_name='F_BAU_13'>
+  <FUFunction fu_name='bau_k_wr_A' datapath='recon8x8' type_name='BAU_14' func_name='F_BAU_14'>
     <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
     <FunctionArg name='ld_val' value='bau_j_wr_A.out' />
     <FunctionArg name='cmp' value='undefined' />
@@ -524,7 +524,7 @@
     <FunctionArg name='ld' value='tu_wr.start_K_' />
     <FunctionArg name='en' value='wr_en.out' />
   </FUFunction>
-  <FUFunction fu_name='bau_j_wr_B' datapath='recon8x8' type_name='BAU_13' func_name='F_BAU_13'>
+  <FUFunction fu_name='bau_j_wr_B' datapath='recon8x8' type_name='BAU_14' func_name='F_BAU_14'>
     <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
     <FunctionArg name='ld_val' value='bau_wr_ldB.add' />
     <FunctionArg name='cmp' value='undefined' />
@@ -533,7 +533,7 @@
     <FunctionArg name='ld' value='tu_wr.start_J_' />
     <FunctionArg name='en' value='tu_wr.enable_J_' />
   </FUFunction>
-  <FUFunction fu_name='bau_k_wr_B' datapath='recon8x8' type_name='BAU_13' func_name='F_BAU_13'>
+  <FUFunction fu_name='bau_k_wr_B' datapath='recon8x8' type_name='BAU_14' func_name='F_BAU_14'>
     <DebugInfo file='designs/inverse/recon8x8.dsn' line='0' />
     <FunctionArg name='ld_val' value='bau_j_wr_B.out' />
     <FunctionArg name='cmp' value='undefined' />

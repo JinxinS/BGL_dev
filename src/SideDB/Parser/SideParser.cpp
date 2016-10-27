@@ -172,10 +172,12 @@ void SideParser::parseLogicalSideWorks(FunctionalUnitLibrary& fulib,LogicalSidew
 						std::string src_funame;
 						std::string src_out_pname;
 						if(value == "undefined"){
-							src_funame	  = Fixed::ZERO;
-							src_out_pname = Fixed::FIXED_OUT;
-							graph_t::vertex_descriptor src_logicFu = logical_sideworks->getFU(src_funame);
-							logical_sideworks->addFixedConection(src_logicFu,dest_logicFu,src_out_pname,dst_in_pname);
+							if((v.first == tag_fumem) &&(dst_in_pname == "en")){
+								src_funame	  = Fixed::ZERO;
+								src_out_pname = Fixed::FIXED_OUT;
+								graph_t::vertex_descriptor src_logicFu = logical_sideworks->getFU(src_funame);
+								logical_sideworks->addFixedConection(src_logicFu,dest_logicFu,src_out_pname,dst_in_pname);
+							}
 						}else{
 							char_separator<char> sep(".");
 							tokenizer<char_separator<char>> tokens(value, sep);
@@ -203,7 +205,6 @@ void SideParser::parseLogicalSideWorks(FunctionalUnitLibrary& fulib,LogicalSidew
 	//exclude unused Functional Unit in the Datapath, Note the siw_graph still contains the unused Functional Unit
 	BGL_FORALL_VERTICES(v, logical_sideworks->siw_graph, graph_t){
 		if(degree(v,logical_sideworks->siw_graph) == 0){
-			logical_sideworks->resource_usage[logical_sideworks->fuList[v]->type]--;
 			delete logical_sideworks->fuList[v];
 			logical_sideworks->fuList[v] = NULL;
 		}

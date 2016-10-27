@@ -18,7 +18,7 @@ PhysicalOutputPort::~PhysicalOutputPort() {
 	// TODO Auto-generated destructor stub
 }
 
-int PhysicalOutputPort::calcCost(Port* logIn){
+double PhysicalOutputPort::calcCost(Port* logIn){
 	if(logIn->isPlaced()){
 		for(auto i: destination_inputs){
 			if(i->strictMatch(logIn)) return 0;
@@ -29,6 +29,6 @@ int PhysicalOutputPort::calcCost(Port* logIn){
 		for(auto i: destination_inputs){
 			if(i->match(logIn)) ++num_possible_ports;
 		}
-		return 16/(1<<num_possible_ports)*width;
+		return 16/pow(2,num_possible_ports)*width;
 	}
 }

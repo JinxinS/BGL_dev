@@ -29,7 +29,7 @@
     <FunctionArg name='ld' value='tu_rd.start_J_' />
     <FunctionArg name='en' value='tu_rd.enable_J_' />
   </FUFunction>
-  <FUMem fu_name='m1' datapath='func_get_chroma_0x' a_width='12' d_width='32' nwords='4096'>
+  <FUMem fu_name='m1' datapath='func_get_chroma_0x' a_width='10' d_width='32' nwords='1024'>
     <DebugInfo file='designs/get_chroma/func_get_chroma_0x.dsn' line='0' />
     <FunctionArg name='address_a' value='bau_k_wrA.out' />
     <FunctionArg name='address_b' value='undefined' />

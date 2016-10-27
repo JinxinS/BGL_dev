@@ -116,13 +116,9 @@ Load Contraints ...Done!
 Parsing Logical Configuration files:
 test/res/example2.xml
 test/res/example.xml
-time cost :0.011720second
+time cost :0.011135second
 
 Combining Logical Configurations:
-
-MUX_0: 6556 	[0]
-
-MUX_1: 18 	[0]
   Combining designs/get_chroma/func_get_chroma_0x.dsn:func_get_chroma_0x ...	
 -------------------func_get_chroma_0x-------------------
 designs/get_chroma/func_get_chroma_0x.dsn:0: Logical FU: const_32 placed at GENERIC_VALUE_g00
@@ -364,12 +360,6 @@ New connection :tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_0}.limit_h from ZERO{@ZERO_g0
 New connection :tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_0}.limit_i from ONE{@ONE_g00}.fixed_out_12[ 12*mux_1]
 New connection :tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_0}.limit_j from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.out1[ 12*mux_1]
 New connection :tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_0}.limit_k from siw_ctrl{@SIW_CTRL_SIW_CTRL_auto_0}.out0[ 12*mux_1]
-
-MUX_0: 4608 	[0]
-
-MUX_1: 1965 	[0]
-
-MUX_2: 1 	[1]
 -------------------
 -------------------func_get_chroma_0x-------------------
 
@@ -856,12 +846,6 @@ New connection :tu_rd{@TU_4_4_12_TU_4_4_12_g0_auto_0}.limit_k from const_4{@GENE
 New connection :tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_1}.limit_i from ZERO{@ZERO_g00}.fixed_out_12[ 12*mux_2]
 New connection :tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_1}.limit_j from ONE{@ONE_g00}.fixed_out_12[ 12*mux_2]
 New connection :tu_wr{@TU_4_4_12_TU_4_4_12_g0_auto_1}.limit_k from const_4{@GENERIC_VALUE_g06}.out[ 12*mux_2]
-
-MUX_0: 322 	[0]
-
-MUX_1: 5478 	[0]
-
-MUX_2: 774 	[774]
 -------------------
 -------------------recon8x8-------------------
 

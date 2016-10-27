@@ -19,20 +19,20 @@ ResourceAllocator::~ResourceAllocator() {
 }
 
 void ResourceAllocator::addLSiWResources(const std::vector<LogicalSideworks*>& logical_sideworks_list){
-    for(unsigned int i = 0; i < logical_sideworks_list.size(); i++){
-    	for(auto x : logical_sideworks_list[i]->getResourceUsage() ){
-    		if(fu_resources[x.first] < x.second) fu_resources[x.first] = x.second;
-    	}
-    }
+//    for(unsigned int i = 0; i < logical_sideworks_list.size(); i++){
+//    	for(auto x : logical_sideworks_list[i]->getResourceUsage() ){
+//    		if(fu_resources[x.first] < x.second) fu_resources[x.first] = x.second;
+//    	}
+//    }
 }
 
 void ResourceAllocator::allocateResources(PhysicalSideworks& physical_sideWorks,const FunctionalUnitLibrary& fulib){
-	for(auto s:fu_resources){
-		std::string fu_type(s.first);
-		int n(s.second);
-		for(int i = 0; i < n; ++i){
-			std::string fu_name(fu_type+"_auto_"+std::to_string(i));
-			physical_sideWorks.addFU(fulib.getPhysicalFUInstance(fu_name,fu_type));
-		}
-	}
+//	for(auto s:fu_resources){
+//		std::string fu_type(s.first);
+//		int n(s.second);
+//		for(int i = 0; i < n; ++i){
+//			std::string fu_name(fu_type+"_auto_"+std::to_string(i));
+//			physical_sideWorks.addFU(fulib.getPhysicalFUInstance(fu_name,fu_type));
+//		}
+//	}
 }

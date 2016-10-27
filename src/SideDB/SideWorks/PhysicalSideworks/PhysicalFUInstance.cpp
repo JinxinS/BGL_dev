@@ -35,12 +35,12 @@ void PhysicalFUInstance::addOutputPort(const std::string& name, int width){
 	outports.insert(std::make_pair(name,(OutputPort*)new PhysicalOutputPort(name,width,this)));
 }
 
-void PhysicalFUInstance::place(FUInstance* lfu){
-	correspond_LogicalFUInstance.push_back(lfu);
+void PhysicalFUInstance::place(FUInstance* lfu,int simid){
+	correspond_LogicalFUInstance.insert(std::make_pair(simid,lfu));
 }
 
 bool PhysicalFUInstance::isPlaced(int simid){
-	return correspond_LogicalFUInstance.size() > (uint)simid;
+	return correspond_LogicalFUInstance.find(simid)!=correspond_LogicalFUInstance.end();
 }
 
 void PhysicalFUInstance::getReadXbarMuxCount(int* muxCount,int maxsz){

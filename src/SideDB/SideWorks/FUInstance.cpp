@@ -60,11 +60,16 @@ int FUInstance::connect(const std::string& o, FUInstance* dst,const std::string&
 	return outports.at(o)->connect(dst->getInputPort(i));
 }
 
-int FUInstance::size(){
+int FUInstance::fanInSize(){
 	int sz = 0;
 	for(auto i: inports){
 		sz += i.second->size();
 	}
+	return sz;
+}
+
+int FUInstance::fanOutSize(){
+	int sz = 0;
 	for(auto o: outports){
 		sz += o.second->size();
 	}

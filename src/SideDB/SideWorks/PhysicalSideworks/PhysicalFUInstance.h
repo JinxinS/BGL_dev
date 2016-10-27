@@ -11,14 +11,14 @@
 #include "FUInstance.h"
 class FUDescription;
 class PhysicalFUInstance:public FUInstance {
-	std::vector<FUInstance*> correspond_LogicalFUInstance;
+	std::map<int,FUInstance*> correspond_LogicalFUInstance;
 	virtual void addInputPort(const std::string&, int width);
 	virtual void addOutputPort(const std::string&, int width);
 public:
 	PhysicalFUInstance(const std::string& name,const std::string& type,FUDescription* desc);
 	virtual ~PhysicalFUInstance();
-	FUInstance* correspondence(int i)const {return correspond_LogicalFUInstance[i];}
-	void place(FUInstance*);
+	FUInstance* correspondence(int i)const {return correspond_LogicalFUInstance.at(i);}
+	void place(FUInstance*,int);
 	bool isPlaced(int simid);
 	void getReadXbarMuxCount(int*,int);
 };

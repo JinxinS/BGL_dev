@@ -8,12 +8,22 @@
 #ifndef FUNCTIONALUNITS_MEM_H_
 #define FUNCTIONALUNITS_MEM_H_
 #include "FUDescription.h"
+#include "LogicalFUInstance.h"
 class Mem :public FUDescription{
 public:
 	static const std::string TYPE;
 	static const std::string FUNC_NAME;
 	Mem(int a_width, int d_width, int /*nwords*/);
 	virtual ~Mem();
+	FUInstance* createLogicalFUInstance(const std::string &,const std::string &,const std::string &) ;
+};
+
+class MemFUInstance:public LogicalFUInstance{
+	int id;
+public:
+	MemFUInstance(const std::string &name,const std::string &type,const std::string &func,FUDescription* desc);
+	virtual ~MemFUInstance();
+	void setParameter(const std::string&, long);
 };
 
 #endif /* FUNCTIONALUNITS_MEM_H_ */

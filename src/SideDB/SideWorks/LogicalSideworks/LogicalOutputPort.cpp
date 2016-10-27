@@ -18,8 +18,9 @@ LogicalOutputPort::~LogicalOutputPort() {
 	// TODO Auto-generated destructor stub
 }
 
-int LogicalOutputPort::calcCost(Port* phyOut){
-	int cost  = 0;
+double LogicalOutputPort::calcCost(Port* phyOut){
+//	std::cout<<"calc logiOut"<<this->name << "----------\n";
+	double cost  = 0;
 	if(this->isConnected()){
 		for(auto logIn:destination_inputs)
 			cost += phyOut->calcCost(logIn);

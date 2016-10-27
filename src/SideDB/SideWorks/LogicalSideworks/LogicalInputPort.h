@@ -13,7 +13,7 @@ class LogicalInputPort:public InputPort {
 public:
 	LogicalInputPort(const std::string& name,int width,FUInstance* p);
 	virtual ~LogicalInputPort();
-    int calcCost(Port* phyIn);
+    double calcCost(Port* phyIn);
 };
 
 #endif /* LOGICALINPUTPORT_H_ */

@@ -8,6 +8,8 @@
 #include "FUDescription.h"
 #include "Function.h"
 #include "SideConfException.h"
+#include "LogicalFUInstance.h"
+
 FUDescription::FUDescription(const std::string& type)
 : type(type),
   input_ports_width(),
@@ -60,4 +62,8 @@ int FUDescription::getInputWidth(const std::string& in){
 
 Function* FUDescription::getFUFunction(const std::string& funcname){
 	return function_descriptions.at(funcname);
+}
+
+FUInstance* FUDescription::createLogicalFUInstance(const std::string &name,const std::string &type,const std::string &func){
+	return new LogicalFUInstance(name,type,func,this);
 }

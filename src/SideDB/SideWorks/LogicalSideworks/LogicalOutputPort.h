@@ -13,7 +13,7 @@ class LogicalOutputPort :public OutputPort{
 public:
     LogicalOutputPort(const std::string& name,int width,FUInstance* p);
 	virtual ~LogicalOutputPort();
-    int calcCost(Port* phyOut);
+    double calcCost(Port* phyOut);
 };
 
 #endif /* LOGICALOUTPUTPORT_H_ */

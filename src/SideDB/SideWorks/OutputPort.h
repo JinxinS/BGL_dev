@@ -11,6 +11,7 @@
 #include <list>
 class InputPort;
 class OutputPort:public Port  {
+	friend class PhysicalFUInstance;
 	friend std::ostream& operator<<(std::ostream& os, const InputPort& i);
 protected:
 	std::list<InputPort*> destination_inputs;

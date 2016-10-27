@@ -47,7 +47,7 @@ FUInstance* FunctionalUnitLibrary::getLogicalFUInstance(const std::string &name,
 	}catch(std::out_of_range& e){
 		throw SideConfException("can not find [" + type + "] in library");
 	}
-	return new LogicalFUInstance(name,type,func,desc);
+	return desc->createLogicalFUInstance(name,type,func);//new LogicalFUInstance(name,type,func,desc);
 }
 
 FUInstance* FunctionalUnitLibrary::getLogicalMEMInstance(const std::string &name,int a_width,int d_width,int nwords,const std::string &memid) {
@@ -57,12 +57,12 @@ FUInstance* FunctionalUnitLibrary::getLogicalMEMInstance(const std::string &name
 	return getLogicalFUInstance(name,mtype,Mem::FUNC_NAME);
 }
 
-FUInstance* FunctionalUnitLibrary::getPhysicalFUInstance(const std::string &name,const std::string &type)const{
-	FUDescription* desc;
-	try{
-		desc = fu_desc_list.at(type);
-	}catch(std::out_of_range& e){
-		throw SideConfException("can not find [" + type + "] in library");
-	}
-	return new PhysicalFUInstance(name,type,desc);
-}
+//FUInstance* FunctionalUnitLibrary::getPhysicalFUInstance(const std::string &name,const std::string &type)const{
+//	FUDescription* desc;
+//	try{
+//		desc = fu_desc_list.at(type);
+//	}catch(std::out_of_range& e){
+//		throw SideConfException("can not find [" + type + "] in library");
+//	}
+//	return desc->createPhysicalFUInstance(name,type);
+//}

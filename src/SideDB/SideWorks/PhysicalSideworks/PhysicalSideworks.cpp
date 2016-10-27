@@ -12,6 +12,7 @@
 #include "OutputPort.h"
 #include "LogicalSideworks.h"
 #include "IResourceCostConstants.h"
+#include "FUDescription.h"
 PhysicalSideworks::PhysicalSideworks()
 :Sideworks(),
  fus_by_type(),
@@ -31,7 +32,7 @@ void PhysicalSideworks::addFU(FUInstance* fu){
 }
 
 void PhysicalSideworks::place(FUInstance* lfu,int simid){
-	 BOOST_LOG_TRIVIAL(fatal)<<"********************placing process*************************";
+	 BOOST_LOG_TRIVIAL(fatal)<<"********placing process************";
     double best_fu_cost = std::numeric_limits<double>::max() - 1;
     FUInstance* best_fu = 0;
     for(auto pfu:fus_by_type[lfu->type] ){
@@ -43,9 +44,19 @@ void PhysicalSideworks::place(FUInstance* lfu,int simid){
 			best_fu	= pfu;
 		}
 	}
-    lfu->place(best_fu);
-    best_fu->place(lfu);
-    BOOST_LOG_TRIVIAL(fatal)<<boost::format("\nplace %-20s @ %-20s cost %-8f") %lfu->name %best_fu->name %best_fu_cost;
+    //no suitable FU to place, add one
+    if(best_fu_cost == std::numeric_limits<double>::max() - 1){
+		std::string fu_name(lfu->type+"_auto_"+std::to_string(fus_by_type[lfu->type].size()));
+		best_fu = lfu->createPhysicalFUInstance(fu_name);
+    	this->addFU(best_fu);
+    	BOOST_LOG_TRIVIAL(fatal)<<boost::format("\nplace %-10s @ %-10s cost MAX") %lfu->name %best_fu->name ;
+    }
+    else
+    	BOOST_LOG_TRIVIAL(fatal)<<boost::format("\nplace %-10s @ %-10s cost %-f") %lfu->name %best_fu->name %best_fu_cost;
+
+    lfu->place(best_fu,0);
+    best_fu->place(lfu,simid);
+	BOOST_LOG_TRIVIAL(fatal)<<*best_fu->correspondence(simid);
 }
 
 void PhysicalSideworks::route(LogicalSideworks &logical_sideWorks){

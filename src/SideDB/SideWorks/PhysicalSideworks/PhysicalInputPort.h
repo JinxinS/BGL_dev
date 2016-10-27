@@ -13,7 +13,7 @@ class PhysicalInputPort :public InputPort {
 public:
 	PhysicalInputPort(const std::string& name,int width,FUInstance* p);
 	virtual ~PhysicalInputPort();
-	int calcCost(Port* logOut);
+	double calcCost(Port* logOut);
 
 };
 

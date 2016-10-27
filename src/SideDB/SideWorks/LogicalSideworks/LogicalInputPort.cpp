@@ -19,7 +19,8 @@ LogicalInputPort::~LogicalInputPort() {
 	// TODO Auto-generated destructor stub
 }
 
-int LogicalInputPort::calcCost(Port* phyIn){
+double LogicalInputPort::calcCost(Port* phyIn){
+//	std::cout<<"calc logiin"<<this->name << "----------\n";
 	if(this->isConnected()){
 		return phyIn->calcCost((*source_outputs.begin()).first);
 	}else{

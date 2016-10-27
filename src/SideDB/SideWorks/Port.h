@@ -23,8 +23,8 @@ public:
     int getWidth() const { return width;}
 	bool match(Port* p);
 	bool strictMatch(Port* p);
-	bool isPlaced(){ /*std::cout<<parent->name<<"."<<this->name<<"["<<parent->isPlaced(0)<<"] \n";*/return parent->isPlaced(0); }
-	virtual int calcCost(Port* ){return 0;}
+	bool isPlaced(){/* std::cout<<parent->name<<"."<<this->name<<"["<<parent->isPlaced(0)<<"] \n";*/return parent->isPlaced(0); }
+	virtual double calcCost(Port* ){return 0;}
 };
 
 #endif /* PORT_H_ */
