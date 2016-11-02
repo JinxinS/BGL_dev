@@ -14,7 +14,6 @@
 #include "SideParser.h"
 #include "LogicalSideworks.h"
 #include "FunctionalUnitLibrary.h"
-#include "ResourceAllocator.h"
 #include "Placer.h"
 #include "Router.h"
 

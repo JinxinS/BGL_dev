@@ -7,23 +7,25 @@
 
 #include "Constant.h"
 #include "Function.h"
-const std::string Constant::TYPE = "GENERIC_VALUE";
-const std::string Constant::FUNC_NAME = "F_GENERIC_VALUE";
+const std::string Constant::TYPE		= "GENERIC_VALUE";
+const std::string Constant::FUNC_NAME 	= "F_GENERIC_VALUE";
+const std::string Constant::OUT			= "out";
+const std::string Constant::PARAM		= "value";
 
 Constant::Constant()
 :FUDescription(TYPE){
-	addOutputPort("out", 32);
-	addParameter("value", 32);
+	addOutputPort(OUT, 32);
+	addParameter(PARAM, 32);
     Function* function = new Function(Constant::FUNC_NAME,0);
 	addFUFunction(function);
-	function->addFunctionArg("value");
+	function->addFunctionArg(PARAM);
 }
 
 Constant::~Constant() {
 	// TODO Auto-generated destructor stub
 }
 
-FUInstance* Constant::createLogicalFUInstance(const std::string &name,const std::string &type,const std::string &func){
+LogicalFUInstance* Constant::createLogicalFUInstance(const std::string &name,const std::string &type,const std::string &func){
 	return new ConstantFUInstance(name,type,func,this);
 }
 
@@ -34,21 +36,17 @@ ConstantFUInstance::ConstantFUInstance(const std::string &name,const std::string
 ConstantFUInstance::~ConstantFUInstance(){}
 
 void ConstantFUInstance::setParameter(const std::string& param, long val){
-	value = val;
-	FUInstance::setParameter(param,val);
+	if(Constant::PARAM == param) value = val;
+	LogicalFUInstance::setParameter(param,val);
 }
 
-double ConstantFUInstance::estimatePlacementDecisionCost(FUInstance* pfu){
-	if(this->value == dynamic_cast<ConstantPhysicalFUInstance*>(pfu)->value){
-		return 0;
-	}else return std::numeric_limits<double>::max() - 1;
+double ConstantFUInstance::estimatePlacementDecisionCost(ConstantPhysicalFUInstance* pfu){
+	return (this->value == pfu->value) ? 0:std::numeric_limits<double>::max() - 1;
 }
 
-FUInstance* ConstantFUInstance::createPhysicalFUInstance(const std::string &name){
+PhysicalFUInstance* ConstantFUInstance::createPhysicalFUInstance(const std::string &name){
 	return new ConstantPhysicalFUInstance(name,type,value,description);
 }
-
-
 
 ConstantPhysicalFUInstance::ConstantPhysicalFUInstance(const std::string &name,const std::string &type,int val,FUDescription* desc)
 :PhysicalFUInstance(name,type,desc),

@@ -40,7 +40,7 @@ void FunctionalUnitLibrary::addFUDescription(const std::string &type,FUDescripti
 	 }
 }
 
-FUInstance* FunctionalUnitLibrary::getLogicalFUInstance(const std::string &name,const std::string &type,const std::string &func)const{
+LogicalFUInstance* FunctionalUnitLibrary::getLogicalFUInstance(const std::string &name,const std::string &type,const std::string &func)const{
 	FUDescription* desc;
 	try{
 		desc = fu_desc_list.at(type);
@@ -50,19 +50,9 @@ FUInstance* FunctionalUnitLibrary::getLogicalFUInstance(const std::string &name,
 	return desc->createLogicalFUInstance(name,type,func);//new LogicalFUInstance(name,type,func,desc);
 }
 
-FUInstance* FunctionalUnitLibrary::getLogicalMEMInstance(const std::string &name,int a_width,int d_width,int nwords,const std::string &memid) {
+LogicalFUInstance* FunctionalUnitLibrary::getLogicalMEMInstance(const std::string &name,int a_width,int d_width,int nwords,const std::string &memid) {
 	std::string mtype(Mem::TYPE + memid);
 	if(fu_desc_list.find(mtype) == fu_desc_list.end())
 	fu_desc_list.insert(std::make_pair(mtype,new Mem(a_width,d_width,nwords)));
 	return getLogicalFUInstance(name,mtype,Mem::FUNC_NAME);
 }
-
-//FUInstance* FunctionalUnitLibrary::getPhysicalFUInstance(const std::string &name,const std::string &type)const{
-//	FUDescription* desc;
-//	try{
-//		desc = fu_desc_list.at(type);
-//	}catch(std::out_of_range& e){
-//		throw SideConfException("can not find [" + type + "] in library");
-//	}
-//	return desc->createPhysicalFUInstance(name,type);
-//}

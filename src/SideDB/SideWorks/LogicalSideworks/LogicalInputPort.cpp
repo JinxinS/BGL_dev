@@ -10,9 +10,8 @@
 
 LogicalInputPort::LogicalInputPort(const std::string& name,int width,FUInstance* p)
 : InputPort(name, width, p)
- {
+{
 	// TODO Auto-generated constructor stub
-
 }
 
 LogicalInputPort::~LogicalInputPort() {

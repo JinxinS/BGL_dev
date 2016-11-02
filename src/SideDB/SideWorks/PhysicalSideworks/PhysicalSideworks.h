@@ -8,17 +8,20 @@
 #ifndef PHYSICALSIDEWORKS_H_
 #define PHYSICALSIDEWORKS_H_
 #include "Sideworks.h"
-class FUInstance;
+class LogicalFUInstance;
+class PhysicalFUInstance;
 class LogicalSideworks;
 class PhysicalSideworks:public Sideworks {
-	std::map<std::string,std::vector<FUInstance*>> fus_by_type;
+	std::map<std::string,std::vector<PhysicalFUInstance*>> fus_by_type;
+	std::vector<PhysicalFUInstance*> fuList;
 	int muxCount[33];
 public:
 	PhysicalSideworks();
 	virtual ~PhysicalSideworks();
 
-	void addFU(FUInstance* fu);
-	void place(FUInstance* lfu,int simid);
+	void addFU(PhysicalFUInstance*);
+	int addConection(const graph_t::vertex_descriptor&,const graph_t::vertex_descriptor&,const std::string&,const std::string&);
+	void place(LogicalFUInstance*,int);
 	void route(LogicalSideworks &logical_sideWorks);
     int  getReadXbarLuts(const int lut_per_mux_size[]);
 };

@@ -9,11 +9,8 @@
 #include "FUInstance.h"
 #include "SideConfException.h"
 Sideworks::Sideworks()
-:
- siw_graph(),
- fuList(){
+:siw_graph(){
 	// TODO Auto-generated constructor stub
-
 }
 
 Sideworks::~Sideworks() {
@@ -22,19 +19,6 @@ Sideworks::~Sideworks() {
 
 int Sideworks::size() const {
 	return num_vertices(siw_graph) + num_edges(siw_graph);
-}
-
-void Sideworks::addFU(FUInstance* fu){
-	graph_t::vertex_descriptor v = boost::add_vertex(vertex_properties("",*fu), siw_graph);
-	fuList.push_back(fu);
-}
-
-
-int Sideworks::addConection(const graph_t::vertex_descriptor& u,const graph_t::vertex_descriptor& v,const std::string& o,const std::string& i){
-	BOOST_LOG_TRIVIAL(trace)<<"add edge "<<siw_graph[u].name<<"."<<o<<" -> "<<siw_graph[v].name<<"."<<i;
-	if(!fuList[u]->isConnected(o,fuList[v],i)) add_edge(u,v,edge_properties(o,edge_i_property(i)),siw_graph);
-	int ret = fuList[u]->connect(o,fuList[v],i);
-	return ret;
 }
 
 graph_t::vertex_descriptor Sideworks::getFU(const std::string& kname){

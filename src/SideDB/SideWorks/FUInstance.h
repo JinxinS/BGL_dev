@@ -26,9 +26,8 @@ public:
 protected:
 	std::unordered_map<std::string, InputPort*>		inports;
 	std::unordered_map<std::string, OutputPort*>	outports;
-	std::unordered_map<std::string, long>		 	parameters;
-	virtual void addInputPort(const std::string&, int)  {}
-	virtual void addOutputPort(const std::string&, int) {}
+//	virtual void addInputPort(const std::string&, int)  {}
+//	virtual void addOutputPort(const std::string&, int) {}
 	InputPort*   getInputPort(const std::string&);
 	OutputPort* getOutputPort(const std::string&);
 public:
@@ -36,18 +35,11 @@ public:
 	FUInstance(const FUInstance& obj);
 	FUInstance(const std::string& name="no_name", const std::string& type="no_type", FUDescription* desc=0);
 	virtual ~FUInstance();
-	int fanInSize();
-	int fanOutSize();
 	int connect(const std::string&, FUInstance*,const std::string&);
 	bool isConnected(const std::string&, FUInstance* ,const std::string&);
-	virtual void setParameter(const std::string&, long);
 	virtual FUInstance* correspondence(int)const{return NULL;}
-	virtual void place(FUInstance*,int){}
 	virtual bool isPlaced(int){ return false;}
-	virtual double estimatePlacementDecisionCost(FUInstance*){return 0;}
-	virtual void getReadXbarMuxCount(int*,int){}
 
-	virtual FUInstance* createPhysicalFUInstance(const std::string &){}
 	friend std::ostream& operator<<(std::ostream& os, const FUInstance& o){
 		return os<<o.name;
 	}

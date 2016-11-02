@@ -64,6 +64,6 @@ Function* FUDescription::getFUFunction(const std::string& funcname){
 	return function_descriptions.at(funcname);
 }
 
-FUInstance* FUDescription::createLogicalFUInstance(const std::string &name,const std::string &type,const std::string &func){
+LogicalFUInstance* FUDescription::createLogicalFUInstance(const std::string &name,const std::string &type,const std::string &func){
 	return new LogicalFUInstance(name,type,func,this);
 }

@@ -14,14 +14,13 @@ FUInstance::FUInstance(const FUInstance& obj)
  type(obj.type),
  description(obj.description),
  inports(obj.inports),
- outports(obj.outports),
- parameters(obj.parameters){}
+ outports(obj.outports){}
 
-//FUInstance& FUInstance::operator=(const FUInstance& obj){
-////	FUInstance tmp(obj);
-////	*this = std::move(tmp);
-//	return *this;
-//}
+FUInstance& FUInstance::operator=(const FUInstance& obj){
+	FUInstance tmp(obj);
+	*this = std::move(tmp);
+	return *this;
+}
 
 
 FUInstance::FUInstance(const std::string& name, const std::string& type, FUDescription* desc)
@@ -29,18 +28,12 @@ FUInstance::FUInstance(const std::string& name, const std::string& type, FUDescr
  type(type),
  description(desc),
  inports(),
- outports(),
- parameters()
-{
+ outports(){
 	// TODO Auto-generated constructor stub
 }
 
 FUInstance::~FUInstance() {
 	// TODO Auto-generated destructor stub
-}
-
-void FUInstance::setParameter(const std::string& param, long value){
-	parameters.at(param) = value;
 }
 
 InputPort* FUInstance::getInputPort(const std::string& i){
@@ -60,18 +53,3 @@ int FUInstance::connect(const std::string& o, FUInstance* dst,const std::string&
 	return outports.at(o)->connect(dst->getInputPort(i));
 }
 
-int FUInstance::fanInSize(){
-	int sz = 0;
-	for(auto i: inports){
-		sz += i.second->size();
-	}
-	return sz;
-}
-
-int FUInstance::fanOutSize(){
-	int sz = 0;
-	for(auto o: outports){
-		sz += o.second->size();
-	}
-	return sz;
-}

@@ -5,7 +5,8 @@
  *      Author: songjinxin
  */
 
-#include <PhysicalFUInstance.h>
+#include "PhysicalFUInstance.h"
+#include "LogicalFUInstance.h"
 #include "FUDescription.h"
 #include "PhysicalInputPort.h"
 #include "PhysicalOutputPort.h"
@@ -43,6 +44,10 @@ bool PhysicalFUInstance::isPlaced(int simid){
 	return correspond_LogicalFUInstance.find(simid)!=correspond_LogicalFUInstance.end();
 }
 
+double PhysicalFUInstance::estimatePlacementDecisionCost(LogicalFUInstance* lfu){
+	return lfu->estimatePlacementDecisionCost(this);
+}
+
 void PhysicalFUInstance::getReadXbarMuxCount(int* muxCount,int maxsz){
 	for(auto i: inports){
 		if(i.second->size() >= maxsz) throw SideConfException(i.first+"exceed maximum allowed mux size of "+std::to_string(maxsz));
@@ -50,3 +55,17 @@ void PhysicalFUInstance::getReadXbarMuxCount(int* muxCount,int maxsz){
 	}
 }
 
+int PhysicalFUInstance::fanInSize(){
+	int sz = 0;
+	for(auto i: inports){
+		sz += i.second->size();
+	}
+	return sz;
+}
+int PhysicalFUInstance::fanOutSize(){
+	int sz = 0;
+	for(auto o: outports){
+		sz += o.second->size();
+	}
+	return sz;
+}

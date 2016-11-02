@@ -15,15 +15,14 @@ public:
 	static const std::string FUNC_NAME;
 	Mem(int a_width, int d_width, int /*nwords*/);
 	virtual ~Mem();
-	FUInstance* createLogicalFUInstance(const std::string &,const std::string &,const std::string &) ;
+	LogicalFUInstance* createLogicalFUInstance(const std::string &,const std::string &,const std::string &) ;
 };
 
 class MemFUInstance:public LogicalFUInstance{
-	int id;
 public:
 	MemFUInstance(const std::string &name,const std::string &type,const std::string &func,FUDescription* desc);
 	virtual ~MemFUInstance();
-	void setParameter(const std::string&, long);
+	//void setParameter(const std::string&, long);
 };
 
 #endif /* FUNCTIONALUNITS_MEM_H_ */

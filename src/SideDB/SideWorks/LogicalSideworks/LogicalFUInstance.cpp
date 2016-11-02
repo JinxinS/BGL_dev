@@ -43,12 +43,16 @@ void LogicalFUInstance::addOutputPort(const std::string& name, int width){
 	if(outports.find(name)==outports.end()) outports.insert(std::make_pair(name,new LogicalOutputPort(name,width,this)));
 }
 
-void LogicalFUInstance::place(FUInstance* pfu,int){
+void LogicalFUInstance::setParameter(const std::string& param, long value){
+	parameters.at(param) = value;
+}
+
+void LogicalFUInstance::place(FUInstance* pfu){
 	if(correspond_physicalFUInstance != NULL) throw SideConfException("LogicalFUInstance" + name +"already has a placement to: "+correspond_physicalFUInstance->name);
 	correspond_physicalFUInstance = pfu;
 }
 
-double LogicalFUInstance::estimatePlacementDecisionCost(FUInstance* pfu){
+double LogicalFUInstance::estimatePlacementDecisionCost(PhysicalFUInstance* pfu){
 	double cost = 0 ;
 	int l_degree = 1;
 	for(auto i:inports){//logicalInput
@@ -64,6 +68,6 @@ double LogicalFUInstance::estimatePlacementDecisionCost(FUInstance* pfu){
 	return val;
 }
 
-FUInstance* LogicalFUInstance::createPhysicalFUInstance(const std::string &name){
+PhysicalFUInstance* LogicalFUInstance::createPhysicalFUInstance(const std::string &name){
 	return new PhysicalFUInstance(name,type,description);
 }

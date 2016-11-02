@@ -30,6 +30,7 @@
 #include <boost/property_map/shared_array_property_map.hpp>
 #include <boost/tokenizer.hpp>
 #include "FUInstance.h"
+#include "SideConfException.h"
 namespace pt = boost::property_tree;
 namespace logging = boost::log;
 
