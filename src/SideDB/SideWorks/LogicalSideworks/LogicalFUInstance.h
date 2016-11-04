@@ -11,13 +11,24 @@
 class PhysicalFUInstance;
 class ConstantPhysicalFUInstance;
 class FUDescription;
+class InputPort;
+class OutputPort;
+class LogicalInputPort;
+class LogicalOutputPort;
+
 class LogicalFUInstance:public FUInstance {
 	friend class LogicalSideworks;
+	friend class PhysicalSideworks;
 	std::string funcname;
+	std::unordered_map<std::string, LogicalInputPort*>	inports;
+	std::unordered_map<std::string, LogicalOutputPort*>	outports;
 	std::unordered_map<std::string, long>		 	parameters;
 	FUInstance* correspond_physicalFUInstance;
 	void addInputPort(const std::string&, int width);
 	void addOutputPort(const std::string&, int width);
+protected:
+	InputPort*  getInputPort(const std::string& i) const;
+	OutputPort* getOutputPort(const std::string& o) const;
 public:
     LogicalFUInstance(const LogicalFUInstance&);
     LogicalFUInstance& operator=(const LogicalFUInstance& obj){

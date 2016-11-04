@@ -21,7 +21,7 @@ public:
     void setMuxSelect(OutputPort*,int);
     bool isConnected(OutputPort* out);
     bool isConnected(){ return !source_outputs.empty();}
-    int size(){return source_outputs.size();}
+    int size()const{return source_outputs.size();}
 	friend std::ostream& operator<<(std::ostream& os, const InputPort& i);
 };
 

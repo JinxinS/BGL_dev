@@ -78,14 +78,12 @@ void SideConf::loadLogicalSideworks(){
 }
 
 void SideConf::generatePhysicalSideworks(){
-//	ResourceAllocator r;
-//	r.addLSiWResources(logical_sideworks_list);
-//	r.allocateResources(physical_sideWorks,fu_library);
     for(unsigned int i = 0; i < logical_sideworks_list.size(); i++){
 		BOOST_LOG_TRIVIAL(info)<<"Placing" <<i;
     	Placer::place(logical_sideworks_list[i],physical_sideWorks,i);
     	Router::route(logical_sideworks_list[i],physical_sideWorks,i);
     }
+    physical_sideWorks.updatePFUConfigurationParameters();
 	//print_graph(physical_sideWorks.getGraph(),get(boost::vertex_bundle,physical_sideWorks.getGraph()));
 }
 

@@ -11,6 +11,9 @@
 class Function;
 class LogicalFUInstance;
 class FUDescription {
+	friend class LogicalFUInstance;
+	friend class PhysicalFUInstance;
+protected:
 	std::string 						  type;
 	std::unordered_map<std::string, int> input_ports_width;
 	std::unordered_map<std::string, int> output_ports_width;
@@ -25,9 +28,8 @@ public:
     bool isParameter(const std::string& arg);
     int  getInputWidth(const std::string& in);
 	virtual LogicalFUInstance* createLogicalFUInstance(const std::string &,const std::string &,const std::string &);
-    inline const std::unordered_map<std::string, int>& getOutputPorts() const { return output_ports_width; }
-    inline const std::unordered_map<std::string, int>&  getInputPorts() const { return input_ports_width; }
     Function* getFUFunction(const std::string& funcname);
+    int getConfSize();
 	FUDescription(const std::string&);
 	virtual ~FUDescription();
 };

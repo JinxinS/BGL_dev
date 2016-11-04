@@ -26,18 +26,13 @@ void LogicalSideworks::addFU(LogicalFUInstance* fu){
 }
 
 int LogicalSideworks::addConection(const graph_t::vertex_descriptor& u,const graph_t::vertex_descriptor& v,const std::string& o,const std::string& i){
-	BOOST_LOG_TRIVIAL(trace)<<"add edge "<<siw_graph[u].name<<"."<<o<<" -> "<<siw_graph[v].name<<"."<<i;
-	if(!fuList[u]->isConnected(o,fuList[v],i)){
-		add_edge(u,v,edge_properties(o,edge_i_property(i)),siw_graph);
-	}
-	return fuList[u]->connect(o,fuList[v],i);
+	return connect(u,v,fuList[u]->getOutputPort(o),fuList[v]->getInputPort(i));
 }
 
 
 int LogicalSideworks::addFixedConection(const graph_t::vertex_descriptor& u,const graph_t::vertex_descriptor& v,const std::string& o,const std::string& i){
 	int width = fuList[v]->getInputPort(i)->getWidth();
 	std::string oname(o + std::to_string(width));
-	//std::cout<<"\x1b[31m"<<*fuList[u]<<" add output "<<oname<<width<<"\x1b[32m"<<std::endl;
 	fuList[u]->addOutputPort(oname,width);
 	fuList[u]->description->addOutputPort(oname,width);
 	return addConection(u,v,oname,i);

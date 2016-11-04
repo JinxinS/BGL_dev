@@ -9,9 +9,10 @@
 #include "OutputPort.h"
 
 PhysicalInputPort::PhysicalInputPort(const std::string& name,int width,FUInstance* p)
-:InputPort(name, width, p){
+:InputPort(name, width, p),
+ xbarBitPointer(0)
+{
 	// TODO Auto-generated constructor stub
-
 }
 
 PhysicalInputPort::~PhysicalInputPort() {
@@ -31,5 +32,9 @@ double PhysicalInputPort::calcCost(Port* logOut){
 		}
 		return 16/pow(2,num_possible_ports)*width;
 	}
+}
+
+int PhysicalInputPort::getConfSize(){
+    return ceil(log(source_outputs.size())/log(2));
 }
 

@@ -16,7 +16,10 @@
 LogicalFUInstance::LogicalFUInstance(const std::string& name,const std::string& type,const std::string& func,FUDescription* desc)
 :FUInstance(name,type,desc),
  funcname(func),
- correspond_physicalFUInstance(NULL){
+ inports(),
+ outports(),
+ correspond_physicalFUInstance(NULL)
+{
 	Function*  function = description->getFUFunction(funcname);
 	for(auto arg: function->getArgs()){
 		if(description->isInputPort(arg)){
@@ -25,7 +28,7 @@ LogicalFUInstance::LogicalFUInstance(const std::string& name,const std::string& 
 			parameters.insert(std::make_pair(arg, 0L));
 		}
 	}
-	for(auto o: description->getOutputPorts()){
+	for(auto o: description->output_ports_width){
 		addOutputPort(o.first,o.second);
 	}
 }
@@ -41,6 +44,14 @@ void LogicalFUInstance::addInputPort(const std::string& name, int width){
 
 void LogicalFUInstance::addOutputPort(const std::string& name, int width){
 	if(outports.find(name)==outports.end()) outports.insert(std::make_pair(name,new LogicalOutputPort(name,width,this)));
+}
+
+InputPort* LogicalFUInstance::getInputPort(const std::string& i)const{
+	return inports.at(i);
+}
+
+OutputPort* LogicalFUInstance::getOutputPort(const std::string& o)const{
+	return outports.at(o);
 }
 
 void LogicalFUInstance::setParameter(const std::string& param, long value){
@@ -64,7 +75,7 @@ double LogicalFUInstance::estimatePlacementDecisionCost(PhysicalFUInstance* pfu)
 		l_degree++;
 	}
 	double val = round(((double)cost)*pow(((double)std::max((pfu->fanInSize()+l_degree),l_degree)/(double)l_degree),0.1));
-	std::cout<<"cost @"<<pfu->name<<":"<<cost<<" "<<val<<" "<<pfu->fanInSize()<<pfu->fanOutSize()<<" "<<l_degree<<std::endl;
+//	std::cout<<"cost @"<<pfu->name<<":"<<cost<<" "<<val<<" "<<pfu->fanInSize()<<pfu->fanOutSize()<<" "<<l_degree<<std::endl;
 	return val;
 }
 

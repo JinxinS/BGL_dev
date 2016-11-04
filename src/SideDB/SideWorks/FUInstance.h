@@ -11,8 +11,6 @@
 #include <boost/graph/properties.hpp>
 #include <string>
 #include <list>
-class InputPort;
-class OutputPort;
 class FUDescription;
 class FUInstance {
 	typedef boost::vertex_property_tag kind;
@@ -23,23 +21,14 @@ public:
 	std::string name;
 	std::string type;
 	FUDescription* description;
-protected:
-	std::unordered_map<std::string, InputPort*>		inports;
-	std::unordered_map<std::string, OutputPort*>	outports;
-//	virtual void addInputPort(const std::string&, int)  {}
-//	virtual void addOutputPort(const std::string&, int) {}
-	InputPort*   getInputPort(const std::string&);
-	OutputPort* getOutputPort(const std::string&);
+
 public:
 	FUInstance& operator=(const FUInstance&);
 	FUInstance(const FUInstance& obj);
 	FUInstance(const std::string& name="no_name", const std::string& type="no_type", FUDescription* desc=0);
 	virtual ~FUInstance();
-	int connect(const std::string&, FUInstance*,const std::string&);
-	bool isConnected(const std::string&, FUInstance* ,const std::string&);
 	virtual FUInstance* correspondence(int)const{return NULL;}
 	virtual bool isPlaced(int){ return false;}
-
 	friend std::ostream& operator<<(std::ostream& os, const FUInstance& o){
 		return os<<o.name;
 	}
