@@ -10,12 +10,15 @@
 #include "sic_types.h"
 #include "PhysicalInputPort.h"
 #include "PhysicalOutputPort.h"
+#include "LogicalInputPort.h"
+#include "LogicalOutputPort.h"
 #include "LogicalSideworks.h"
 #include "IResourceCostConstants.h"
 #include "FUDescription.h"
 #include "PhysicalFUInstance.h"
 #include "LogicalFUInstance.h"
 #include "Fixed.h"
+#include "Mem.h"
 PhysicalSideworks::PhysicalSideworks()
 :Sideworks(),
  fus_by_type(),
@@ -52,29 +55,29 @@ int PhysicalSideworks::addFixedConection(const graph_t::vertex_descriptor& u,con
 
 void PhysicalSideworks::place(LogicalFUInstance* lfu,int simid){
 	BOOST_LOG_TRIVIAL(warning)<<"********placing process************";
-    double best_fu_cost = std::numeric_limits<double>::max() - 1;
-    PhysicalFUInstance* best_fu = 0;
-    for(auto pfu:fus_by_type[lfu->type] ){
-    	if(pfu->isPlaced(simid)) continue;
-		double new_estimate_cost = pfu->estimatePlacementDecisionCost(lfu);
+	double best_fu_cost = std::numeric_limits<double>::max() - 1;
+	PhysicalFUInstance* best_fu = 0;
+	for(auto pfu:fus_by_type[lfu->type] ){
+		if(pfu->isPlaced(simid)) continue;
+		double new_estimate_cost = pfu->estimatePlacementDecisionCost(*lfu);
 
 		if(new_estimate_cost < best_fu_cost){
 			best_fu_cost = new_estimate_cost;
 			best_fu	= pfu;
 		}
 	}
-    //no suitable FU to place, add one
-    if(best_fu_cost == std::numeric_limits<double>::max() - 1){
+	//no suitable FU to place, add one
+	if(best_fu_cost == std::numeric_limits<double>::max() - 1){
 		std::string fu_name(lfu->type+"_auto_"+std::to_string(fus_by_type[lfu->type].size()));
-    	this->addFU(best_fu=lfu->createPhysicalFUInstance(fu_name));
-    	BOOST_LOG_TRIVIAL(warning)<<boost::format("\nplace %-10s @ %-10s cost MAX") %lfu->name %best_fu->name ;
-    }
-    else
-    	BOOST_LOG_TRIVIAL(warning)<<boost::format("\nplace %-10s @ %-10s cost %-f") %lfu->name %best_fu->name %best_fu_cost;
+		this->addFU(best_fu=lfu->createPhysicalFUInstance(fu_name));
+		BOOST_LOG_TRIVIAL(warning)<<boost::format("\nplace %-10s @ %-10s cost MAX") %lfu->name %best_fu->name ;
+	}
+	else
+		BOOST_LOG_TRIVIAL(warning)<<boost::format("\nplace %-10s @ %-10s cost %-f") %lfu->name %best_fu->name %best_fu_cost;
 
-    lfu->place(best_fu);
-    best_fu->place(lfu,simid);
-	BOOST_LOG_TRIVIAL(warning)<<*best_fu->correspondence(simid);
+	lfu->place(best_fu);
+	best_fu->place(lfu,simid);
+	//	BOOST_LOG_TRIVIAL(warning)<<*best_fu->correspondence(simid);
 }
 
 void PhysicalSideworks::route(LogicalSideworks &logical_sideWorks){
@@ -85,8 +88,8 @@ void PhysicalSideworks::route(LogicalSideworks &logical_sideWorks){
 	for(auto e = p.first; e != p.second;++e){
 		LogicalFUInstance* u = logical_sideWorks.fuList[source(*e, lsiw_graph)];
 		LogicalFUInstance* v = logical_sideWorks.fuList[target(*e, lsiw_graph)];
-		auto cu = *find_vertex(u->correspondence(0)->name, siw_graph);
-		auto cv = *find_vertex(v->correspondence(0)->name, siw_graph);
+		auto cu = *find_vertex(u->correspondence()->name, siw_graph);
+		auto cv = *find_vertex(v->correspondence()->name, siw_graph);
 		int muxSelect = addConection(cu,cv,eomap[*e],eimap[*e]);
 		v->getInputPort(eimap[*e])->setMuxSelect(u->getOutputPort(eomap[*e]),muxSelect);
 		//std::cout<<*fuList[cv]->getInputPort(eimap[*e]);
@@ -122,6 +125,13 @@ void PhysicalSideworks::updatePFUConfigurationParameters(){
 		}
 	}
 	getReadXbarLuts(IResourceCostConstants::MUXCOST[IResourceCostConstants::VIRTEX5]);
+	
+	int mem_offset = 0x00D80000;
+	for (auto mem : fus_by_type[Mem::TYPE]){
+		mem->addProperty(Mem::PROP_BASEADDRESS,mem_offset);
+		mem_offset += std::pow(2,mem->getProperty(Mem::PROP_AWIDTH))*4;
+//		std::cout<<mem->name<<" "<<mem->getProperty(Mem::PROP_ID)<<" "<<nwords<<std::endl;	
+	}
 
 	int bits = 0;
 	for(auto fu:fuList){

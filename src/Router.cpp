@@ -20,7 +20,7 @@ Router::~Router() {
 	// TODO Auto-generated destructor stub
 }
 
-void Router::route(LogicalSideworks* logical_sideworks,PhysicalSideworks& physical_sideWorks,int simid){
-	physical_sideWorks.route(*logical_sideworks);
+void Router::route(LogicalSideworks* logical_sideworks,PhysicalSideworks& physical_sideworks/*,int simid*/){
+	physical_sideworks.route(*logical_sideworks);
 
 }

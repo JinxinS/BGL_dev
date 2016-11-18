@@ -13,7 +13,7 @@ class Router {
 public:
 	Router();
 	virtual ~Router();
-	static void route(LogicalSideworks* ,PhysicalSideworks& ,int );
+	static void route(LogicalSideworks* ,PhysicalSideworks& /*,int*/ );
 };
 
 #endif /* ROUTER_H_ */

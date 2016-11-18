@@ -28,7 +28,7 @@ public:
 	ConstantFUInstance(const std::string &name,const std::string &type,const std::string &func,FUDescription* desc);
 	virtual ~ConstantFUInstance();
 	void setParameter(const std::string&, long);
-	double estimatePlacementDecisionCost(ConstantPhysicalFUInstance*);
+	double estimateConstantPlacementDecisionCost(ConstantPhysicalFUInstance&);
 	PhysicalFUInstance* createPhysicalFUInstance(const std::string &);
 };
 
@@ -38,7 +38,7 @@ public:
 	int value;
 	ConstantPhysicalFUInstance(const std::string &name,const std::string &type,int val,FUDescription* desc);
 	virtual ~ConstantPhysicalFUInstance();
-	double estimatePlacementDecisionCost(LogicalFUInstance* lfu){return lfu->estimatePlacementDecisionCost(this);}
+	double estimatePlacementDecisionCost(LogicalFUInstance& lfu){return lfu.estimateConstantPlacementDecisionCost(*this);}
 };
 
 #endif /* CONSTANT_H_ */

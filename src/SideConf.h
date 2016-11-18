@@ -15,13 +15,14 @@ class SideConf {
 private:
     FunctionalUnitLibrary 			fu_library;
     std::vector<LogicalSideworks*> 	logical_sideworks_list;
-    PhysicalSideworks 				physical_sideWorks;
+    PhysicalSideworks 				physical_sideworks;
 	SideConf(const SideConf&);
 	SideConf& operator=(const SideConf&);
     void parseArgs(int argc, char** argv);
     void loadDataBase();
     void loadLogicalSideworks();
     void generatePhysicalSideworks();
+    void exportSideworks();
 public:
 	void run(int argc,char** argv);
 	SideConf();

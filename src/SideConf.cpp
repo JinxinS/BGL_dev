@@ -16,12 +16,13 @@
 #include "FunctionalUnitLibrary.h"
 #include "Placer.h"
 #include "Router.h"
+#include "SideConfWriter.h"
 
 SideConf::SideConf()
 : fu_library(),
-  logical_sideworks_list(),
-  physical_sideWorks(){
-    logging::core::get()->set_filter(logging::trivial::severity >= logging::trivial::fatal);
+logical_sideworks_list(),
+physical_sideworks(){
+	logging::core::get()->set_filter(logging::trivial::severity >= logging::trivial::fatal);
 }
 
 SideConf::~SideConf() {
@@ -33,10 +34,10 @@ SideConf::~SideConf() {
 void SideConf::parseArgs(int argc, char** argv){
 	CmdLineParser::parse(argc, argv);
 
-    std::string fu_folder(CmdLineParser::arguments.fufolder);
-    std::string target_folder(CmdLineParser::arguments.output);
-    std::string target_xml_folder(target_folder + "/xmlfiles/");
-    std::string target_verilog_folder(target_folder + "/verilog/");
+	std::string fu_folder(CmdLineParser::arguments.fufolder);
+	std::string target_folder(CmdLineParser::arguments.output);
+	std::string target_xml_folder(target_folder + "/xmlfiles/");
+	std::string target_verilog_folder(target_folder + "/verilog/");
 	std::string reportfile(target_folder + "/sideconf_generation.log");
 
 	mkdir(target_folder.c_str(),ACCESSPERMS);
@@ -78,21 +79,32 @@ void SideConf::loadLogicalSideworks(){
 }
 
 void SideConf::generatePhysicalSideworks(){
-    for(unsigned int i = 0; i < logical_sideworks_list.size(); i++){
+	physical_sideworks.setName(fu_library.getName());
+	for(unsigned int i = 0; i < logical_sideworks_list.size(); i++){
 		BOOST_LOG_TRIVIAL(info)<<"Placing" <<i;
-    	Placer::place(logical_sideworks_list[i],physical_sideWorks,i);
-    	Router::route(logical_sideworks_list[i],physical_sideWorks,i);
-    }
-    physical_sideWorks.updatePFUConfigurationParameters();
-	//print_graph(physical_sideWorks.getGraph(),get(boost::vertex_bundle,physical_sideWorks.getGraph()));
+		Placer::place(logical_sideworks_list[i],physical_sideworks,i);
+		Router::route(logical_sideworks_list[i],physical_sideworks);
+	}
+	physical_sideworks.updatePFUConfigurationParameters();
+	for(unsigned int i = 0 ; i < logical_sideworks_list.size(); ++i){
+		logical_sideworks_list[i]->generateCfgWord(physical_sideworks.nBits());
+	}
+	//print_graph(physical_sideworks.getGraph(),get(boost::vertex_bundle,physical_sideworks.getGraph()));
 }
 
+void SideConf::exportSideworks(){
+	BOOST_LOG_TRIVIAL(info)<<"Saving Sideworks:";
+	std::string target_folder(CmdLineParser::arguments.output);
+	SideConfWriter::saveConf(std::string(target_folder+"config"),physical_sideworks,logical_sideworks_list);	
+}
 
 void SideConf::run(int argc,char** argv){
 	parseArgs(argc,argv);
 	loadDataBase();
 	loadLogicalSideworks();
 	generatePhysicalSideworks();
+	exportSideworks();
+
 }
 
 

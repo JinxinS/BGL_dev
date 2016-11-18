@@ -39,15 +39,7 @@ void PhysicalFUInstance::addOutputPort(const std::string& name, int width){
 	outports.insert(std::make_pair(name,new PhysicalOutputPort(name,width,this)));
 }
 
-InputPort* PhysicalFUInstance::getInputPort(const std::string& i)const{
-	return inports.at(i);
-}
-
-OutputPort* PhysicalFUInstance::getOutputPort(const std::string& o)const{
-	return outports.at(o);
-}
-
-void PhysicalFUInstance::place(FUInstance* lfu,int simid){
+void PhysicalFUInstance::place(LogicalFUInstance* lfu,int simid){
 	correspond_LogicalFUInstance.insert(std::make_pair(simid,lfu));
 }
 
@@ -55,8 +47,8 @@ bool PhysicalFUInstance::isPlaced(int simid){
 	return correspond_LogicalFUInstance.find(simid)!=correspond_LogicalFUInstance.end();
 }
 
-double PhysicalFUInstance::estimatePlacementDecisionCost(LogicalFUInstance* lfu){
-	return lfu->estimatePlacementDecisionCost(this);
+double PhysicalFUInstance::estimatePlacementDecisionCost(LogicalFUInstance& lfu){
+	return lfu.estimatePlacementDecisionCost(*this);
 }
 
 void PhysicalFUInstance::getReadXbarMuxCount(int* muxCount,int maxsz){

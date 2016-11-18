@@ -17,8 +17,8 @@ Placer::~Placer() {
 	// TODO Auto-generated destructor stub
 }
 
-void Placer::place(LogicalSideworks* logical_sideworks,PhysicalSideworks& physical_sideWorks,int simid){
+void Placer::place(LogicalSideworks* logical_sideworks,PhysicalSideworks& physical_sideworks,int simid){
 	for(auto lfu:logical_sideworks->fuList)
-		if(lfu != NULL) physical_sideWorks.place(lfu,simid);
+		if(lfu != NULL) physical_sideworks.place(lfu,simid);
 
 }

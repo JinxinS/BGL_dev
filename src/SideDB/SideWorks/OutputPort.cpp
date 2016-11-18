@@ -7,8 +7,8 @@
 
 #include <OutputPort.h>
 #include "InputPort.h"
-OutputPort::OutputPort(const std::string& name, int width, FUInstance* p)
-:Port(name, width, p),
+OutputPort::OutputPort(const std::string& name, int width)
+:Port(name, width),
  destination_inputs()
 {
 	// TODO Auto-generated constructor stub

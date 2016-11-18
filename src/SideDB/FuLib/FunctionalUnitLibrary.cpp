@@ -5,7 +5,7 @@
  *      Author: songjinxin
  */
 
-#include <SideDB/FuLib/Fixed.h>
+#include "Fixed.h"
 #include "FunctionalUnitLibrary.h"
 #include "LogicalFUInstance.h"
 #include "PhysicalFUInstance.h"
@@ -14,8 +14,9 @@
 #include "Mem.h"
 #include "Fixed.h"
 #include "Constant.h"
-FunctionalUnitLibrary::FunctionalUnitLibrary():
-fu_desc_list(){
+FunctionalUnitLibrary::FunctionalUnitLibrary()
+:siwName(),
+ fu_desc_list(){
 	loadInternelFunctionalLib();
 }
 
@@ -28,7 +29,6 @@ void FunctionalUnitLibrary::loadInternelFunctionalLib() {
 		fu_desc_list.insert(std::make_pair(Fixed::TYPES[i],new Fixed(Fixed::TYPES[i])));
 	}
 	fu_desc_list.insert(std::make_pair(Control::TYPE,new Control()));
-	fu_desc_list.insert(std::make_pair(Mem::TYPE,new Mem(12,12,4096)));
 	fu_desc_list.insert(std::make_pair(Constant::TYPE,new Constant()));
 }
 
@@ -51,8 +51,8 @@ LogicalFUInstance* FunctionalUnitLibrary::getLogicalFUInstance(const std::string
 }
 
 LogicalFUInstance* FunctionalUnitLibrary::getLogicalMEMInstance(const std::string &name,int a_width,int d_width,int nwords,const std::string &memid) {
-	std::string mtype(Mem::TYPE + memid);
+	std::string mtype(Mem::TYPE+memid);
 	if(fu_desc_list.find(mtype) == fu_desc_list.end())
-	fu_desc_list.insert(std::make_pair(mtype,new Mem(a_width,d_width,nwords)));
-	return getLogicalFUInstance(name,mtype,Mem::FUNC_NAME);
+		fu_desc_list.insert(std::make_pair(mtype,new Mem(a_width,d_width,boost::lexical_cast<int>(memid))));
+	return fu_desc_list.at(mtype)->createLogicalFUInstance(name,Mem::TYPE,Mem::FUNC_NAME);
 }

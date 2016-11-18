@@ -40,8 +40,9 @@ void ConstantFUInstance::setParameter(const std::string& param, long val){
 	LogicalFUInstance::setParameter(param,val);
 }
 
-double ConstantFUInstance::estimatePlacementDecisionCost(ConstantPhysicalFUInstance* pfu){
-	return (this->value == pfu->value) ? 0:std::numeric_limits<double>::max() - 1;
+double ConstantFUInstance::estimateConstantPlacementDecisionCost(ConstantPhysicalFUInstance& pfu){
+//	std::cout<<"estimate Cost"<<this->name<<" vs "<<pfu.name<<std::endl;
+	return (this->value == pfu.value) ? 0:std::numeric_limits<double>::max() - 1;
 }
 
 PhysicalFUInstance* ConstantFUInstance::createPhysicalFUInstance(const std::string &name){

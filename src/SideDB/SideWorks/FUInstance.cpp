@@ -10,7 +10,8 @@
 #include "InputPort.h"
 
 FUInstance::FUInstance(const FUInstance& obj)
-:name(obj.name),
+:properties(obj.properties),
+ name(obj.name),
  type(obj.type),
  description(obj.description){}
 
@@ -22,7 +23,8 @@ FUInstance& FUInstance::operator=(const FUInstance& obj){
 
 
 FUInstance::FUInstance(const std::string& name, const std::string& type, FUDescription* desc)
-:name(name),
+:properties(),
+ name(name),
  type(type),
  description(desc){
 	// TODO Auto-generated constructor stub

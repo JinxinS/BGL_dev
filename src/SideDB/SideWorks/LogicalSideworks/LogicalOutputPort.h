@@ -8,12 +8,21 @@
 #ifndef LOGICALOUTPUTPORT_H_
 #define LOGICALOUTPUTPORT_H_
 #include "OutputPort.h"
-class LogicalInputPort;
+#include "LogicalFUInstance.h"
+class PhysicalOutputPort;
 class LogicalOutputPort :public OutputPort{
+	LogicalFUInstance* owner;
 public:
-    LogicalOutputPort(const std::string& name,int width,FUInstance* p);
+	LogicalOutputPort& operator=(const LogicalOutputPort&);
+	LogicalOutputPort(const LogicalOutputPort& obj);
+    LogicalOutputPort(const std::string& name,int width,LogicalFUInstance* p);
 	virtual ~LogicalOutputPort();
-    double calcCost(Port* phyOut);
+    double calcCost(PhysicalOutputPort* phyOut);
+    bool isPlaced() { return owner->isPlaced() ; }
+    FUInstance* getOwner()const { return owner;}
+
+//    bool match_p(PhysicalOutputPort* p);
+//    bool strictMatch_p(PhysicalOutputPort* p);
 };
 
 #endif /* LOGICALOUTPUTPORT_H_ */

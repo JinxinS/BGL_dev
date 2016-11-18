@@ -8,8 +8,9 @@
 #include <PhysicalOutputPort.h>
 #include "InputPort.h"
 
-PhysicalOutputPort::PhysicalOutputPort(const std::string& name,int width,FUInstance* p)
-:OutputPort(name, width, p){
+PhysicalOutputPort::PhysicalOutputPort(const std::string& name,int width,PhysicalFUInstance* p)
+:OutputPort(name, width),
+ owner(p){
 	// TODO Auto-generated constructor stub
 
 }
@@ -17,8 +18,17 @@ PhysicalOutputPort::PhysicalOutputPort(const std::string& name,int width,FUInsta
 PhysicalOutputPort::~PhysicalOutputPort() {
 	// TODO Auto-generated destructor stub
 }
+//
+//bool PhysicalOutputPort::match(OutputPort* logOut){
+//	return logOut->match_p(this);
+//
+//}
+//
+//bool PhysicalOutputPort::strictMatch(OutputPort* logOut){
+//	return logOut->strictMatch_p(this);
+//}
 
-double PhysicalOutputPort::calcCost(Port* logIn){
+double PhysicalOutputPort::calcCost(InputPort* logIn){
 	if(logIn->isPlaced()){
 		for(auto i: destination_inputs){
 			if(i->strictMatch(logIn)) return 0;

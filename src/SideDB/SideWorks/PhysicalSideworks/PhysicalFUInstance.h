@@ -11,34 +11,32 @@
 #include "FUInstance.h"
 class FUDescription;
 class LogicalFUInstance;
-class InputPort;
-class OutputPort;
 class PhysicalInputPort;
 class PhysicalOutputPort;
 class PhysicalFUInstance:public FUInstance {
 	friend class PhysicalSideworks;
 	friend class LogicalFUInstance;
+	friend class MemFUInstance;
 	std::unordered_map<std::string, PhysicalInputPort*>	inports;
 	std::unordered_map<std::string, PhysicalOutputPort*>outports;
-	std::map<int,FUInstance*> correspond_LogicalFUInstance;
+	std::map<int,LogicalFUInstance*> correspond_LogicalFUInstance;
 	int confBitPointer;
+	protected:
 	void addInputPort(const std::string&, int width);
 	void addOutputPort(const std::string&, int width);
-protected:
-	InputPort*  getInputPort(const std::string& i) const;
-	OutputPort* getOutputPort(const std::string& o) const;
-public:
+	inline PhysicalInputPort*  getInputPort(const std::string& i)const{ return inports.at(i);}
+	inline PhysicalOutputPort* getOutputPort(const std::string& o)const{return outports.at(o);}
+	public:
 	PhysicalFUInstance(const std::string& name,const std::string& type,FUDescription* desc);
 	virtual ~PhysicalFUInstance();
 	int fanInSize();
 	int fanOutSize();
-	FUInstance* correspondence(int i)const {return correspond_LogicalFUInstance.at(i);}
-	void place(FUInstance*,int);
+	void place(LogicalFUInstance*,int);
 	bool isPlaced(int simid);
-	virtual double estimatePlacementDecisionCost(LogicalFUInstance*);
+	virtual double estimatePlacementDecisionCost(LogicalFUInstance&);
 	void getReadXbarMuxCount(int*,int);
 	int getConfSize();
-    inline void setConfBitPointer(int v){ confBitPointer = v; }
+	inline void setConfBitPointer(int v){ confBitPointer = v; }
 };
 
 #endif /* PHYSICALFUINSTANCE_H_ */

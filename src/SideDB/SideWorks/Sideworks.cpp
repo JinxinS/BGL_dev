@@ -12,7 +12,8 @@
 #include "OutputPort.h"
 
 Sideworks::Sideworks()
-:siw_graph(){
+:name(),
+ siw_graph(){
 	// TODO Auto-generated constructor stub
 }
 

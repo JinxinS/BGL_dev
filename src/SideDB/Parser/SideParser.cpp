@@ -115,9 +115,10 @@ void SideParser::parseLogicalSideWorks(FunctionalUnitLibrary& fulib,LogicalSidew
 	// Parse the XML into the property tree.
 	pt::read_xml(filename, tree);
 	//siw_name
-	BOOST_LOG_TRIVIAL(debug)<<tree.get_child(tag).get_child(attr_siwname).data();
+	fulib.setName(tree.get_child(tag).get_child(attr_siwname).data());
 	//datapath name
-	BOOST_LOG_TRIVIAL(debug)<<tree.get_child(tag).get_child(attr_name).data();
+	logical_sideworks->setName(tree.get_child(tag).get_child(attr_name).data());
+	BOOST_LOG_TRIVIAL(debug)<<logical_sideworks->getName();
 	//
 	std::map<std::string,std::string> memory_map;
 	BOOST_FOREACH(pt::ptree::value_type &v, tree.get_child(tag)) {
@@ -159,7 +160,7 @@ void SideParser::parseLogicalSideWorks(FunctionalUnitLibrary& fulib,LogicalSidew
 			}else f_type_name = Mem::TYPE;
 
 			graph_t::vertex_descriptor dest_logicFu = logical_sideworks->getFU(f_fu_name);
-			FUDescription* desc = fulib.getFUDescription(f_type_name);
+			FUDescription* desc = logical_sideworks->fuList[dest_logicFu]->description;
 
 			BOOST_FOREACH(pt::ptree::value_type &m, v.second){
 				if(m.first == tag_funcarg ){
@@ -205,6 +206,7 @@ void SideParser::parseLogicalSideWorks(FunctionalUnitLibrary& fulib,LogicalSidew
 	//exclude unused Functional Unit in the Datapath, Note the siw_graph still contains the unused Functional Unit
 	BGL_FORALL_VERTICES(v, logical_sideworks->siw_graph, graph_t){
 		if(degree(v,logical_sideworks->siw_graph) == 0){
+//			std::cout<<"delete "<<logical_sideworks->fuList[v]->name;
 			delete logical_sideworks->fuList[v];
 			logical_sideworks->fuList[v] = NULL;
 		}
